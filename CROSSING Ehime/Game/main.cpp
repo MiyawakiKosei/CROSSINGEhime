@@ -59,3 +59,4 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 
 //‹¤—L‚µ‚½‚¢
+//Šm”F
