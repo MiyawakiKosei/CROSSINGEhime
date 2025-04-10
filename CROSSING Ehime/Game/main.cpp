@@ -55,6 +55,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	ReportLiveObjects();
 #endif // _DEBUG
 	return 0;
+
+	//SkyCube
+	//SkyCube* skyCube = NewGO<SkyCube>(0);
+	//skyCube->SetType(enSkyCubeType_Day);
+	//skyCube->SetScale(1000.0f);
 }
 
 
