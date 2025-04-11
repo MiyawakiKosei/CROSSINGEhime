@@ -5,6 +5,8 @@
 #include<dxgidebug.h>
 
 #include "Game.h"
+#include "Player.h"
+#include "BackGround.h"
 
 
 
@@ -34,29 +36,26 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 
 	//Gameクラスのオブジェクトを作成。
-	NewGO<Game>(0, "Game");
+	NewGO<BackGround>(0);
+	NewGO<Player>(0);
+
+	g_camera3D->SetPosition(0, 50.0f, -200.0f);
 
 	//////////////////////////////////////
 	// 初期化を行うコードを書くのはここまで！！！
 	//////////////////////////////////////
+	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
-		if (g_pad[0]->IsTrigger(enButtonA) ){
-			g_pad[0]->SetVibration(/*durationSec=*/0.5f, /*normalizedPower=*/1.0f);
-		}
-		K2Engine::GetInstance()->Execute();
+		g_engine->BeginFrame();
+
+		GameObjectManager::GetInstance()->ExecuteUpdate();
+		GameObjectManager::GetInstance()->ExecuteRender(renderContext);
+
+		g_engine->EndFrame();
 	}
-
-	K2Engine::DeleteInstance();
-
-#ifdef _DEBUG
-	ReportLiveObjects();
-#endif // _DEBUG
+	GameObjectManager::DeleteInstance();
 	return 0;
 }
-
-
-//共有したい
-//確認
