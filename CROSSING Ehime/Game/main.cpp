@@ -4,25 +4,9 @@
 #include<InitGUID.h>
 #include<dxgidebug.h>
 
-#include "Game.h"
+//#include "Game.h"
 #include "Player.h"
 #include "BackGround.h"
-
-
-
-void ReportLiveObjects()
-{
-	IDXGIDebug* pDxgiDebug;
-
-	typedef HRESULT(__stdcall* fPtr)(const IID&, void**);
-	HMODULE hDll = GetModuleHandleW(L"dxgidebug.dll");
-	fPtr DXGIGetDebugInterface = (fPtr)GetProcAddress(hDll, "DXGIGetDebugInterface");
-
-	DXGIGetDebugInterface(__uuidof(IDXGIDebug), (void**)&pDxgiDebug);
-
-	// 出力。
-	pDxgiDebug->ReportLiveObjects(DXGI_DEBUG_D3D12, DXGI_DEBUG_RLO_DETAIL);
-}
 
 ///////////////////////////////////////////////////////////////////
 // ウィンドウプログラムのメイン関数。
@@ -59,3 +43,18 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	GameObjectManager::DeleteInstance();
 	return 0;
 }
+
+//void ReportLiveObjects()
+//{
+//	IDXGIDebug* pDxgiDebug;
+//
+//	typedef HRESULT(__stdcall* fPtr)(const IID&, void**);
+//	HMODULE hDll = GetModuleHandleW(L"dxgidebug.dll");
+//	fPtr DXGIGetDebugInterface = (fPtr)GetProcAddress(hDll, "DXGIGetDebugInterface");
+//
+//	DXGIGetDebugInterface(__uuidof(IDXGIDebug), (void**)&pDxgiDebug);
+//
+//	// 出力。
+//	pDxgiDebug->ReportLiveObjects(DXGI_DEBUG_D3D12, DXGI_DEBUG_RLO_DETAIL);
+//}
+
