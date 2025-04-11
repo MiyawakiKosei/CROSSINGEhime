@@ -7,14 +7,20 @@ BackGround::BackGround()
 	//PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 
 	modelRender.Init("Assets/modelData/ground.tkm");
-	modelRender.Update();
-	physicsStaticObject.CreateFromModel(modelRender.GetModel(),
-	modelRender.GetModel().GetWorldMatrix());
+
+	Quaternion rot;
+	rot.SetRotationDegY(180.0f);
+	modelRender.SetRotation(rot);
 }
 
 BackGround::~BackGround()
 {
 
+}
+
+void BackGround::Update()
+{
+	modelRender.Update();
 }
 
 void BackGround::Render(RenderContext& rc)
