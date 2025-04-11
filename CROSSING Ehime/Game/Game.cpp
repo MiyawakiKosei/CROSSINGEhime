@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "GameCamera.h"
 #include "BackGround.h"
+#include "Timer.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 //#include "GameClear.h"
@@ -18,6 +19,11 @@ Game::Game()
 
 	//背景のオブジェクトを作る。
 	backGround = NewGO<BackGround>(0);
+
+	//タイマーの実装
+	m_Timer = NewGO<Timer>(0, "m_timer");
+	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
+	fontRender.SetScale(2.0f);
 
 	////Starクラスのオブジェクトを作る。
 	//Star* star1 = NewGO<Star>(0, "star");

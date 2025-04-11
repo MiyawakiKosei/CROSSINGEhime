@@ -11,7 +11,9 @@ Player::Player()
 	animationClips[enAnimationClip_Jump].Load("Assets/animData/jump.tka");
 	animationClips[enAnimationClip_Jump].SetLoopFlag(false);
 	//ユニティちゃんのモデルを読み込む。
-	modelRender.Init("Assets/modelData/Kate.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	// modelRender.Init("Assets/modelData/Kate.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+
+	modelRender.Init("Assets/modelData/Kate.tkm", nullptr, 0, enModelUpAxisY);//清原先生による一時的処置
 
 	//キャラコンを初期化する。
 	characterController.Init(25.0f, 75.0f, position);
