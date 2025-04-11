@@ -11,7 +11,7 @@
 Game::Game()
 {
 	//プレイヤーのオブジェクトを作る。
-	player = NewGO<Player>(0, "Player");
+	player = NewGO<Player>(0, "player");
 
 	//ゲームカメラのオブジェクトを作る。
 	gameCamera = NewGO<GameCamera>(0, "gamecamera");
