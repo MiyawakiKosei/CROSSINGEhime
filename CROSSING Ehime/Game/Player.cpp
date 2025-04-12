@@ -20,7 +20,7 @@ Player::Player()
 	modelRender.Init("Assets/modelData/Kate.tkm", nullptr, 0, enModelUpAxisY);//清原先生による一時的処置
 
 	//キャラコンを初期化する。
-	//characterController.Init(25.0f, 75.0f, position);//
+	characterController.Init(25.0f, 75.0f, position);
 }
 
 Player::~Player()

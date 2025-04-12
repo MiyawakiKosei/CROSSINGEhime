@@ -28,7 +28,7 @@ public:
 	//	enAnimationClip_Num,
 	//};
 	//AnimationClip animationClips[enAnimationClip_Num];		//アニメーションクリップ。
-	//CharacterController characterController;  //キャラクターコントローラー。
+	CharacterController characterController;  //キャラクターコントローラー。
 	//Vector3 moveSpeed;		//移動速度。
 	//Quaternion rotation;  //クォータニオン。
 	//int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
