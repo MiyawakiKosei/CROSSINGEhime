@@ -4,6 +4,7 @@
 #include "GameCamera.h"
 #include "BackGround.h"
 #include "Timer.h"
+#include "GameClear.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 //#include "GameClear.h"
@@ -25,6 +26,33 @@ Game::Game()
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 	fontRender.SetScale(2.0f);
 
+<<<<<<< HEAD
+=======
+	//ゲームクリアの実装
+	gameClear = NewGO<GameClear>(0);
+	
+	////Starクラスのオブジェクトを作る。
+	//Star* star1 = NewGO<Star>(0, "star");
+	//star1->position = { 100.0f,150.0f,-200.0f };
+	//star1->firstPosition = star1->position;
+
+	//Star* star2 = NewGO<Star>(0, "star");
+	//star2->position = { 1000.0f,150.0f,-200.0f };
+	//star2->firstPosition = star2->position;
+
+	//Star* star3 = NewGO<Star>(0, "star");
+	//star3->position = { 100.0f,250.0f,400.0f };
+	//star3->firstPosition = star3->position;
+
+	//Star* star4 = NewGO<Star>(0, "star");
+	//star4->position = { 2300.0f,50.0f,-200.0f };
+	//star4->firstPosition = star4->position;
+
+	//Star* star5 = NewGO<Star>(0, "star");
+	//star5->position = { 2700.0f,450.0f,400.0f };
+	//star5->firstPosition = star5->position;
+
+>>>>>>> 6e07736e5939606c118fb714e50721b72f5f0eaa
 	////ゲーム中のBGMを読み込む。
 	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
 	////ゲーム中のBGMを再生する
@@ -49,12 +77,20 @@ Game::~Game()
 //更新処理。
 void Game::Update()
 {
-	//プレイヤーの☆カウントが5(☆が全部削除された)になったら。
-	//if (player->starCount == 5)
+	//プレイヤーのステートが１になったら
+	//if (playerState==1)
 	//{
 	//	//ゲームクリアのオブジェクトを作る。
-	//	NewGO<GameClear>(0, "gameclear");
+	//	//NewGO<GameClear>(0, "gameclear");
 	//	//自身を削除する。
-	//	DeleteGO(this);
+	//	//DeleteGO(this);
 	//}
 }
+<<<<<<< HEAD
+=======
+
+//描画処理
+void Game::Render(RenderContext& rc) 
+{
+}
+>>>>>>> 6e07736e5939606c118fb714e50721b72f5f0eaa

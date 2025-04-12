@@ -5,6 +5,7 @@ class Player;
 class GameCamera;
 class BackGround;
 class Timer;
+class GameClear;
 
 //Gameシーンを管理するクラス。
 class Game : public IGameObject
@@ -14,6 +15,8 @@ public:
 	~Game();
 	//更新処理。
 	void Update();
+	//描画処理
+	void Render(RenderContext& rc);
 
 	Player* player;			 //プレイヤー。
 	GameCamera* gameCamera;	 //ゲームカメラ。
@@ -21,4 +24,5 @@ public:
 	//SoundSource* GameBGM;  //ゲーム中のBGM。
 	FontRender fontRender;   //文字
 	Timer* m_Timer;          //タイマー
+	GameClear* gameClear;    //ゲームクリア
 };

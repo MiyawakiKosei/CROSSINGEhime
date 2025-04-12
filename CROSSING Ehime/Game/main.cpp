@@ -28,6 +28,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 
 
+	//SkyCube
+	SkyCube* skyCube = NewGO<SkyCube>(0);
+	skyCube->SetType(enSkyCubeType_Day);
+	skyCube->SetScale(1000.0f);
+
 	//////////////////////////////////////
 	// 初期化を行うコードを書くのはここまで！！！
 	//////////////////////////////////////
@@ -46,10 +51,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//GameObjectManager::DeleteInstance();
 	return 0;
 
-	//SkyCube
-	//SkyCube* skyCube = NewGO<SkyCube>(0);
-	//skyCube->SetType(enSkyCubeType_Day);
-	//skyCube->SetScale(1000.0f);
+	
 }
 
 //void ReportLiveObjects()
