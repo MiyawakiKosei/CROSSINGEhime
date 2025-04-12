@@ -4,6 +4,7 @@
 #include "GameCamera.h"
 #include "BackGround.h"
 #include "Timer.h"
+#include "GameClear.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 //#include "GameClear.h"
@@ -25,6 +26,9 @@ Game::Game()
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 	fontRender.SetScale(2.0f);
 
+	//ゲームクリアの実装
+	gameClear = NewGO<GameClear>(0);
+	
 	////Starクラスのオブジェクトを作る。
 	//Star* star1 = NewGO<Star>(0, "star");
 	//star1->position = { 100.0f,150.0f,-200.0f };
@@ -70,12 +74,17 @@ Game::~Game()
 //更新処理。
 void Game::Update()
 {
-	//プレイヤーの☆カウントが5(☆が全部削除された)になったら。
-	//if (player->starCount == 5)
+	//プレイヤーのステートが１になったら
+	//if (playerState==1)
 	//{
 	//	//ゲームクリアのオブジェクトを作る。
-	//	NewGO<GameClear>(0, "gameclear");
+	//	//NewGO<GameClear>(0, "gameclear");
 	//	//自身を削除する。
-	//	DeleteGO(this);
+	//	//DeleteGO(this);
 	//}
+}
+
+//描画処理
+void Game::Render(RenderContext& rc) 
+{
 }
