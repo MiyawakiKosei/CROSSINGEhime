@@ -26,8 +26,6 @@ Game::Game()
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 	fontRender.SetScale(2.0f);
 
-<<<<<<< HEAD
-=======
 	//ゲームクリアの実装
 	gameClear = NewGO<GameClear>(0);
 	
@@ -52,7 +50,6 @@ Game::Game()
 	//star5->position = { 2700.0f,450.0f,400.0f };
 	//star5->firstPosition = star5->position;
 
->>>>>>> 6e07736e5939606c118fb714e50721b72f5f0eaa
 	////ゲーム中のBGMを読み込む。
 	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
 	////ゲーム中のBGMを再生する
@@ -86,11 +83,9 @@ void Game::Update()
 	//	//DeleteGO(this);
 	//}
 }
-<<<<<<< HEAD
-=======
 
 //描画処理
 void Game::Render(RenderContext& rc) 
 {
+
 }
->>>>>>> 6e07736e5939606c118fb714e50721b72f5f0eaa
