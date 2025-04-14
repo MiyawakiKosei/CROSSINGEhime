@@ -3,7 +3,7 @@
 #include "Player.h"
 
 Timer::Timer() : timeLeft(120 * 60) { // 120秒（2分）をフレーム単位で管理
-    fontRender.SetPosition({ -80.0f,430.0f,0.0f });
+    fontRender.SetPosition({ -927.0f,400.0f,0.0f });
     fontRender.SetScale(2.0f);
     fontRender.SetColor(g_vec4Black);
 }
@@ -19,8 +19,8 @@ void Timer::Update() {
         int seconds = (timeLeft / 60) % 60;  // 秒
 
         // "MM:SS" 形式で表示
-        wchar_t buffer[16];
-        swprintf(buffer, 16, L"%d:%02d", minutes, seconds);
+        wchar_t buffer[6];
+        swprintf(buffer, 6, L"%d:%02d", minutes, seconds);
         fontRender.SetText(buffer);
 
         //残り30秒以下なら色を赤にする
