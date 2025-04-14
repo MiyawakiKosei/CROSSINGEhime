@@ -4,12 +4,15 @@
 
 GameCamera::GameCamera()
 {
+
 }
 
 
 GameCamera::~GameCamera()
 {
+
 }
+
 bool GameCamera::Start()
 {
 	//注視点から視点までのベクトルを設定。
@@ -23,6 +26,7 @@ bool GameCamera::Start()
 
 	return true;
 }
+
 void GameCamera::Update()
 {
 	//カメラを更新。

@@ -90,4 +90,5 @@ void Game::Update()
 //•`‰æˆ—
 void Game::Render(RenderContext& rc) 
 {
+
 }

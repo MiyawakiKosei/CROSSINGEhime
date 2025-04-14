@@ -28,4 +28,3 @@ public:
 	GameClear* m_gameClear;    //ゲームクリア
 	Title* m_title;            //タイトル
 };
-

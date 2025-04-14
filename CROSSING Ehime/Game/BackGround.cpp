@@ -1,15 +1,18 @@
 #include "stdafx.h"
 #include "BackGround.h"
-
 BackGround::BackGround()
 {
 	//コメントアウトする。
 	//PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 
 	modelRender.Init("Assets/modelData/ground.tkm");
-	modelRender.Update();
-	physicsStaticObject.CreateFromModel(modelRender.GetModel(),
-	modelRender.GetModel().GetWorldMatrix());
+
+	modelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+	modelRender.SetScale(Vector3(10.0f, 1.0f, 10.0f)); // 広く見せるために拡大
+
+	Quaternion rot;
+	rot.SetRotationDegY(0.0f);
+	modelRender.SetRotation(rot);
 }
 
 BackGround::~BackGround()
@@ -17,7 +20,12 @@ BackGround::~BackGround()
 
 }
 
-void BackGround::Render(RenderContext& rc)
+void BackGround::Update()
 {
-	modelRender.Draw(rc);
+	modelRender.Update();
+}
+
+void BackGround::Render(RenderContext& renderContext)
+{
+	modelRender.Draw(renderContext);
 }
