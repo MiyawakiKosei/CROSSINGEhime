@@ -7,6 +7,7 @@
 //#include "Game.h"
 #include "BackGround.h"
 #include "Player.h"
+#include "Title.h"
 
 //void ReportLiveObjects()
 //{
@@ -34,7 +35,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 
 	//Titleクラスのオブジェクトを作成
-	//NewGO<Title>(0, "Title");
+	NewGO<Title>(0, "Title");
 
 	//Gameクラスのオブジェクトを作成。
 	//NewGO<Game>(0,"Game");
