@@ -26,8 +26,11 @@ Game::Game()
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 	fontRender.SetScale(2.0f);
 
+	//タイトルの実装
+	m_title = NewGO<Title>(0,"m_title");
+
 	//ゲームクリアの実装
-	gameClear = NewGO<GameClear>(0);
+	m_gameClear = NewGO<GameClear>(0,"m_gameclear");
 	
 	////Starクラスのオブジェクトを作る。
 	//Star* star1 = NewGO<Star>(0, "star");
