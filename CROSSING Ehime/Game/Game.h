@@ -6,6 +6,8 @@ class GameCamera;
 class BackGround;
 class Timer;
 class GameClear;
+class GameOver;
+class Title;
 
 //Gameシーンを管理するクラス。
 class Game : public IGameObject
@@ -24,5 +26,7 @@ public:
 	//SoundSource* GameBGM;  //ゲーム中のBGM。
 	FontRender fontRender;   //文字
 	Timer* m_Timer;          //タイマー
-	GameClear* gameClear;    //ゲームクリア
+	GameClear* m_gameClear;    //ゲームクリア
+	GameOver* m_gameOver;
+	Title* m_title;            //タイトル
 };

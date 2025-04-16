@@ -5,6 +5,8 @@
 #include "BackGround.h"
 #include "Timer.h"
 #include "GameClear.h"
+#include "GameOver.h"
+#include "Title.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 //#include "GameClear.h"
@@ -27,8 +29,11 @@ Game::Game()
 	fontRender.SetScale(2.0f);
 
 	//ゲームクリアの実装
-	gameClear = NewGO<GameClear>(0);
+	m_gameClear = NewGO<GameClear>(0,"m_gameclear");
 	
+	//ゲームオーバーの実装
+	m_gameOver = NewGO<GameOver>(0, "m_gameOver");
+
 	////Starクラスのオブジェクトを作る。
 	//Star* star1 = NewGO<Star>(0, "star");
 	//star1->position = { 100.0f,150.0f,-200.0f };
