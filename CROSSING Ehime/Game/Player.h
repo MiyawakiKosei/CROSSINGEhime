@@ -3,10 +3,13 @@
 class Player : public IGameObject
 {
 public:
+	bool Start();
 	Player();
 	~Player();
 	//更新処理。
 	void Update();
+	void SetPosition(const Vector3& pos);
+
 	//描画処理。
 	void Render(RenderContext& rc);
 	//移動処理。

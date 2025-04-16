@@ -7,6 +7,7 @@
 //#include "Game.h"
 #include "BackGround.h"
 #include "Player.h"
+#include "Game.h"
 
 //void ReportLiveObjects()
 //{
@@ -34,14 +35,14 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 
 	//Gameクラスのオブジェクトを作成。
-	//NewGO<Game>(0,"Game");
+	NewGO<Game>(0,"Game");
 	NewGO<BackGround>(0);
-	NewGO<Player>(0);
+	//NewGO<Player>(0);
 
 	//SkyCube
     SkyCube* skyCube = NewGO<SkyCube>(0);
     skyCube->SetType(enSkyCubeType_Day);
-    skyCube->SetScale(1000.0f);
+    skyCube->SetScale(5000.0f);
 
 	//////////////////////////////////////
 	// 初期化を行うコードを書くのはここまで！！！

@@ -5,7 +5,7 @@ BackGround::BackGround()
 	//コメントアウトする。
 	//PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 
-	modelRender.Init("Assets/modelData/ground.tkm");
+	modelRender.Init("Assets/modelData/bridge/Bridge_01.tkm");
 
 	modelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 	modelRender.SetScale(Vector3(10.0f, 1.0f, 10.0f)); // 広く見せるために拡大
@@ -13,6 +13,8 @@ BackGround::BackGround()
 	Quaternion rot;
 	rot.SetRotationDegY(0.0f);
 	modelRender.SetRotation(rot);
+	physicsStaticObject.CreateFromModel(modelRender.GetModel(),
+		modelRender.GetModel().GetWorldMatrix());
 }
 
 BackGround::~BackGround()

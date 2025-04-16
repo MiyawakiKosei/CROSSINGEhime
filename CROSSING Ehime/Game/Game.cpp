@@ -16,7 +16,7 @@ Game::Game()
 	player = NewGO<Player>(0, "player");
 
 	//ゲームカメラのオブジェクトを作る。
-	gameCamera = NewGO<GameCamera>(0, "gamecamera");
+	gameCamera = NewGO<GameCamera>(0, "gameCamera");
 
 	//背景のオブジェクトを作る。
 	backGround = NewGO<BackGround>(0);

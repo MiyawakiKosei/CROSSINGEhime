@@ -9,6 +9,6 @@ public:
 	void Render(RenderContext& rc);
 
 	ModelRender modelRender;
-	//PhysicsStaticObject physicsStaticObject;
+	PhysicsStaticObject physicsStaticObject;
 };
 

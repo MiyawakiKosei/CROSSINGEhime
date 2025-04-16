@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameCamera.h"
 #include "Player.h"
+#include "Game.h"
 
 GameCamera::GameCamera()
 {
@@ -16,13 +17,13 @@ GameCamera::~GameCamera()
 bool GameCamera::Start()
 {
 	//注視点から視点までのベクトルを設定。
-	m_toCameraPos.Set(0.0f, 125.0f, -250.0f);
+	m_toCameraPos.Set(0.0f, 10.0f, -150.0f);
 	//プレイヤーのインスタンスを探す。
-	m_player = FindGO<Player>("player");
+	player = FindGO<Player>("player");
 
 	//カメラのニアクリップとファークリップを設定する。
 	g_camera3D->SetNear(1.0f);
-	g_camera3D->SetFar(10000.0f);
+	g_camera3D->SetFar(100000.0f);//描画距離
 
 	return true;
 }
@@ -31,9 +32,17 @@ void GameCamera::Update()
 {
 	//カメラを更新。
 	//注視点を計算する。
-	Vector3 target = m_player->position;
+	Vector3 target;
 	//プレイヤの足元からちょっと上を注視点とする。
-	target.y += 80.0f;
+	target.x = player->position.x;
+	target.y = player->position.y + 100.0f;
+	target.z = player->position.z;
+	g_camera3D->SetTarget(target);
+
+	//Vector3 cameraPos;
+	//cameraPos = target;
+	//cameraPos.z -= 300.0f;
+	//g_camera3D->SetPosition(cameraPos);
 
 	Vector3 toCameraPosOld = m_toCameraPos;
 	//パッドの入力を使ってカメラを回す。
