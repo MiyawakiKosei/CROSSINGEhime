@@ -8,6 +8,7 @@ class Timer;
 class GameClear;
 class GameOver;
 class Title;
+class GameUI;
 
 //Gameシーンを管理するクラス。
 class Game : public IGameObject
@@ -29,4 +30,5 @@ public:
 	GameClear* m_gameClear;    //ゲームクリア
 	GameOver* m_gameOver;
 	Title* m_title;            //タイトル
+	GameUI* m_GameUI;        //ゲームUI
 };

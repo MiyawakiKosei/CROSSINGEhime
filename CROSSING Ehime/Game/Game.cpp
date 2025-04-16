@@ -7,6 +7,7 @@
 #include "GameClear.h"
 #include "GameOver.h"
 #include "Title.h"
+#include "GameUI.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 //#include "GameClear.h"
@@ -23,10 +24,7 @@ Game::Game()
 	//背景のオブジェクトを作る。
 	backGround = NewGO<BackGround>(0);
 
-	//タイマーの実装
-	m_Timer = NewGO<Timer>(0, "m_timer");
-	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
-	fontRender.SetScale(2.0f);
+	m_GameUI = NewGO<GameUI>(0, "game_ui");
 
 	//ゲームクリアの実装
 	m_gameClear = NewGO<GameClear>(0,"m_gameclear");
