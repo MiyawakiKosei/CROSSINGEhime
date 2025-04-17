@@ -7,10 +7,7 @@
 //#include "Game.h"
 #include "BackGround.h"
 #include "Player.h"
-<<<<<<< HEAD
 #include "Game.h"
-=======
->>>>>>> 287ecdd69a4cc46686ef80a21be0849fd9040a3f
 #include "Title.h"
 
 //void ReportLiveObjects()
@@ -37,9 +34,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 	// ここから初期化を行うコードを記述する。
 	//////////////////////////////////////
-
-	//Titleクラスのオブジェクトを作成
-	NewGO<Title>(0, "Title");
 
 	//Gameクラスのオブジェクトを作成。
 	NewGO<Title>(0, "Title");
