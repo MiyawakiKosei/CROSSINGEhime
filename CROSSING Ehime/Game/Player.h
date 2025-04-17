@@ -3,27 +3,20 @@
 class Player : public IGameObject
 {
 public:
-	bool Start();
 	Player();
 	~Player();
 	//更新処理。
 	void Update();
-	void SetPosition(const Vector3& pos);
 
 	//描画処理。
 	void Render(RenderContext& rc);
-	//移動処理。
-	//void Move();
-	////回転処理。
-	//void Rotation();
-	////ステート管理。
-	//void ManageState();
-	////アニメーションの再生。
-	//void PlayAnimation();
+
+	void SetPosition(const Vector3& pos);
 
 	//メンバ変数。
-	ModelRender modelRender;	    //モデルレンダ―。
+	ModelRender m_bgmodelRender;	    //モデルレンダ―。
 	Vector3 position;               //座標。
+	Vector3 moveSpeed;
 	//enum EnAnimationClip {		//アニメーション。
 	//	enAnimationClip_Idle,
 	//	enAnimationClip_Walk,

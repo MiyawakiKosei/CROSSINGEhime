@@ -8,6 +8,7 @@
 #include "BackGround.h"
 #include "Player.h"
 #include "Game.h"
+#include "Title.h"
 
 //void ReportLiveObjects()
 //{
@@ -35,9 +36,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 
 	//Gameクラスのオブジェクトを作成。
-	NewGO<Game>(0,"Game");
-	NewGO<BackGround>(0);
-	//NewGO<Player>(0);
+	NewGO<Title>(0, "Title");
+	//NewGO<BackGround>(0);
+
 
 	//SkyCube
     SkyCube* skyCube = NewGO<SkyCube>(0);
