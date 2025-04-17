@@ -8,7 +8,7 @@ public:
 	void Update();
 	void Render(RenderContext& rc);
 
-	ModelRender modelRender;
-	//PhysicsStaticObject physicsStaticObject;
+	ModelRender m_bgModelRender;
+	PhysicsStaticObject m_bgObject;
 };
 

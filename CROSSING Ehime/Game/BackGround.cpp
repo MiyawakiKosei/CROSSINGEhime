@@ -3,16 +3,18 @@
 BackGround::BackGround()
 {
 	//ÉRÉÅÉìÉgÉAÉEÉgÇ∑ÇÈÅB
-	//PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
+	PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 
-	modelRender.Init("Assets/modelData/ground.tkm");
+	m_bgModelRender.Init("Assets/modelData/ground.tkm");
 
-	modelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-	modelRender.SetScale(Vector3(10.0f, 1.0f, 10.0f)); // çLÇ≠å©ÇπÇÈÇΩÇﬂÇ…ägëÂ
+	m_bgModelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+	m_bgModelRender.SetScale(Vector3(10.0f, 1.0f, 10.0f)); // çLÇ≠å©ÇπÇÈÇΩÇﬂÇ…ägëÂ
 
 	Quaternion rot;
 	rot.SetRotationDegY(0.0f);
-	modelRender.SetRotation(rot);
+	m_bgModelRender.SetRotation(rot);
+	m_bgObject.CreateFromModel(m_bgModelRender.GetModel(),
+		m_bgModelRender.GetModel().GetWorldMatrix());
 }
 
 BackGround::~BackGround()
@@ -22,10 +24,10 @@ BackGround::~BackGround()
 
 void BackGround::Update()
 {
-	modelRender.Update();
+	m_bgModelRender.Update();
 }
 
 void BackGround::Render(RenderContext& renderContext)
 {
-	modelRender.Draw(renderContext);
+	m_bgModelRender.Draw(renderContext);
 }
