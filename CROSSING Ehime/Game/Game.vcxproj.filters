@@ -20,9 +20,12 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameUI.cpp" />
     <ClCompile Include="Score.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="GameCamera.cpp">
       <Filter>system</Filter>
     </ClCompile>
+=======
+>>>>>>> 287ecdd69a4cc46686ef80a21be0849fd9040a3f
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
