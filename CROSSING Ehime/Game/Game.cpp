@@ -26,11 +26,6 @@ Game::Game()
 
 	m_GameUI = NewGO<GameUI>(0, "game_ui");
 
-	//ゲームクリアの実装
-	m_gameClear = NewGO<GameClear>(0,"m_gameclear");
-	
-	//ゲームオーバーの実装
-	m_gameOver = NewGO<GameOver>(0, "m_gameOver");
 
 	////Starクラスのオブジェクトを作る。
 	//Star* star1 = NewGO<Star>(0, "star");
@@ -64,27 +59,35 @@ Game::Game()
 
 Game::~Game()
 {
-	////プレイヤーを削除する。
-	//DeleteGO(player);
-	////ゲームカメラを削除する。
-	//DeleteGO(gameCamera);
-	////ゲーム中のBGMを削除する。
+	//プレイヤーを削除する。
+	DeleteGO(player);
+	//ゲームカメラを削除する。
+	DeleteGO(gameCamera);
+	//ゲーム中のBGMを削除する。
 	//DeleteGO(GameBGM);
-	////背景を削除する。
-	//DeleteGO(backGround);
+	//背景を削除する。
+	DeleteGO(backGround);
 }
 
 //更新処理。
 void Game::Update()
 {
-	//プレイヤーのステートが１になったら
-	//if (playerState==1)
-	//{
-	//	//ゲームクリアのオブジェクトを作る。
-	//	//NewGO<GameClear>(0, "gameclear");
-	//	//自身を削除する。
-	//	//DeleteGO(this);
-	//}
+	
+	switch (GameCount)//ループ判定
+	{
+	case 1://ゲームクリア
+		NewGO<GameClear>(0, "gameClear");
+		DeleteGO(this);
+		break;
+	case 2://ゲームオーバー
+		NewGO<GameOver>(0, "gameOver");
+		DeleteGO(this);
+		break;
+	default:
+		break;
+	}
+		
+	
 }
 
 //描画処理

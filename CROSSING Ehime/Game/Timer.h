@@ -1,5 +1,6 @@
 #pragma once
 class Player;
+class Game;
 class Timer : public IGameObject {
 public:
     Timer();
@@ -7,8 +8,11 @@ public:
     void Update();
     void Render(RenderContext& rc);
 
+  
+
 private:
     int timeLeft;
-    FontRender fontRender;
-    Player* player;			//プレイヤー。
+    FontRender m_fontRender;
+    Player* m_player;			//プレイヤー。
+    Game* m_game;
 };

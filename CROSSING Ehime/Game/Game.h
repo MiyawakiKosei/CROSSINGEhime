@@ -31,4 +31,6 @@ public:
 	GameOver* m_gameOver;
 	Title* m_title;            //タイトル
 	GameUI* m_GameUI;        //ゲームUI
+
+	int GameCount = 0;//ループ用
 };
