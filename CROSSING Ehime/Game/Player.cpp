@@ -64,7 +64,7 @@ void Player::Update()
 	//絵描きさんの更新処理。
 	m_bgmodelRender.SetPosition(position);
 
-	position.y -= 5.5f;//重力
+	//position.y -= 5.5f;//重力
 
 	if (position.y <= 0.0f)
 	{

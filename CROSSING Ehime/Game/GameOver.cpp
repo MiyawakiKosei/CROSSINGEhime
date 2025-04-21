@@ -23,5 +23,5 @@ void GameOver::Update() {
 
 //•`‰æˆ—
 void GameOver::Render(RenderContext& rc) {
-	//spriteRender.Draw(rc);
+	spriteRender.Draw(rc);
 }

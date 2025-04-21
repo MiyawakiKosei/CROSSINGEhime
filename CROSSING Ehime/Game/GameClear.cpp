@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameClear.h"
 #include "Title.h"
+#include "Game.h"
 
 GameClear::GameClear() {
 	//ƒQ[ƒ€ƒNƒŠƒA‰æ‘œ‚ğ“Ç‚İ‚Ş
