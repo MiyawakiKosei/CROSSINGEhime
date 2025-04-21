@@ -12,8 +12,9 @@ public:
 	void Render(RenderContext& rc);
 	//移動処理
 	void Move();
-
 	//void SetPosition(const Vector3& pos);
+	//回転処理
+	void Rotation();
 
 	//メンバ変数。
 	ModelRender m_bgmodelRender;	    //モデルレンダ―。
@@ -28,7 +29,7 @@ public:
 	//AnimationClip animationClips[enAnimationClip_Num];		//アニメーションクリップ。
 	CharacterController characterController;  //キャラクターコントローラー。
 	//Vector3 moveSpeed;		//移動速度。
-	//Quaternion rotation;  //クォータニオン。
+	Quaternion rotation;  //クォータニオン。
 	//int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
 	//int starCount = 0;	//集めた☆の数をカウントする。
 };

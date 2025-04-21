@@ -10,7 +10,7 @@ BackGround::BackGround()
 	m_bgModelRender.Init("Assets/modelData/bridge/Bridge_03.tkm");//ã¥ÇÃÉÇÉfÉã
 
 	m_bgModelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-	m_bgModelRender.SetScale(Vector3(10.0f, 10.0f, 10.0f)); // çLÇ≠å©ÇπÇÈÇΩÇﬂÇ…ägëÂ
+	m_bgModelRender.SetScale(Vector3(5.0f, 5.0f, 5.0f)); // çLÇ≠å©ÇπÇÈÇΩÇﬂÇ…ägëÂ
 
 	m_bgModelRender.Update();
 

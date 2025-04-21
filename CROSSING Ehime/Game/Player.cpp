@@ -67,11 +67,14 @@ void Player::Update()
 	//移動処理
 	Move();
 
+	//回転処理
+	Rotation();
+
 	//position.y -= 5.5f;//重力
 
-	if (position.y <= 0.0f)
+	if (position.y <= -20.0f)
 	{
-		position.y = 0.0f;//y座標が0以下なら0にする
+		position.y = 30.0f;//y座標が0以下なら0にする
 	}
 }
 
@@ -130,6 +133,17 @@ void  Player::Move()
 
 	//絵描きさんに座標を教える。
 	m_bgmodelRender.SetPosition(position);
+}
+
+void Player::Rotation() 
+{
+	//xかzの移動速度があったら（スティックの入力があったら）
+	if (fabsf(moveSpeed.x) >= 0.001f || fabsf(moveSpeed.z) >= 0.001f) {
+		//キャラクターの方向を変える
+		rotation.SetRotationYFromDirectionXZ(moveSpeed);
+		//絵描きさんに回転を教える
+		m_bgmodelRender.SetRotation(rotation);
+	}
 }
 
 void Player::Render(RenderContext& renderContext)
