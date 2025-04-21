@@ -10,8 +10,10 @@ public:
 
 	//描画処理。
 	void Render(RenderContext& rc);
+	//移動処理
+	void Move();
 
-	void SetPosition(const Vector3& pos);
+	//void SetPosition(const Vector3& pos);
 
 	//メンバ変数。
 	ModelRender m_bgmodelRender;	    //モデルレンダ―。
