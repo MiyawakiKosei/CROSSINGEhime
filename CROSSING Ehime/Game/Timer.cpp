@@ -11,6 +11,8 @@ Timer::Timer() : timeLeft(120 * 60) { // 120秒（2分）をフレーム単位で管理
 
 Timer::~Timer() {}
 
+
+
 void Timer::Update() {
     if (timeLeft > 0) {
         timeLeft--;
@@ -35,7 +37,7 @@ void Timer::Update() {
     else {
         m_fontRender.SetText(L"0:00");
         m_fontRender.SetColor(Vector4(1.0f, 0.0f, 0.0f, 1.0f));//赤
-        //m_game->GameCount = 2;//ゲームオーバー
+        GameCount = 2;//ゲームオーバー
     }
 }
 

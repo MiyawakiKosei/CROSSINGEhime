@@ -24,7 +24,14 @@ Game::Game()
 	//背景のオブジェクトを作る。
 	backGround = NewGO<BackGround>(0);
 
+	//UIを作る
 	m_GameUI = NewGO<GameUI>(0, "game_ui");
+
+	//タイマーを作る
+	m_timer = NewGO<Timer>(0, "timer");
+	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
+
+	
 
 
 	////Starクラスのオブジェクトを作る。
@@ -67,13 +74,17 @@ Game::~Game()
 	//DeleteGO(GameBGM);
 	//背景を削除する。
 	DeleteGO(backGround);
+	//UIの削除
+	DeleteGO(m_GameUI);
+	//タイマーの削除
+	DeleteGO(m_Timer);
 }
 
 //更新処理。
 void Game::Update()
 {
 	
-	switch (GameCount)//ループ判定
+	switch (m_timer->GameCount)//ループ判定
 	{
 	case 1://ゲームクリア
 		NewGO<GameClear>(0, "gameClear");

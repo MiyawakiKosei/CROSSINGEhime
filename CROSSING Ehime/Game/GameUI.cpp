@@ -15,11 +15,10 @@ bool GameUI::Start()
     m_hpSprite.SetPosition({ -240.0f, 200.0f, 0.0f });
 
 
-    // スコアとタイマーの生成（描画はそれぞれに任せる）
+    //スコアを作る
     m_Score = NewGO<Score>(0, "score");
     fontRender.SetPosition({ 600.0f, 430.0f, 0.0f });
-    m_Timer = NewGO<Timer>(0, "timer");
-    fontRender.SetPosition({ -600.0f,100.0f,0.0f });
+  
     return true;
 }
 
@@ -32,7 +31,7 @@ GameUI::~GameUI()
 {
     // スコアのオブジェクトを削除
     DeleteGO(m_Score);
-    DeleteGO(m_Timer);
+   
 
 }
 void GameUI::Update()
