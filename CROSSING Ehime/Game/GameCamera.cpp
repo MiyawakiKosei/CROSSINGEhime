@@ -35,7 +35,7 @@ void GameCamera::Update()
 	Vector3 target;
 	//プレイヤの足元からちょっと上を注視点とする。
 	target.x = player->position.x;
-	target.y = player->position.y + -10.0f;
+	target.y = player->position.y + 10.0f;
 	target.z = player->position.z;
 	g_camera3D->SetTarget(target);
 
