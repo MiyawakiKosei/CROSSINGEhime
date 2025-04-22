@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "Timer.h"
 
 Player::Player()
 {
@@ -72,9 +73,13 @@ void Player::Update()
 
 	//position.y -= 5.5f;//重力
 
-	if (position.y <= -20.0f)
+	if (position.y <= -500.0f)
 	{
-		position.y = 30.0f;//y座標が0以下なら0にする
+		P_Count = 2;
+		//position.y = 0.0f;//y座標が0以下なら0にする
+	}
+	else if (position.z <= -17500.0f) {
+		P_Count = 1;
 	}
 }
 
@@ -103,8 +108,8 @@ void  Player::Move()
 	right.y = 0.0f;
 
 	//左スティックの入力量と120.0fを乗算。
-	right *= stickL.x * 5020.0f;
-	forward *= stickL.y * 5020.0f;
+	right *= stickL.x * 1920.0f;
+	forward *= stickL.y * 1920.0f;
 
 	//移動速度にスティックの入力量を加算する。
 	moveSpeed += right + forward;

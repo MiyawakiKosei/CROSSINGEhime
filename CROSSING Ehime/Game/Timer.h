@@ -7,7 +7,7 @@ public:
     ~Timer();
     void Update();
     void Render(RenderContext& rc);
-    int GameCount = 0;
+    int T_Count = 0;
   
 
 private:

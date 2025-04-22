@@ -84,7 +84,7 @@ Game::~Game()
 void Game::Update()
 {
 	
-	switch (m_timer->GameCount)//ループ判定
+	switch (m_timer->T_Count)//ループ判定
 	{
 	case 1://ゲームクリア
 		NewGO<GameClear>(0, "gameClear");
@@ -98,7 +98,19 @@ void Game::Update()
 		break;
 	}
 		
-	
+	switch (player->P_Count)//ループ判定
+	{
+	case 1://ゲームクリア
+		NewGO<GameClear>(0, "gameClear");
+		DeleteGO(this);
+		break;
+	case 2://ゲームオーバー
+		NewGO<GameOver>(0, "gameOver");
+		DeleteGO(this);
+		break;
+	default:
+		break;
+	}
 }
 
 //描画処理

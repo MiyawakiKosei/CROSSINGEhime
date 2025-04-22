@@ -33,5 +33,4 @@ public:
 	GameUI* m_GameUI;        //ÉQÅ[ÉÄUI
 	Timer* m_timer;
 
-	
 };

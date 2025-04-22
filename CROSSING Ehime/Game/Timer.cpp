@@ -37,7 +37,7 @@ void Timer::Update() {
     else {
         m_fontRender.SetText(L"0:00");
         m_fontRender.SetColor(Vector4(1.0f, 0.0f, 0.0f, 1.0f));//赤
-        GameCount = 2;//ゲームオーバー
+        T_Count = 2;//ゲームオーバー
     }
 }
 
