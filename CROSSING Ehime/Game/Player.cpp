@@ -103,8 +103,8 @@ void  Player::Move()
 	right.y = 0.0f;
 
 	//左スティックの入力量と120.0fを乗算。
-	right *= stickL.x * 5020.0f;
-	forward *= stickL.y * 5020.0f;
+	right *= stickL.x * 1255.0f;
+	forward *= stickL.y * 1255.0f;
 
 	//移動速度にスティックの入力量を加算する。
 	moveSpeed += right + forward;
@@ -118,7 +118,7 @@ void  Player::Move()
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
 			//ジャンプさせる。
-			moveSpeed.y += 1040.0f;
+			moveSpeed.y += 520.0f;
 		}
 	}
 	//地面に付いていなかったら。
