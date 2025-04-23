@@ -8,9 +8,11 @@
 #include "GameOver.h"
 #include "Title.h"
 #include "GameUI.h"
+#include "DebugFont.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 //#include "GameClear.h"
+DebugFont g_debugFont;
 
 
 Game::Game()
@@ -37,7 +39,7 @@ Game::Game()
 	//GameBGM = NewGO<SoundSource>(0);
 	//GameBGM->Init(1);
 	//GameBGM->Play(true);
-
+	g_debugFont.Init();
 }
 
 Game::~Game()
@@ -92,5 +94,8 @@ void Game::Update()
 //•`‰æˆ—
 void Game::Render(RenderContext& rc) 
 {
+	wchar_t posText[256];
+	swprintf_s(posText, 256, L"Player Pos: X=%.2f Y=%.2f Z=%.2f", player->position.x, player->position.y, player->position.z);
+	g_debugFont.Draw(rc, posText, 0.0f, 0.0f);
 
 }

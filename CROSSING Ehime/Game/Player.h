@@ -1,4 +1,5 @@
 #pragma once
+#include "k2EngineLow.h"
 //プレイヤークラス。
 class Player : public IGameObject
 {
@@ -17,6 +18,13 @@ public:
 	void Rotation();
 
 	//メンバ変数。
+	// 風関連の変数。
+	float windTriggerZ = 0.0f;     // 風が吹くZ座標（ランダムに決める）
+	bool windActive = false;      // 風が吹いているかどうか
+	float windForceX = 0.0f;       // X方向の風の強さ（±で左右どちらか）
+	int windDuration = 0;          // 風が吹いてる残り時間（フレーム数）
+	float windPower = 0.5f;        // 風の強さ（0.5fなど）
+
 	ModelRender m_bgmodelRender;	    //モデルレンダ―。
 	Vector3 position;               //座標。
 	Vector3 moveSpeed;

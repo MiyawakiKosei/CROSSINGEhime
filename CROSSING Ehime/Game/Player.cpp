@@ -5,7 +5,8 @@
 Player::Player()
 {
     m_bgmodelRender.Init("Assets/modelData/Kate.tkm");
-
+	rotation.SetRotationDegY(180.0f);
+	m_bgmodelRender.SetRotation(rotation);//ステージの方に進むようにプレイヤーの向きを調整
 	//SetPosition(Vector3(0.0f, 180.0f, -10000.0f));
 	/*animationClips[enAnimationClip_Idle].Load("Assets/animData/idle.tka");
 	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
@@ -14,6 +15,12 @@ Player::Player()
 	animationClips[enAnimationClip_Jump].Load("Assets/animData/jump.tka");
 	animationClips[enAnimationClip_Jump].SetLoopFlag(false);*/
 	// modelRender.Init("Assets/modelData/Kate.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	{
+		srand(static_cast<unsigned int>(time(nullptr)));
+
+		windTriggerZ = -12000.0f + static_cast<float>(rand() % 4001);
+		windPower = 100.0f;
+	}
 
 	
 	characterController.Init(25.0f, 75.0f, position);
@@ -26,32 +33,24 @@ Player::~Player()
 
 void Player::Update()
 {
-	//position.x += 10.0f;
-	//if (GetAsyncKeyState('D') & 0x8000)
-	//{
-	//	position.x += 100.0f;
-	//}
-	//if (GetAsyncKeyState('A') & 0x8000)
-	//{
-	//	position.x -= 100.0f;
-	//}
-	//if (GetAsyncKeyState('W') & 0x8000)
-	//{
-	//	position.z += 100.0f;
-	//}
-	//if (GetAsyncKeyState('S') & 0x8000)
-	//{
-	//	position.z -= 100.0f;
-	//}
-	//if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-	//	
-	//{
-	//	position.y += 10.0f;
-	//}
-	//if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
-	//{
-	//	position.y -= 10.0f;
-	//}
+	if (!windActive && position.z > windTriggerZ) {
+		windActive = true;
+
+		// ランダムに左右どちらかへ風を吹かせる
+		windForceX = (rand() % 2 == 0 ? -1.0f : 1.0f) * windPower;
+
+		windDuration = 180; // 180フレーム（約3秒）風を持続
+		//60フレームで1秒
+	}
+
+	if (windActive) {
+		moveSpeed.x += windForceX;
+
+		windDuration--;
+		if (windDuration <= 0) {
+			windActive = false; // 終了
+		}
+	}
 
 	m_bgmodelRender.Update();
 	m_bgmodelRender.SetPosition(position);
@@ -144,5 +143,5 @@ void Player::Rotation()
 
 void Player::Render(RenderContext& renderContext)
 {
-		m_bgmodelRender.Draw(renderContext);
+	m_bgmodelRender.Draw(renderContext);
 }
