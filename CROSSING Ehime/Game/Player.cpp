@@ -4,9 +4,10 @@
 
 Player::Player()
 {
+	//ƒ‚ƒfƒ‹ƒf[ƒ^“Ç‚İ‚İ
     m_bgmodelRender.Init("Assets/modelData/Kate.tkm");
 	rotation.SetRotationDegY(180.0f);
-	m_bgmodelRender.SetRotation(rotation);//ã‚¹ãƒ†ãƒ¼ã‚¸ã®æ–¹ã«é€²ã‚€ã‚ˆã†ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‘ãã‚’èª¿æ•´
+	m_bgmodelRender.SetRotation(rotation);//ƒXƒe[ƒW‚Ì•û‚Éi‚Ş‚æ‚¤‚ÉƒvƒŒƒCƒ„[‚ÌŒü‚«‚ğ’²®
 	//SetPosition(Vector3(0.0f, 180.0f, -10000.0f));
 	/*animationClips[enAnimationClip_Idle].Load("Assets/animData/idle.tka");
 	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
@@ -17,10 +18,6 @@ Player::Player()
 	// modelRender.Init("Assets/modelData/Kate.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
 	{
 		srand(static_cast<unsigned int>(time(nullptr)));
-
-		windTriggerZ = -12000.0f + static_cast<float>(rand() % 4001);
-		windPower = 100.0f;
-	}
 
 	
 	characterController.Init(25.0f, 75.0f, position);
@@ -36,11 +33,11 @@ void Player::Update()
 	if (!windActive && position.z > windTriggerZ) {
 		windActive = true;
 
-		// ãƒ©ãƒ³ãƒ€ãƒ ã«å·¦å³ã©ã¡ã‚‰ã‹ã¸é¢¨ã‚’å¹ã‹ã›ã‚‹
+		// ƒ‰ƒ“ƒ_ƒ€‚É¶‰E‚Ç‚¿‚ç‚©‚Ö•—‚ğ‚©‚¹‚é
 		windForceX = (rand() % 2 == 0 ? -1.0f : 1.0f) * windPower;
 
-		windDuration = 180; // 180ãƒ•ãƒ¬ãƒ¼ãƒ ï¼ˆç´„3ç§’ï¼‰é¢¨ã‚’æŒç¶š
-		//60ãƒ•ãƒ¬ãƒ¼ãƒ ã§1ç§’
+		windDuration = 180; // 180ƒtƒŒ[ƒ€i–ñ3•bj•—‚ğ‘±
+		//60ƒtƒŒ[ƒ€‚Å1•b
 	}
 
 	if (windActive) {
@@ -48,27 +45,32 @@ void Player::Update()
 
 		windDuration--;
 		if (windDuration <= 0) {
-			windActive = false; // çµ‚äº†
+			windActive = false; // I—¹
 		}
 	}
 
+	//ƒ‚ƒfƒ‹‚ğXV‚·‚é
 	m_bgmodelRender.Update();
+	//ŠG•`‚«‚³‚ñ
 	m_bgmodelRender.SetPosition(position);
 
-	
+	//ˆÚ“®ˆ—
 	Move();
-
-	
+	//‰ñ“]ˆ—
 	Rotation();
 
 	//position.y -= 5.5f;
 
+	//‚à‚µƒvƒŒƒCƒ„[‚ªY-500ˆÈ‰º‚È‚ç
 	if (position.y <= -500.0f)
 	{
+		//ƒvƒŒƒCƒ„[ƒJƒEƒ“ƒg‚ğ2‚É‚·‚é
 		P_Count = 2;
 		//position.y = 0.0f;
 	}
+	//‚à‚µƒvƒŒƒCƒ„[‚ªZ-17500‚ğ’´‚¦‚½‚ç
 	else if (position.z <= -17500.0f) {
+		//ƒvƒŒƒCƒ„[ƒJƒEƒ“ƒg‚ğ‚P‚É‚·‚é
 		P_Count = 1;
 	}
 }
@@ -81,67 +83,67 @@ void Player::Update()
 
 void  Player::Move() 
 {
-	
+	//xz‚ÌˆÚ“®‘¬“x‚ğ0.0f‚É‚·‚é
 	moveSpeed.x = 0.0f;
 	moveSpeed.z = 0.0f;
 
-	
+	//¶ƒXƒeƒBƒbƒN‚Ì“ü—Í—Ê‚ğæ“¾
 	Vector3 stickL;
 	stickL.x = g_pad[0]->GetLStickXF();
 	stickL.y = g_pad[0]->GetLStickYF();
 
-	
+	//ƒJƒƒ‰‚Ì‘O•ûŒü‚Æ‰E•ûŒü‚ÌƒxƒNƒgƒ‹‚ğ‚Á‚Ä‚­‚é
 	Vector3 forward = g_camera3D->GetForward();
 	Vector3 right = g_camera3D->GetRight();
-	
+	//y•ûŒü‚É‚ÍˆÚ“®‚³‚¹‚È‚¢
 	forward.y = 0.0f;
 	right.y = 0.0f;
 
-	
-	//right *= stickL.x * 1255.0f;
-	//forward *= stickL.y * 1255.0f;
+	//¶ƒXƒeƒBƒbƒN‚Ì“ü—Í—Ê‚Æ120.0f‚ğæZ
 	right *= stickL.x * 1920.0f;
 	forward *= stickL.y * 1920.0f;
 
-	
+	//ˆÚ“®‘¬“x‚ÉƒXƒeƒBƒbƒN‚Ì“ü—Í—Ê‚ğ‰ÁZ‚·‚é
 	moveSpeed += right + forward;
 
-
+	//’n–Ê‚É•t‚¢‚Ä‚¢‚½‚ç
 	if (characterController.IsOnGround())
 	{
-		
+		//d—Í‚ğ‚È‚­‚·
 		moveSpeed.y = 0.0f;
-		
+		//Aƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
+			//ƒWƒƒƒ“ƒv‚³‚¹‚é
 			moveSpeed.y += 520.0f;
 		}
 	}
-	
+	//’n–Ê‚É•t‚¢‚Ä‚¢‚È‚©‚Á‚½‚ç
 	else
 	{
+		//d—Í‚ğ”­¶‚³‚¹‚é
 		moveSpeed.y -= 15.0f;
 	}
 
-	
+	//ƒLƒƒƒ‰ƒNƒ^[ƒRƒ“ƒgƒ[ƒ‰[‚ğg‚Á‚ÄÀ•W‚ğˆÚ“®‚³‚¹‚é
 	position = characterController.Execute(moveSpeed, 1.0f / 60.0f);
 
-	
+	//ŠG•`‚«‚³‚ñ‚ÉÀ•W‚ğ‹³‚¦‚é
 	m_bgmodelRender.SetPosition(position);
 }
 
 void Player::Rotation() 
 {
-
+	//x‚©‚š‚ÌˆÚ“®‘¬“x‚ª‚ ‚Á‚½‚ç(ƒXƒeƒBƒbƒN‚Ì“ü—Í‚ª‚ ‚Á‚½‚ç)
 	if (fabsf(moveSpeed.x) >= 0.001f || fabsf(moveSpeed.z) >= 0.001f) {
-		
+		//ƒLƒƒƒ‰ƒRƒ“‚Ì•ûŒü‚ğ•Ï‚¦‚é
 		rotation.SetRotationYFromDirectionXZ(moveSpeed);
-	
+		//ŠG•`‚«‚³‚ñ‚É‰ñ“]‚ğ‹³‚¦‚é
 		m_bgmodelRender.SetRotation(rotation);
 	}
 }
 
 void Player::Render(RenderContext& renderContext)
 {
-	m_bgmodelRender.Draw(renderContext);
+		m_bgmodelRender.Draw(renderContext);
 }
