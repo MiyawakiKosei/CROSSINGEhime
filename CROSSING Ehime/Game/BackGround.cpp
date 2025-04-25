@@ -7,7 +7,7 @@ BackGround::BackGround()
 	//PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 
 	//m_bgModelRender.Init("Assets/modelData/ground.tkm");//このモデルの名前
-	m_bgModelRender.Init("Assets/modelData/bridge/Bridge_03.tkm");//橋のモデル
+	m_bgModelRender.Init("Assets/modelData/bridge/Bridge_04.tkm");//橋のモデル
 
 	m_bgModelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 	m_bgModelRender.SetScale(Vector3(5.0f, 5.0f, 5.0f)); // 広く見せるために拡大

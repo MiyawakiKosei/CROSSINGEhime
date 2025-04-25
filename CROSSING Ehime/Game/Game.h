@@ -9,6 +9,7 @@ class GameClear;
 class GameOver;
 class Title;
 class GameUI;
+class GameSelect;
 
 //Gameシーンを管理するクラス。
 class Game : public IGameObject
@@ -32,5 +33,6 @@ public:
 	Title* m_title;            //タイトル
 	GameUI* m_GameUI;        //ゲームUI
 	Timer* m_timer;
+	GameSelect* m_gameSelect; //ゲームセレクト
 
 };

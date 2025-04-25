@@ -1,6 +1,7 @@
 #pragma once
 
 class Player;
+//ƒQ[ƒ€ƒNƒŠƒA
 class GameClear:public IGameObject
 {
 public:

@@ -1,46 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="system">
-      <UniqueIdentifier>{22dd8095-74f9-46df-81a1-36675a040b1f}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="system\system.cpp">
-      <Filter>system</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="BackGround.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameClear.cpp" />
-    <ClCompile Include="Title.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameUI.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Score.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="GameCamera.cpp">
-      <Filter>system</Filter>
-    </ClCompile>
-=======
->>>>>>> 287ecdd69a4cc46686ef80a21be0849fd9040a3f
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="system\system.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="GameSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="system\system.h">
-      <Filter>system</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="GameClear.h" />
-    <ClInclude Include="Title.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameUI.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="system\system.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="GameSelect.h" />
   </ItemGroup>
 </Project>

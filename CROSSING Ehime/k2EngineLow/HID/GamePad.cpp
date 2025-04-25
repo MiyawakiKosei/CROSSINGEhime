@@ -35,6 +35,10 @@ namespace nsK2EngineLow {
 			{ enButtonLB1		, XINPUT_GAMEPAD_LEFT_SHOULDER },
 			{ enButtonLB2		, 0 },
 			{ enButtonLB3		, XINPUT_GAMEPAD_LEFT_THUMB },
+
+			/*{ enButton01        , 0 },
+			{ enButton02        , 0 },
+			{ enButton03        , 0 },*/
 		};
 		/*!
 		*@brief	仮想ボタンとキーボードとの関連付けを表す構造体。
@@ -61,6 +65,10 @@ namespace nsK2EngineLow {
 			{ enButtonLB1		, 'B',			0xFFFFFFFF	},
 			{ enButtonLB2		, 'N',			0xFFFFFFFF	},
 			{ enButtonLB3		, 'M',			0xFFFFFFFF	},
+
+			/*{ enButoon01        , '1',          0xFFFFFFFF  },
+			{ enButton02        , '2',          0xFFFFFFFF  },
+			{ enButton03        , '3',          0xFFFFFFFF  },*/
 		};
 	}
 	GamePad::EnXInputPadState GamePad::m_padStates[4] = { GamePad::EnXInputPadState::Undef };

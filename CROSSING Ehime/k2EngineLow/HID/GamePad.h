@@ -25,6 +25,10 @@ namespace nsK2EngineLow {
 		enButtonLB1,		//!<LB1ボタン。
 		enButtonLB2,		//!<LB2ボタン。
 		enButtonLB3,		//!<LB3ボタン。
+
+		//enButton01,         //!<1ボタン。    
+		//enButton02,         //!<2ボタン。
+		//enButton03,         //!<3ボタン。
 		enButtonNum,	//!<ボタンの数。
 	};
 
@@ -116,6 +120,10 @@ namespace nsK2EngineLow {
 				|| IsPress(enButtonLB1)
 				|| IsPress(enButtonLB2)
 				|| IsPress(enButtonLB3);
+
+				/*|| IsPress(enButton01)
+			    || IsPress(enButton02)
+			    || IsPress(enButton03);*/
 		}
 		/// <summary>
 		/// 左スティックのx軸の入力量を取得

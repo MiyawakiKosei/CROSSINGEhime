@@ -8,9 +8,10 @@
 #include "GameOver.h"
 #include "Title.h"
 #include "GameUI.h"
+#include "GameSelect.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
-//#include "GameClear.h"
+
 
 
 Game::Game()
