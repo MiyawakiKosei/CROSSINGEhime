@@ -9,6 +9,7 @@
 #include "Title.h"
 #include "GameUI.h"
 #include "GameSelect.h"
+#include "Debugfont.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 

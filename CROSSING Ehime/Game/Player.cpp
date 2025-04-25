@@ -16,17 +16,16 @@ Player::Player()
 	animationClips[enAnimationClip_Jump].Load("Assets/animData/jump.tka");
 	animationClips[enAnimationClip_Jump].SetLoopFlag(false);*/
 	// modelRender.Init("Assets/modelData/Kate.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
-	{
+	
 		srand(static_cast<unsigned int>(time(nullptr)));
 
 	
 	characterController.Init(25.0f, 75.0f, position);
-}
+}	
 
-Player::~Player()
-{
 
-}
+	Player::~Player() {
+	}
 
 void Player::Update()
 {
