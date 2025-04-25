@@ -1,5 +1,7 @@
 #pragma once
 #include "sound/SoundSource.h"
+#include "DebugFont.h"
+extern DebugFont g_debugFont;
 
 class Player;
 class GameCamera;

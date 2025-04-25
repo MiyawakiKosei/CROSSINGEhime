@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "Game.h"
 
-Timer::Timer() : timeLeft(120 * 60) { // 120秒（2分）をフレーム単位で管理
+Timer::Timer() : timeLeft(60 * 60) { // 600秒（1分）をフレーム単位で管理
     m_fontRender.SetPosition({ -927.0f,400.0f,0.0f });
     m_fontRender.SetScale(2.0f);
     m_fontRender.SetColor(g_vec4Black);
@@ -37,7 +37,7 @@ void Timer::Update() {
     else {
         m_fontRender.SetText(L"0:00");
         m_fontRender.SetColor(Vector4(1.0f, 0.0f, 0.0f, 1.0f));//赤
-        T_Count = 2;//ゲームオーバー
+        T_Count = 1;//ゲームオーバー
     }
 }
 
