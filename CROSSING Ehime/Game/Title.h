@@ -1,4 +1,5 @@
 #pragma once
+#include "sound/SoundSource.h"
 
 class Player;
 //タイトル
@@ -13,5 +14,7 @@ public:
 	void Update();
 	//スプライトレンダー
 	SpriteRender spriteRender;
+	//タイトルのBGM
+	SoundSource* titleBGM;
 };
 
