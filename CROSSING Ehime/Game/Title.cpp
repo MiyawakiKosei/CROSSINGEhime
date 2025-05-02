@@ -5,7 +5,7 @@
  
 Title::Title() {
 	//‰æ‘œ‚ð“Ç‚Ýž‚Þ
-	spriteRender.Init("Assets/modelData/title/title02.DDS",1920.0f,1080.0f);
+	spriteRender.Init("Assets/modelData/title/title03.DDS",1920.0f,1080.0f);
 
 	//ƒ^ƒCƒgƒ‹‚ÌBGM‚ð“Ç‚Ýž‚Þ
 	//g_soundEngine->ResistWaveFileBank(0, "");
