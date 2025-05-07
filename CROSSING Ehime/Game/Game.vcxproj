@@ -233,6 +233,7 @@
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="GameUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Orenge.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +254,7 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="GameUI.h" />
+    <ClInclude Include="Orenge.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="stdafx.h" />

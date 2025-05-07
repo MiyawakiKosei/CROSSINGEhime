@@ -10,6 +10,7 @@
 #include "GameUI.h"
 #include "GameSelect.h"
 #include "Debugfont.h"
+#include "Orenge.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 
@@ -32,6 +33,9 @@ Game::Game()
 	//タイマーを作る
 	m_timer = NewGO<Timer>(0, "timer");
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
+
+	//オレンジオブジェクトを作る
+	m_orenge = NewGO<Orenge>(0, "orenge");
 
 	////ゲーム中のBGMを読み込む。
 	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
