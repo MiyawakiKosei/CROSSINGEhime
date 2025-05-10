@@ -10,6 +10,7 @@
 #include "GameUI.h"
 #include "GameSelect.h"
 #include "Debugfont.h"
+#include "WindZone.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 
@@ -32,6 +33,10 @@ Game::Game()
 	//タイマーを作る
 	m_timer = NewGO<Timer>(0, "timer");
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
+
+	m_windZone = NewGO<WindZone>(0, "windZone");
+	m_windZone->SetPlayer(player);
+	m_windZone->SetTimer(m_timer);
 
 	////ゲーム中のBGMを読み込む。
 	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
