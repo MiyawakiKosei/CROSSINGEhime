@@ -17,6 +17,7 @@
     <ClCompile Include="DebugFont.cpp" />
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="WindZone.cpp" />
+    <ClCompile Include="Orenge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -34,5 +35,6 @@
     <ClInclude Include="DebugFont.h" />
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="WindZone.h" />
+    <ClInclude Include="Orenge.h" />
   </ItemGroup>
 </Project>

@@ -12,31 +12,33 @@ class GameOver;
 class Title;
 class GameUI;
 class GameSelect;
+class Orenge;
 class WindZone;
 
-//GameƒV[ƒ“‚ğŠÇ—‚·‚éƒNƒ‰ƒXB
+//Gameï¿½Vï¿½[ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½B
 class Game : public IGameObject
 {
 public:
 	Game();
 	~Game();
-	//XVˆ—B
+	//ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½B
 	void Update();
-	//•`‰æˆ—
+	//ï¿½`ï¿½æˆï¿½ï¿½
 	void Render(RenderContext& rc);
 
-	Player* player;			 //ƒvƒŒƒCƒ„[B
-	GameCamera* gameCamera;	 //ƒQ[ƒ€ƒJƒƒ‰B
-	BackGround* backGround;  //”wŒi
-	//SoundSource* GameBGM;  //ƒQ[ƒ€’†‚ÌBGMB
-	FontRender fontRender;   //•¶š
-	Timer* m_Timer;          //ƒ^ƒCƒ}[
-	GameClear* m_gameClear;    //ƒQ[ƒ€ƒNƒŠƒA
+	Player* player;			 //ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½B
+	GameCamera* gameCamera;	 //ï¿½Qï¿½[ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½B
+	BackGround* backGround;  //ï¿½wï¿½i
+	//SoundSource* GameBGM;  //ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½B
+	FontRender fontRender;   //ï¿½ï¿½ï¿½ï¿½
+	Timer* m_Timer;          //ï¿½^ï¿½Cï¿½}ï¿½[
+	GameClear* m_gameClear;    //ï¿½Qï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½A
 	GameOver* m_gameOver;
-	Title* m_title;            //ƒ^ƒCƒgƒ‹
-	GameUI* m_GameUI;        //ƒQ[ƒ€UI
+	Title* m_title;            //ï¿½^ï¿½Cï¿½gï¿½ï¿½
+	GameUI* m_GameUI;        //ï¿½Qï¿½[ï¿½ï¿½UI
 	Timer* m_timer;
-	GameSelect* m_gameSelect; //ƒQ[ƒ€ƒZƒŒƒNƒg
-	WindZone* m_windZone;     //•—‚Ì—Ìˆæ
+	GameSelect* m_gameSelect; //ï¿½Qï¿½[ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Nï¿½g
+	Orenge* m_orenge; //ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
+	WindZone* m_windZone;     //ï¿½ï¿½ï¿½Ì—Ìˆï¿½
 
 };
