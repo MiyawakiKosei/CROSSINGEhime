@@ -8,7 +8,7 @@ public:
     void Update();
     void Render(RenderContext& rc);
     int T_Count = 0;
-  
+    int WindCount = 0;
 
 private:
     int timeLeft;

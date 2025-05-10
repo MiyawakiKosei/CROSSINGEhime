@@ -10,6 +10,7 @@
 #include "GameUI.h"
 #include "GameSelect.h"
 #include "Debugfont.h"
+#include "WindZone.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 
@@ -33,6 +34,11 @@ Game::Game()
 	m_timer = NewGO<Timer>(0, "timer");
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 
+	//風の領域
+	m_windZone = NewGO<WindZone>(0, "windZone");
+	m_windZone->SetPlayer(player);
+	m_windZone->SetTimer(m_timer);
+
 	////ゲーム中のBGMを読み込む。
 	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
 	////ゲーム中のBGMを再生する
@@ -55,12 +61,16 @@ Game::~Game()
 	//UIの削除
 	DeleteGO(m_GameUI);
 	//タイマーの削除
-	DeleteGO(m_Timer);
+	DeleteGO(m_timer);
+	//風の削除
+	DeleteGO(m_windZone);
 }
 
 //更新処理。
 void Game::Update()
 {
+	// プレイヤーが範囲に入っている場合に風を発生させる
+	m_windZone->Update();
 	
 	switch (m_timer->T_Count)//ループ判定
 	{

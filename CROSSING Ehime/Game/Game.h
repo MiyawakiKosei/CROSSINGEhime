@@ -12,6 +12,7 @@ class GameOver;
 class Title;
 class GameUI;
 class GameSelect;
+class WindZone;
 
 //Gameシーンを管理するクラス。
 class Game : public IGameObject
@@ -36,5 +37,6 @@ public:
 	GameUI* m_GameUI;        //ゲームUI
 	Timer* m_timer;
 	GameSelect* m_gameSelect; //ゲームセレクト
+	WindZone* m_windZone;     //風の領域
 
 };

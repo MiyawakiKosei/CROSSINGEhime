@@ -33,6 +33,10 @@ void Timer::Update() {
         else {
             m_fontRender.SetColor(g_vec4Black);//çï
         }
+
+        if (timeLeft % (30 * 15) == 0) {  // 15ïbÇ≤Ç∆Ç…ëùâ¡
+            WindCount++;
+        }
     }
     else {
         m_fontRender.SetText(L"0:00");

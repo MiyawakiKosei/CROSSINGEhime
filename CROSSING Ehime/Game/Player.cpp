@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Timer.h"
+#include "WindZone.h"
 
 Player::Player()
 {
@@ -29,24 +30,6 @@ Player::Player()
 
 void Player::Update()
 {
-	if (!windActive && position.z > windTriggerZ) {
-		windActive = true;
-
-		// ランダムに左右どちらかへ風を吹かせる
-		windForceX = (rand() % 2 == 0 ? -1.0f : 1.0f) * windPower;
-
-		windDuration = 180; // 180フレーム（約3秒）風を持続
-		//60フレームで1秒
-	}
-
-	if (windActive) {
-		moveSpeed.x += windForceX;
-
-		windDuration--;
-		if (windDuration <= 0) {
-			windActive = false; // 終了
-		}
-	}
 
 	//モデルを更新する
 	m_bgmodelRender.Update();
@@ -123,7 +106,7 @@ void  Player::Move()
 		//重力を発生させる
 		moveSpeed.y -= 15.0f;
 	}
-
+	moveSpeed.x += windPower;
 	//キャラクターコントローラーを使って座標を移動させる
 	position = characterController.Execute(moveSpeed, 1.0f / 60.0f);
 
