@@ -31,6 +31,7 @@ public:
 	BackGround* backGround;  //�w�i
 	//SoundSource* GameBGM;  //�Q�[������BGM�B
 	FontRender fontRender;   //����
+	ModelRender modelRender;
 	Timer* m_Timer;          //�^�C�}�[
 	GameClear* m_gameClear;    //�Q�[���N���A
 	GameOver* m_gameOver;

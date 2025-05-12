@@ -11,6 +11,7 @@
 #include "GameSelect.h"
 #include "Debugfont.h"
 #include "WindZone.h"
+#include "Orenge.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 
@@ -33,6 +34,9 @@ Game::Game()
 	//タイマーを作る
 	m_timer = NewGO<Timer>(0, "timer");
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
+
+	//オレンジを作る
+	m_orenge = NewGO<Orenge>(0, "orenge");
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
@@ -63,6 +67,8 @@ Game::~Game()
 	DeleteGO(m_timer);
 	//風の削除
 	DeleteGO(m_windZone);
+	//オレンジの消去
+	DeleteGO(m_orenge);
 }
 
 //更新処理。
