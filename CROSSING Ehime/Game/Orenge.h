@@ -15,6 +15,7 @@ public:
 	//‰ñ“]
 	Quaternion rot;
 	int orengeCount = 0;
+	int orengePoint = 0;
 	Player* player;
 	Vector3 firstPosition;//‰ŠúˆÊ’u
 };
