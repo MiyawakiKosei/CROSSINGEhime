@@ -6,6 +6,7 @@ public:
 	Orenge();
 	~Orenge();
 	void Update();
+	void Move();
 	void Render(RenderContext& renderContext);
 	ModelRender m_ormodelRender;
 	//‚±‚±‚©‚çƒƒ“ƒo•Ï”
@@ -15,5 +16,6 @@ public:
 	Quaternion rot;
 	int orengeCount = 0;
 	Player* player;
+	Vector3 firstPosition;//‰ŠúˆÊ’u
 };
 

@@ -37,6 +37,7 @@ Game::Game()
 
 	//ƒIƒŒƒ“ƒW‚ğì‚é
 	m_orenge = NewGO<Orenge>(0, "orenge");
+	m_orenge->position = { 0.0f,0.0f,-1000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
