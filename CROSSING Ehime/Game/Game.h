@@ -13,6 +13,7 @@ class Title;
 class GameUI;
 class GameSelect;
 class Orenge;
+class Track;
 class WindZone;
 
 //Game�V�[����Ǘ�����N���X�B
@@ -40,6 +41,7 @@ public:
 	Timer* m_timer;
 	GameSelect* m_gameSelect; //�Q�[���Z���N�g
 	Orenge* m_orenge; //�I�����W�I�u�W�F�N�g
+	Track* m_track;//トラック
 	WindZone* m_windZone;     //���̗̈�
 
 };

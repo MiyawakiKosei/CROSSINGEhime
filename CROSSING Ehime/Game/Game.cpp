@@ -12,6 +12,7 @@
 #include "Debugfont.h"
 #include "WindZone.h"
 #include "Orenge.h"
+#include "Track.h"
 //#include "Star.h"
 //#include "sound/SoundEngine.h"
 
@@ -38,6 +39,10 @@ Game::Game()
 	//オレンジを作る
 	m_orenge = NewGO<Orenge>(0, "orenge");
 	m_orenge->position = { 0.0f,0.0f,-1000.0f };
+
+	//トラックを作る
+	m_track = NewGO<Track>(0, "track");
+	m_track->position = { 50.0f,0.0f,-3000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
@@ -70,6 +75,8 @@ Game::~Game()
 	DeleteGO(m_windZone);
 	//オレンジの消去
 	DeleteGO(m_orenge);
+	//トラックの消去
+	DeleteGO(m_track);
 }
 
 //更新処理。
