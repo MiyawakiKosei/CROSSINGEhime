@@ -1,22 +1,23 @@
 #pragma once
 class Player;
-class Orenge : public IGameObject
+class Track : public IGameObject 
 {
 public:
-	Orenge();
-	~Orenge();
+	Track();
+	~Track();
 	void Update();
 	void Move();
 	void Render(RenderContext& renderContext);
-	ModelRender or_modelRender;
+	ModelRender tr_modelRender;
 	//‚±‚±‚©‚çƒƒ“ƒo•Ï”
 	//À•W
 	Vector3 position;
 	//‰ñ“]
 	Quaternion rot;
-	int Or_Count = 0;
-	int Or_Point = 0;
+	int Tr_Count = 1;
 	Player* player;
-	Vector3 firstPosition;//‰ŠúˆÊ’u
+	//Vector3 firstPosition;
+
 };
+
 

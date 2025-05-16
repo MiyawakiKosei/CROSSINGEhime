@@ -18,6 +18,7 @@
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="WindZone.cpp" />
     <ClCompile Include="Orenge.cpp" />
+    <ClCompile Include="Track.cpp" />
     <ClCompile Include="HPManegar.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +38,7 @@
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="WindZone.h" />
     <ClInclude Include="Orenge.h" />
+    <ClInclude Include="Track.h" />
     <ClInclude Include="HPManegar.h" />
   </ItemGroup>
 </Project>
