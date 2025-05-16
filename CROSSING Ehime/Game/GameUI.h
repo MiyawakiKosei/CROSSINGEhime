@@ -3,6 +3,7 @@
 class Score;
 class Timer;
 class Player;
+class HPManegar;
 
 class GameUI : public IGameObject
 {
@@ -15,12 +16,12 @@ public:
     void AddScore(int points);
 
 private:
-    SpriteRender m_hpSprite; // HPバーのスプライト
     SpriteRender fontRender;
     SpriteRender m_SpriteRender;
     int m_hp = 0;            // HP値（0～5）
     int currentKeyCount;    // プレイヤーの現在のキー数
     Score* m_Score;
     Timer* m_Timer;
+    HPManegar* m_Hpbar;
     Player* player;
 };
