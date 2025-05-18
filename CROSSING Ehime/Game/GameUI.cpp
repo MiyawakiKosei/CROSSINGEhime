@@ -30,6 +30,7 @@ GameUI::~GameUI()
 {
     // スコアのオブジェクトを削除
     DeleteGO(m_Score);
+    DeleteGO(m_Hpbar);
    
 
 }
@@ -37,6 +38,7 @@ void GameUI::Update()
 {
     m_Hpbar->m_hpSprite.Update();
     m_Score->Update();   
+    
 }
 
 void GameUI::Render(RenderContext& rc)
@@ -46,6 +48,6 @@ void GameUI::Render(RenderContext& rc)
     m_Score->Render(rc);
 }
 
-void GameUI::AddScore(int points) {
-    m_Score->AddScore(points);
+void GameUI::AddScore() {
+    m_Score->AddScore();
 }

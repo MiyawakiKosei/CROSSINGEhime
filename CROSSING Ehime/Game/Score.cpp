@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Score.h"
+#include "orenge.h"
 
 Score::Score() {
     fontRenderNumber.SetPosition({ 660.0f, 410.0f, 0.0f }); // 初期位置（左寄せ）
@@ -29,13 +30,26 @@ void Score::Update() {
     };
 
     fontRenderNumber.SetPosition(numberPos);
+
+    
 }
+
+
+
+
+void Score::AddScore() {
+   
+    const int addPoint = 100;  // オレンジ取得時の加点
+
+    score += addPoint;
+
+    if (score > maxScore) {
+        score = maxScore;
+    }
+        currentScore = score;
+    }
 
 
 void Score::Render(RenderContext& rc) {
     fontRenderNumber.Draw(rc);  // 数字だけ描画
-}
-
-void Score::AddScore(int points) {
-    score += points;
 }

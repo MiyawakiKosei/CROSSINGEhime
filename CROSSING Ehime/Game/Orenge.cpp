@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Orenge.h"
 #include "Player.h"
+#include "Score.h"
 
 Orenge::Orenge() {
 	////モデルを読み込む
@@ -26,7 +27,10 @@ void Orenge::Update() {
 	Vector3 diff = player->position - position;
 	//ベクトルの長さが70.0fより小さかったら
 	if (diff.Length() <= 120.0f) {
-		Or_Point += 1;
+		Score* score = FindGO<Score>("score");
+		if (score != nullptr) {
+			score->AddScore();  // これだけ呼ぶ
+		}
 		//自身を消去する
 		DeleteGO(this);
 	}

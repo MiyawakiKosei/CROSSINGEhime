@@ -13,7 +13,7 @@ public:
     bool Start();
     void Update();
     void Render(RenderContext& rc);
-    void AddScore(int points);
+    void AddScore();
 
 private:
     SpriteRender fontRender;
