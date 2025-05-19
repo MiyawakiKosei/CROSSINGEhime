@@ -42,7 +42,7 @@ Game::Game()
 
 	//ƒgƒ‰ƒbƒN‚ğì‚é
 	m_track = NewGO<Track>(0, "track");
-	m_track->position = { 50.0f,0.0f,-3000.0f };
+	m_track->position = { 150.0f,30.0f,-3000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
