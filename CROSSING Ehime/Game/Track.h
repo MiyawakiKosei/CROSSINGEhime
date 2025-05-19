@@ -16,7 +16,7 @@ public:
 	Quaternion rot;
 	int Tr_Count = 1;
 	Player* player;
-	//Vector3 firstPosition;
+	Vector3 firstPosition;
 
 };
 
