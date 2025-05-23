@@ -25,13 +25,13 @@ public:
 	ModelRender m_bgmodelRender;	    //モデルレンダ―。
 	Vector3 position;               //座標。
 	Vector3 moveSpeed;
-	//enum EnAnimationClip {		//アニメーション。
-	//	enAnimationClip_Idle,
-	//	enAnimationClip_Walk,
-	//	enAnimationClip_Jump,
-	//	enAnimationClip_Num,
-	//};
-	//AnimationClip animationClips[enAnimationClip_Num];		//アニメーションクリップ。
+	enum EnAnimationClip {		//アニメーション。
+		enAnimationClip_Idle,
+		enAnimationClip_Drift,
+		enAnimationClip_Run,
+		enAnimationClip_Num,
+	};
+	AnimationClip animationClips[enAnimationClip_Num];		//アニメーションクリップ。
 	CharacterController characterController;  //キャラクターコントローラー。
 	//Vector3 moveSpeed;		//移動速度。
 	Quaternion rotation;  //クォータニオン。

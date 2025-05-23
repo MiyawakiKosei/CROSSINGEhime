@@ -2,23 +2,26 @@
 #include "Player.h"
 #include "Timer.h"
 #include "WindZone.h"
+#include "Skateboarding.h"
+#include "Game.h"
+#include "GameCamera.h"
 
 Player::Player()
 {
 	//モデルデータ読み込み
-    m_bgmodelRender.Init("Assets/modelData/Kate.tkm");
+    //m_bgmodelRender.Init("Assets/model/player.tkm");
 	rotation.SetRotationDegY(180.0f);
 	m_bgmodelRender.SetRotation(rotation);//ステージの方に進むようにプレイヤーの向きを調整
 	//SetPosition(Vector3(0.0f, 180.0f, -10000.0f));
-	/*animationClips[enAnimationClip_Idle].Load("Assets/animData/idle.tka");
+	animationClips[enAnimationClip_Idle].Load("Assets/skater/idle.tka");
 	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
-	animationClips[enAnimationClip_Walk].Load("Assets/animData/walk.tka");
-	animationClips[enAnimationClip_Walk].SetLoopFlag(true);
-	animationClips[enAnimationClip_Jump].Load("Assets/animData/jump.tka");
-	animationClips[enAnimationClip_Jump].SetLoopFlag(false);*/
-	// modelRender.Init("Assets/modelData/Kate.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	animationClips[enAnimationClip_Drift].Load("Assets/skater/drift.tka");
+	animationClips[enAnimationClip_Drift].SetLoopFlag(true);
+	animationClips[enAnimationClip_Run].Load("Assets/skater/run.tka");
+	animationClips[enAnimationClip_Run].SetLoopFlag(false);
+	m_bgmodelRender.Init("Assets/model/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
 	
-		srand(static_cast<unsigned int>(time(nullptr)));
+	srand(static_cast<unsigned int>(time(nullptr)));
 
 	
 	characterController.Init(25.0f, 75.0f, position);

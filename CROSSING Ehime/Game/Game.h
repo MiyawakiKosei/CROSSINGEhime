@@ -16,32 +16,31 @@ class Orenge;
 class Track;
 class WindZone;
 
-//Game�V�[����Ǘ�����N���X�B
+
 class Game : public IGameObject
 {
 public:
 	Game();
 	~Game();
-	//�X�V�����B
+	
 	void Update();
-	//�`�揈��
+	
 	void Render(RenderContext& rc);
 
-	Player* player;			 //�v���C���[�B
-	GameCamera* gameCamera;	 //�Q�[���J�����B
-	BackGround* backGround;  //�w�i
-	//SoundSource* GameBGM;  //�Q�[������BGM�B
-	FontRender fontRender;   //����
+	Player* player;			
+	GameCamera* gameCamera;	
+	BackGround* backGround; 
+	//SoundSource* GameBGM;  
+	FontRender fontRender; 
 	ModelRender modelRender;
-	Timer* m_Timer;          //�^�C�}�[
-	GameClear* m_gameClear;    //�Q�[���N���A
+	Timer* m_Timer;          
+	GameClear* m_gameClear;  
 	GameOver* m_gameOver;
-	Title* m_title;            //�^�C�g��
-	GameUI* m_GameUI;        //�Q�[��UI
+	Title* m_title;           
+	GameUI* m_GameUI;        
 	Timer* m_timer;
-	GameSelect* m_gameSelect; //�Q�[���Z���N�g
-	Orenge* m_orenge; //�I�����W�I�u�W�F�N�g
+	GameSelect* m_gameSelect; 
+	Orenge* m_orenge; 
 	Track* m_track;//トラック
-	WindZone* m_windZone;     //���̗̈�
-
+	WindZone* m_windZone;   
 };

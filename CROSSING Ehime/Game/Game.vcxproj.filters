@@ -20,6 +20,7 @@
     <ClCompile Include="Orenge.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="HPManegar.cpp" />
+    <ClCompile Include="Skateboarding.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -40,5 +41,6 @@
     <ClInclude Include="Orenge.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="HPManegar.h" />
+    <ClInclude Include="Skateboarding.h" />
   </ItemGroup>
 </Project>

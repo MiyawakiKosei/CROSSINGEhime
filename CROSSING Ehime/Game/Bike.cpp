@@ -5,11 +5,11 @@
 Bike::Bike()
 {
 	//コメントアウトする。
-    //PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
+    PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 
 	m_bgModelRender.Init("Assets/modelData/bike.tkm");//橋のモデル
 
-	m_bgModelRender.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+	m_bgModelRender.SetPosition(Vector3(400.0f, 100.0f, 300.0f));
 	m_bgModelRender.SetScale(Vector3(1.0f, 1.0f, 1.0f)); // 広く見せるために拡大
 
 	m_bgModelRender.Update();
