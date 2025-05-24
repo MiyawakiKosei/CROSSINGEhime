@@ -23,18 +23,23 @@ public:
 	float windPower = 0.0f;        // 風の強さ（0.5fなど）
 
 	ModelRender m_bgmodelRender;	    //モデルレンダ―。
+	ModelRender m_boardModel;	//ボードモデル。
 	Vector3 position;               //座標。
 	Vector3 moveSpeed;
 	enum EnAnimationClip {		//アニメーション。
 		enAnimationClip_Idle,
-		enAnimationClip_Drift,
+		enAnimationClip_Start,
+		enAnimationClip_Push,
 		enAnimationClip_Run,
+		enAnimationClip_Drift,
 		enAnimationClip_Num,
 	};
-	AnimationClip animationClips[enAnimationClip_Num];		//アニメーションクリップ。
+	AnimationClip animationClips[enAnimationClip_Num];//アニメーションクリップ。
+	AnimationClip m_boardAnimClips[enAnimationClip_Num];//ボードのアニメーションクリップ。
 	CharacterController characterController;  //キャラクターコントローラー。
 	//Vector3 moveSpeed;		//移動速度。
-	Quaternion rotation;  //クォータニオン。
+	Quaternion rotX, rotY; //クォータニオン。
+	Quaternion rotation; //クォータニオン。
 	//int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
 	//int starCount = 0;	//集めた☆の数をカウントする。
 

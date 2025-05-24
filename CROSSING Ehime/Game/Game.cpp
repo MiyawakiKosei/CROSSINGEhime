@@ -13,7 +13,6 @@
 #include "WindZone.h"
 #include "Orenge.h"
 #include "Track.h"
-#include "Skateboarding.h"
 //#include "sound/SoundEngine.h"
 
 
@@ -43,6 +42,10 @@ Game::Game()
 	//トラックを作る
 	m_track = NewGO<Track>(0, "track");
 	m_track->position = { 150.0f,30.0f,-3000.0f };
+
+	//トラック2を作る
+	m_track= NewGO<Track>(0, "track2");
+	m_track->position = { -300.0f,30.0f,-3000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);

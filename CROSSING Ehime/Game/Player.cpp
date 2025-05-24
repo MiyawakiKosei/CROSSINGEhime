@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Timer.h"
 #include "WindZone.h"
-#include "Skateboarding.h"
 #include "Game.h"
 #include "GameCamera.h"
 
@@ -10,20 +9,57 @@ Player::Player()
 {
 	//モデルデータ読み込み
     //m_bgmodelRender.Init("Assets/model/player.tkm");
-	rotation.SetRotationDegY(180.0f);
-	m_bgmodelRender.SetRotation(rotation);//ステージの方に進むようにプレイヤーの向きを調整
-	//SetPosition(Vector3(0.0f, 180.0f, -10000.0f));
-	animationClips[enAnimationClip_Idle].Load("Assets/skater/idle.tka");
-	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
-	animationClips[enAnimationClip_Drift].Load("Assets/skater/drift.tka");
-	animationClips[enAnimationClip_Drift].SetLoopFlag(true);
-	animationClips[enAnimationClip_Run].Load("Assets/skater/run.tka");
-	animationClips[enAnimationClip_Run].SetLoopFlag(false);
-	m_bgmodelRender.Init("Assets/model/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	rotX.SetRotationDegX(-90.0f);
+	rotY.SetRotationDegZ(180.0f);
+	Quaternion rotation = rotX * rotY;
+	//m_bgmodelRender.SetRotation(rotation);//ステージの方に進むようにプレイヤーの向きを調整
 	
+	//SetPosition(Vector3(0.0f, 180.0f, -10000.0f));
+	//待機のアニメーション
+	animationClips[enAnimationClip_Idle].Load("Assets/anim/skater/idle.tka");
+	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
+	m_boardAnimClips[enAnimationClip_Idle].Load("Assets/anim/board/idle.tka");
+	m_boardAnimClips[enAnimationClip_Idle].SetLoopFlag(true);
+
+	//スタートランのアニメーション
+	animationClips[enAnimationClip_Start].Load("Assets/anim/skater/start.tka");
+	animationClips[enAnimationClip_Start].SetLoopFlag(false);
+	m_boardAnimClips[enAnimationClip_Start].Load("Assets/anim/board/start.tka");
+	m_boardAnimClips[enAnimationClip_Start].SetLoopFlag(false);
+
+	//地面を蹴る時のアニメーション
+	animationClips[enAnimationClip_Push].Load("Assets/anim/skater/push.tka");
+	animationClips[enAnimationClip_Push].SetLoopFlag(false);
+	m_boardAnimClips[enAnimationClip_Push].Load("Assets/anim/board/push.tka");
+	m_boardAnimClips[enAnimationClip_Push].SetLoopFlag(false);
+
+	//走っている時のアニメーション
+	animationClips[enAnimationClip_Run].Load("Assets/anim/skater/run.tka");
+	animationClips[enAnimationClip_Run].SetLoopFlag(false);
+	m_boardAnimClips[enAnimationClip_Run].Load("Assets/anim/board/push.tka");
+	m_boardAnimClips[enAnimationClip_Run].SetLoopFlag(false);
+
+	//ドリフトする時のアニメーション
+	animationClips[enAnimationClip_Drift].Load("Assets/anim/skater/drift.tka");
+	animationClips[enAnimationClip_Drift].SetLoopFlag(false);
+	m_boardAnimClips[enAnimationClip_Drift].Load("Assets/anim/board/drift.tka");
+	m_boardAnimClips[enAnimationClip_Drift].SetLoopFlag(false);
+
+	//m_bgmodelRender.Init("Assets/model/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	m_bgmodelRender.Init("Assets/ModelData/player/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	m_bgmodelRender.SetPosition(position);
+	m_bgmodelRender.SetRotation(rotation);
+	m_bgmodelRender.Update();
+
+	//ボードモデルの初期化
+	m_boardModel.Init("Assets/ModelData/player/board.tkm", nullptr, enAnimationClip_Num, enModelUpAxisY);
+	m_boardModel.SetPosition(position);
+	m_boardModel.SetRotation(rotation);
+	m_boardModel.Update();
+
 	srand(static_cast<unsigned int>(time(nullptr)));
 
-	
+	//キャラクターコントローラーの初期化
 	characterController.Init(25.0f, 75.0f, position);
 }	
 
@@ -36,8 +72,7 @@ void Player::Update()
 
 	//モデルを更新する
 	m_bgmodelRender.Update();
-	//絵描きさん
-	m_bgmodelRender.SetPosition(position);
+	m_boardModel.Update();
 
 	//移動処理
 	Move();
@@ -85,8 +120,8 @@ void  Player::Move()
 	right.y = 0.0f;
 
 	//左スティックの入力量と120.0fを乗算
-	right *= stickL.x * 1920.0f;
-	forward *= stickL.y * 1920.0f;
+	right *= stickL.x * 1440.0f;
+	forward *= stickL.y * 1440.0f;
 
 	//移動速度にスティックの入力量を加算する
 	moveSpeed += right + forward;
@@ -115,20 +150,23 @@ void  Player::Move()
 
 	//絵描きさんに座標を教える
 	m_bgmodelRender.SetPosition(position);
+	m_boardModel.SetPosition(position);
 }
 
 void Player::Rotation() 
 {
+	
 	//xかｚの移動速度があったら(スティックの入力があったら)
 	if (fabsf(moveSpeed.x) >= 0.001f || fabsf(moveSpeed.z) >= 0.001f) {
 		//キャラコンの方向を変える
 		rotation.SetRotationYFromDirectionXZ(moveSpeed);
 		//絵描きさんに回転を教える
-		m_bgmodelRender.SetRotation(rotation);
+		//m_bgmodelRender.SetRotation(rotation);
 	}
 }
 
 void Player::Render(RenderContext& renderContext)
 {
 		m_bgmodelRender.Draw(renderContext);
+		m_boardModel.Draw(renderContext);
 }

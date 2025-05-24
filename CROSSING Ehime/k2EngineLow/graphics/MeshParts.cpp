@@ -201,10 +201,12 @@ namespace nsK2EngineLow {
 		auto& materialBank = GetMaterialBank();
 		mesh->m_materials.reserve(tkmMesh.materials.size());
 		for (auto& tkmMat : tkmMesh.materials) {
-			char materiayKey[MAX_PATH];
+			// TODO:パスのサイズが足りないので調整した
+			constexpr int MAX_PATH_A = 512;
+			char materiayKey[MAX_PATH_A];
 			sprintf_s(
 				materiayKey,
-				MAX_PATH,
+				MAX_PATH_A,
 				"%s, %s, %s, %s, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %s, %s",
 				fxFilePath,
 				vsEntryPointFunc,

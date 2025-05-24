@@ -35,13 +35,13 @@ void Track::Move() {
 		position.z -= 50.0f;
 	}
 
-	//‚à‚µzŽ²‚ª-13500‚ð’´‚¦‚½‚ç
-	if (position.z <= -13500.0f) {
+	//‚à‚µzŽ²‚ª-1000‚ð’´‚¦‚½‚ç
+	if (position.z <= -1000.0f) {
 		Tr_Count = 1;
 		rot.SetRotationDegY(360.0f);
 	}
-	//‚à‚µzŽ²‚ª-1000‚ð’´‚¦‚½‚ç
-	if (position.z >= -1000.0f) {
+	//‚à‚µzŽ²‚ª-500‚ð’´‚¦‚½‚ç
+	if (position.z >= -500.0f) {
 		Tr_Count = 0;
 		rot.SetRotationDegY(180.0f);
 	}

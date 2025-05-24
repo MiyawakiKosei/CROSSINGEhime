@@ -27,7 +27,7 @@ public:
 	
 	void Render(RenderContext& rc);
 
-	Player* player;			
+	Player* player;		
 	GameCamera* gameCamera;	
 	BackGround* backGround; 
 	//SoundSource* GameBGM;  
