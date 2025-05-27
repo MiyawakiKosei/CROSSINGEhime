@@ -28,11 +28,11 @@ void Track::Move() {
 	//前後に移動させる
 	if (Tr_Count == 1) {
 		//前に進む
-		position.z += 50.0f;
+		position.z += 10.0f;
 	}
 	else if (Tr_Count == 0) {
 		//後ろに進む
-		position.z -= 50.0f;
+		position.z -= 10.0f;
 	}
 
 	//もしz軸が-1000を超えたら

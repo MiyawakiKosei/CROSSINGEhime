@@ -49,12 +49,14 @@ Player::Player()
 	m_bgmodelRender.Init("Assets/ModelData/player/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
 	m_bgmodelRender.SetPosition(position);
 	m_bgmodelRender.SetRotation(rotation);
+	m_bgmodelRender.SetScale(m_scale);
 	m_bgmodelRender.Update();
 
 	//ボードモデルの初期化
 	m_boardModel.Init("Assets/ModelData/player/board.tkm", nullptr, enAnimationClip_Num, enModelUpAxisY);
 	m_boardModel.SetPosition(position);
 	m_boardModel.SetRotation(rotation);
+	m_boardModel.SetScale(m_scale);
 	m_boardModel.Update();
 
 	srand(static_cast<unsigned int>(time(nullptr)));
