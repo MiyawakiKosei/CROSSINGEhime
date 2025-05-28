@@ -19,7 +19,7 @@
     <ClCompile Include="WindZone.cpp" />
     <ClCompile Include="Orenge.cpp" />
     <ClCompile Include="Track.cpp" />
-    <ClCompile Include="HPManegar.cpp" />
+    <ClCompile Include="HPManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -39,6 +39,6 @@
     <ClInclude Include="WindZone.h" />
     <ClInclude Include="Orenge.h" />
     <ClInclude Include="Track.h" />
-    <ClInclude Include="HPManegar.h" />
+    <ClInclude Include="HPManager.h" />
   </ItemGroup>
 </Project>

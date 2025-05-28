@@ -232,7 +232,7 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="GameUI.cpp" />
-    <ClCompile Include="HPManegar.cpp" />
+    <ClCompile Include="HPManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Orenge.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -257,7 +257,7 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="GameUI.h" />
-    <ClInclude Include="HPManegar.h" />
+    <ClInclude Include="HPManager.h" />
     <ClInclude Include="Orenge.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />

@@ -24,7 +24,7 @@ void Orenge::Update() {
 	or_modelRender.Update();
 	
 	//プレイヤーからオレンジに向かうベクトルを求める
-	Vector3 diff = player->position - position;
+	Vector3 diff = player->m_position - position;
 	//ベクトルの長さが70.0fより小さかったら
 	if (diff.Length() <= 120.0f) {
 		Score* score = FindGO<Score>("score");

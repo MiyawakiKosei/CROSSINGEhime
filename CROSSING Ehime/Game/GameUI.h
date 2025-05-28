@@ -3,7 +3,7 @@
 class Score;
 class Timer;
 class Player;
-class HPManegar;
+class HPManager;
 
 class GameUI : public IGameObject
 {
@@ -22,6 +22,6 @@ private:
     int currentKeyCount;    // プレイヤーの現在のキー数
     Score* m_Score;
     Timer* m_Timer;
-    HPManegar* m_Hpbar;
+    HPManager* m_Hpbar;
     Player* player;
 };

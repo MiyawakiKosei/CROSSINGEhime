@@ -1,22 +1,47 @@
 #pragma once
 class Player;
+class HPManager;
 class Track : public IGameObject 
 {
 public:
 	Track();
 	~Track();
-	void Update();
-	void Move();
-	void Render(RenderContext& renderContext);
-	ModelRender tr_modelRender;
+	bool Start() override;
+	void Update() override;
+	void Render(RenderContext& rc) override;
+	/// <summary>
+	/// 座標を設定。
+	/// </summary>
+	/// <param name="position">座標。</param>
+	void SetPosition(const Vector3& position)
+	{
+		m_position = position;
+	}
+	ModelRender m_modelRender;
 	//ここからメンバ変数
 	//座標
-	Vector3 position;
+	Vector3 m_position;
 	//回転
 	Quaternion rot;
 	int Tr_Count = 1;
-	Player* player;
+
 	Vector3 firstPosition;
+
+	float m_touchDamageTimer = 0.0f;
+
+
+private:
+	bool m_hasDamaged = false;
+	void Move();
+	Player* m_player = nullptr;
+	PhysicsStaticObject		m_physicsStaticObject;				//静的物理オブジェクト。
+	CollisionObject* m_collisionObject = nullptr;		//コリジョンオブジェクト。
+	enum enMovingFloorState
+	{
+		enMovingFloorState_MovingRight,
+		enMovingFloorState_MovingLeft
+	};
+	enMovingFloorState		m_MovingFloorState = enMovingFloorState_MovingRight;
 
 };
 

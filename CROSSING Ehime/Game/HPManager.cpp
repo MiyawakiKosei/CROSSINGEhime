@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "HPManegar.h"
+#include "HPManager.h"
 #include "GameUI.h"
 
-HPManegar::~HPManegar(){}
+HPManager::~HPManager() {}
 
-bool HPManegar::Start(){
+bool HPManager::Start() {
     // HPバー初期化
     m_hpSprite.Init("Assets/sprite/HPUI.DDS", 440, 90);
     m_hpSprite.SetPosition({ -240.0f, 200.0f, 0.0f });
@@ -12,9 +12,10 @@ bool HPManegar::Start(){
     return true;
 }
 
-void HPManegar::Update() {
-    // HPの状態に応じてスプライトを切り替え
-    switch (m_Hp) {
+void HPManager::Update() {
+    enHPState state = static_cast<enHPState>(m_Hp);  // ← enumに変換
+
+    switch (state) {
     case en_ZeroHP:
         m_hpSprite.Init("Assets/sprite/HPUI6.dds", 440, 90);
         break;
@@ -31,17 +32,14 @@ void HPManegar::Update() {
         m_hpSprite.Init("Assets/sprite/HPUI2.dds", 440, 90);
         break;
     case en_MaxHP:
-        m_hpSprite.Init("Assets/sprite/HPUI.dds", 440, 90);
-        break;
     default:
         m_hpSprite.Init("Assets/sprite/HPUI.dds", 440, 90);
         break;
     }
 
     m_hpSprite.SetPosition({ -440.0f, 340.0f, 0.0f });
-  
 }
 
-void HPManegar::Render(RenderContext& rc) {
+void HPManager::Render(RenderContext& rc) {
     m_hpSprite.Draw(rc);
 }

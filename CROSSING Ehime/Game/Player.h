@@ -1,5 +1,6 @@
 #pragma once
 #include "k2EngineLow.h"
+#include <Track.h>
 
 class WindZone;
 //プレイヤークラス。
@@ -18,14 +19,23 @@ public:
 	//void SetPosition(const Vector3& pos);
 	//回転処理
 	void Rotation();
+	const Vector3& GetPosition() const
+	{
+		return m_position;
+	}
 
 	//メンバ変数。
 	float windPower = 0.0f;        // 風の強さ（0.5fなど）
 
 	ModelRender m_bgmodelRender;	    //モデルレンダ―。
 	ModelRender m_boardModel;	//ボードモデル。
-	Vector3 position;               //座標。
+	Vector3 m_position;               //座標。
 	Vector3 moveSpeed;
+
+	CharacterController& GetCharacterController()
+	{
+		return m_characterController;
+	}
 	enum EnAnimationClip {		//アニメーション。
 		enAnimationClip_Idle,
 		enAnimationClip_Start,
@@ -36,7 +46,7 @@ public:
 	};
 	AnimationClip animationClips[enAnimationClip_Num];//アニメーションクリップ。
 	AnimationClip m_boardAnimClips[enAnimationClip_Num];//ボードのアニメーションクリップ。
-	CharacterController characterController;  //キャラクターコントローラー。
+	
 	//Vector3 moveSpeed;		//移動速度。
 	Quaternion rotX, rotY; //クォータニオン。
 	Quaternion rotation; //クォータニオン。
@@ -45,5 +55,7 @@ public:
 
 	int P_Count = 0;
 private:
+	
+	CharacterController m_characterController;  //キャラクターコントローラー。
 	Vector3				m_scale = Vector3::One;
 };

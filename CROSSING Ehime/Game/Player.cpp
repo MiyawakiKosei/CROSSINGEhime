@@ -47,14 +47,14 @@ Player::Player()
 
 	//m_bgmodelRender.Init("Assets/model/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
 	m_bgmodelRender.Init("Assets/ModelData/player/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
-	m_bgmodelRender.SetPosition(position);
+	m_bgmodelRender.SetPosition(m_position);
 	m_bgmodelRender.SetRotation(rotation);
 	m_bgmodelRender.SetScale(m_scale);
 	m_bgmodelRender.Update();
 
 	//ボードモデルの初期化
 	m_boardModel.Init("Assets/ModelData/player/board.tkm", nullptr, enAnimationClip_Num, enModelUpAxisY);
-	m_boardModel.SetPosition(position);
+	m_boardModel.SetPosition(m_position);
 	m_boardModel.SetRotation(rotation);
 	m_boardModel.SetScale(m_scale);
 	m_boardModel.Update();
@@ -62,7 +62,7 @@ Player::Player()
 	srand(static_cast<unsigned int>(time(nullptr)));
 
 	//キャラクターコントローラーの初期化
-	characterController.Init(25.0f, 75.0f, position);
+	m_characterController.Init(25.0f, 75.0f, m_position);
 }	
 
 
@@ -84,14 +84,14 @@ void Player::Update()
 	//position.y -= 5.5f;
 
 	//もしプレイヤーがY-500以下なら
-	if (position.y <= -500.0f)
+	if (m_position.y <= -500.0f)
 	{
 		//プレイヤーカウントを2にする
 		P_Count = 2;
 		//position.y = 0.0f;
 	}
 	//もしプレイヤーがZ-17500を超えたら
-	else if (position.z <= -17500.0f) {
+	else if (m_position.z <= -17500.0f) {
 		//プレイヤーカウントを１にする
 		P_Count = 1;
 	}
@@ -129,7 +129,7 @@ void  Player::Move()
 	moveSpeed += right + forward;
 
 	//地面に付いていたら
-	if (characterController.IsOnGround())
+	if (m_characterController.IsOnGround())
 	{
 		//重力をなくす
 		moveSpeed.y = 0.0f;
@@ -148,11 +148,11 @@ void  Player::Move()
 	}
 	moveSpeed.x += windPower;
 	//キャラクターコントローラーを使って座標を移動させる
-	position = characterController.Execute(moveSpeed, 1.0f / 60.0f);
+	m_position = m_characterController.Execute(moveSpeed, 1.0f / 60.0f);
 
 	//絵描きさんに座標を教える
-	m_bgmodelRender.SetPosition(position);
-	m_boardModel.SetPosition(position);
+	m_bgmodelRender.SetPosition(m_position);
+	m_boardModel.SetPosition(m_position);
 }
 
 void Player::Rotation() 

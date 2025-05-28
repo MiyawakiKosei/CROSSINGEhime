@@ -3,7 +3,7 @@
 #include "Score.h"  // Scoreクラス
 #include "Timer.h"  // Timerクラス
 #include "Player.h"  
-#include "HPManegar.h"  
+#include "HPManager.h"  
 
 
 bool GameUI::Start()
@@ -12,7 +12,7 @@ bool GameUI::Start()
     m_SpriteRender.SetPosition({ 0.0f, 0.0f,0.0f });
 
     //HPバーを作る
-    m_Hpbar = NewGO<HPManegar>(0, "hp");
+    m_Hpbar = NewGO<HPManager>(0, "hp");
     m_Hpbar->m_hpSprite.SetPosition({ -240.0f, 200.0f, 0.0f });
     //スコアを作る
     m_Score = NewGO<Score>(0, "score");

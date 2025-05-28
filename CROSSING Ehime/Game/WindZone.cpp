@@ -18,7 +18,7 @@ void WindZone::SetTimer(Timer* timer) {
 void WindZone::Update() {
     if (!m_player || !m_timer) return;
 
-    const float playerX = m_player->position.x;
+    const float playerX = m_player->m_position.x;
 
     // •—‚ª‚¢‚Ä‚¢‚éó‘Ô
     if (m_windActive) {
