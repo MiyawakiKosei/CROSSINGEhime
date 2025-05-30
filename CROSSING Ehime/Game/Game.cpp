@@ -40,12 +40,12 @@ Game::Game()
 	m_orenge->position = { 0.0f,0.0f,-1000.0f };
 
 	//トラックを作る
-	m_track = NewGO<Track>(0, "track");
-	m_track->m_position = { 150.0f,30.0f,-1000.0f };
+	m_rightTrack = NewGO<Track>(0, "track");
+	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
 
 	//トラック2を作る
-	m_track= NewGO<Track>(0, "track2");
-	m_track->m_position = { -300.0f,30.0f,-1000.0f };
+	m_leftTrack= NewGO<Track>(0, "track2");
+	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
@@ -79,7 +79,9 @@ Game::~Game()
 	//オレンジの消去
 	DeleteGO(m_orenge);
 	//トラックの消去
-	DeleteGO(m_track);
+	DeleteGO(m_rightTrack);
+	//トラック2の消去
+	DeleteGO(m_leftTrack);
 }
 
 //更新処理。

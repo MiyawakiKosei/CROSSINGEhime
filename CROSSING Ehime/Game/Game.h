@@ -41,6 +41,7 @@ public:
 	Timer* m_timer;
 	GameSelect* m_gameSelect; 
 	Orenge* m_orenge; 
-	Track* m_track;//トラック
+	Track* m_rightTrack;//トラック
+	Track* m_leftTrack;//トラック
 	WindZone* m_windZone;   
 };
