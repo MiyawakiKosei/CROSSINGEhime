@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Score.h"
-#include "orenge.h"
+#include "orange.h"
 
 Score::Score() {
     fontRenderNumber.SetPosition({ 660.0f, 410.0f, 0.0f }); // ‰ŠúˆÊ’ui¶Šñ‚¹j

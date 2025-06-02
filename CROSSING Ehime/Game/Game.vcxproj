@@ -234,7 +234,7 @@
     <ClCompile Include="GameUI.cpp" />
     <ClCompile Include="HPManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Orenge.cpp" />
+    <ClCompile Include="Orange.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -258,7 +258,7 @@
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="GameUI.h" />
     <ClInclude Include="HPManager.h" />
-    <ClInclude Include="Orenge.h" />
+    <ClInclude Include="Orange.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="stdafx.h" />

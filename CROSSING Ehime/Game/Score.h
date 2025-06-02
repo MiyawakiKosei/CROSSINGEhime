@@ -1,5 +1,5 @@
 #pragma once
-class Orenge;
+class Orange;
 class Score : public IGameObject {
 public:
     Score();
@@ -10,7 +10,7 @@ public:
 
     
 private:
-    Orenge* m_Orenge;
+    Orange* m_Orenge;
     FontRender fontRenderNumber; // ”š—p
     FontRender fontRenderPt;     // "Pt" —p
   

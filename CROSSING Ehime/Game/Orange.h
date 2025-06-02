@@ -1,10 +1,10 @@
 #pragma once
 class Player;
-class Orenge : public IGameObject
+class Orange : public IGameObject
 {
 public:
-	Orenge();
-	~Orenge();
+	Orange();
+	~Orange();
 	void Update();
 	void Move();
 	void Render(RenderContext& renderContext);

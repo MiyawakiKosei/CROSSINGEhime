@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "Orenge.h"
+#include "Orange.h"
 #include "Player.h"
 #include "Score.h"
 
-Orenge::Orenge() {
+Orange::Orange() {
 	////モデルを読み込む
 	or_modelRender.Init("Assets/modelData/orenge/Orenge01.tkm");
 	////プレイヤーのオブジェクトを引っ張ってくる
@@ -12,11 +12,11 @@ Orenge::Orenge() {
 	//m_ormodelRender.SetPosition(0.0f, 0.0f, -1000.0f);
 }
 
-Orenge::~Orenge() {
+Orange::~Orange() {
 
 }
 
-void Orenge::Update() {
+void Orange::Update() {
 
 	Move();
 
@@ -36,7 +36,7 @@ void Orenge::Update() {
 	}
 }
 
-void Orenge::Move() {
+void Orange::Move() {
 	//上下に移動させる
 	if (Or_Count == 0) {
 		//上
@@ -64,7 +64,7 @@ void Orenge::Move() {
 
 }
 
-void Orenge::Render(RenderContext& renderContext) {
+void Orange::Render(RenderContext& renderContext) {
 	//オレンジオブジェクトを描画
 	or_modelRender.Draw(renderContext);
 }

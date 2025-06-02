@@ -17,7 +17,7 @@
     <ClCompile Include="DebugFont.cpp" />
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="WindZone.cpp" />
-    <ClCompile Include="Orenge.cpp" />
+    <ClCompile Include="Orange.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="HPManager.cpp" />
   </ItemGroup>
@@ -37,7 +37,7 @@
     <ClInclude Include="DebugFont.h" />
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="WindZone.h" />
-    <ClInclude Include="Orenge.h" />
+    <ClInclude Include="Orange.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="HPManager.h" />
   </ItemGroup>

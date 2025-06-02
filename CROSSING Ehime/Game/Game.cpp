@@ -11,7 +11,7 @@
 #include "GameSelect.h"
 #include "Debugfont.h"
 #include "WindZone.h"
-#include "Orenge.h"
+#include "Orange.h"
 #include "Track.h"
 //#include "sound/SoundEngine.h"
 
@@ -36,8 +36,20 @@ Game::Game()
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 
 	//オレンジを作る
-	m_orenge = NewGO<Orenge>(0, "orenge");
-	m_orenge->position = { 0.0f,0.0f,-1000.0f };
+	m_Orange = NewGO<Orange>(0, "orange");
+	m_Orange->position = { 0.0f,0.0f,-1000.0f };
+
+	//オレンジ2を作る
+	m_rightOrange = NewGO<Orange>(0, "orange2");
+	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
+
+	//オレンジ3を作る
+	m_leftOrange = NewGO<Orange>(0, "orange3");
+	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
+
+	//オレンジ４を作る
+	m_middleOrange = NewGO<Orange>(0, "orange4");
+	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
 
 	//トラックを作る
 	m_rightTrack = NewGO<Track>(0, "track");
@@ -77,7 +89,13 @@ Game::~Game()
 	//風の削除
 	DeleteGO(m_windZone);
 	//オレンジの消去
-	DeleteGO(m_orenge);
+	DeleteGO(m_Orange);
+	//オレンジ2の消去
+	DeleteGO(m_rightOrange);
+	//オレンジ3の消去
+	DeleteGO(m_leftOrange);
+	//オレンジ4の消去
+	DeleteGO(m_middleOrange);
 	//トラックの消去
 	DeleteGO(m_rightTrack);
 	//トラック2の消去
