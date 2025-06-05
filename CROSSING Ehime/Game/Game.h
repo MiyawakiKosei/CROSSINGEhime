@@ -30,7 +30,7 @@ public:
 	Player* player;		
 	GameCamera* gameCamera;	
 	BackGround* backGround; 
-	//SoundSource* GameBGM;  
+	SoundSource* GameBGM;  
 	FontRender fontRender; 
 	ModelRender modelRender;
 	Timer* m_Timer;          

@@ -13,7 +13,7 @@
 #include "WindZone.h"
 #include "Orange.h"
 #include "Track.h"
-//#include "sound/SoundEngine.h"
+#include "sound/SoundEngine.h"
 
 
 
@@ -63,12 +63,12 @@ Game::Game()
 	m_windZone->SetPlayer(player);
 	m_windZone->SetTimer(m_timer);
 
-	////ゲーム中のBGMを読み込む。
-	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
-	////ゲーム中のBGMを再生する
-	//GameBGM = NewGO<SoundSource>(0);
-	//GameBGM->Init(1);
-	//GameBGM->Play(true);
+	//ゲーム中のBGMを読み込む。
+	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/GameBGM_Play.wav");
+	//ゲーム中のBGMを再生する
+	GameBGM = NewGO<SoundSource>(0);
+	GameBGM->Init(1);
+	GameBGM->Play(true);
 
 }
 
@@ -79,7 +79,7 @@ Game::~Game()
 	//ゲームカメラを削除する。
 	DeleteGO(gameCamera);
 	//ゲーム中のBGMを削除する。
-	//DeleteGO(GameBGM);
+	DeleteGO(GameBGM);
 	//背景を削除する。
 	DeleteGO(backGround);
 	//UIの削除
