@@ -7,67 +7,61 @@
 
 Player::Player()
 {
-	//モデルデータ読み込み
-    //m_bgmodelRender.Init("Assets/model/player.tkm");
-	rotX.SetRotationDegX(-90.0f);
-	rotY.SetRotationDegZ(180.0f);
-	Quaternion rotation = rotX * rotY;
-	//m_bgmodelRender.SetRotation(rotation);//ステージの方に進むようにプレイヤーの向きを調整
-	
-	//SetPosition(Vector3(0.0f, 180.0f, -10000.0f));
-	//待機のアニメーション
+
+	// 待機のアニメーション
 	animationClips[enAnimationClip_Idle].Load("Assets/anim/skater/idle.tka");
 	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
 	m_boardAnimClips[enAnimationClip_Idle].Load("Assets/anim/board/idle.tka");
 	m_boardAnimClips[enAnimationClip_Idle].SetLoopFlag(true);
 
-	//スタートランのアニメーション
+	// スタートランのアニメーション
 	animationClips[enAnimationClip_Start].Load("Assets/anim/skater/start.tka");
 	animationClips[enAnimationClip_Start].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Start].Load("Assets/anim/board/start.tka");
 	m_boardAnimClips[enAnimationClip_Start].SetLoopFlag(false);
 
-	//地面を蹴る時のアニメーション
+	// 地面を蹴る時のアニメーション
 	animationClips[enAnimationClip_Push].Load("Assets/anim/skater/push.tka");
 	animationClips[enAnimationClip_Push].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Push].Load("Assets/anim/board/push.tka");
 	m_boardAnimClips[enAnimationClip_Push].SetLoopFlag(false);
 
-	//走っている時のアニメーション
+	// 走っている時のアニメーション
 	animationClips[enAnimationClip_Run].Load("Assets/anim/skater/run.tka");
 	animationClips[enAnimationClip_Run].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Run].Load("Assets/anim/board/push.tka");
 	m_boardAnimClips[enAnimationClip_Run].SetLoopFlag(false);
 
-	//ドリフトする時のアニメーション
+	// ドリフトする時のアニメーション
 	animationClips[enAnimationClip_Drift].Load("Assets/anim/skater/drift.tka");
 	animationClips[enAnimationClip_Drift].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Drift].Load("Assets/anim/board/drift.tka");
 	m_boardAnimClips[enAnimationClip_Drift].SetLoopFlag(false);
 
-	//m_bgmodelRender.Init("Assets/model/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	// プレイヤーモデルの初期化
 	m_bgmodelRender.Init("Assets/ModelData/player/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
 	m_bgmodelRender.SetPosition(m_position);
-	m_bgmodelRender.SetRotation(rotation);
+	m_bgmodelRender.SetRotation(rotation); // ここで計算した最終的な回転を適用
 	m_bgmodelRender.SetScale(m_scale);
 	m_bgmodelRender.Update();
 
 	//ボードモデルの初期化
 	m_boardModel.Init("Assets/ModelData/player/board.tkm", nullptr, enAnimationClip_Num, enModelUpAxisY);
 	m_boardModel.SetPosition(m_position);
-	m_boardModel.SetRotation(rotation);
+	m_boardModel.SetRotation(rotation); // 同じ回転を適用
 	m_boardModel.SetScale(m_scale);
 	m_boardModel.Update();
 
 	srand(static_cast<unsigned int>(time(nullptr)));
 
-	//キャラクターコントローラーの初期化
+	// キャラクターコントローラーの初期化
 	m_characterController.Init(25.0f, 75.0f, m_position);
 }	
 
 
-	Player::~Player() {
-	}
+Player::~Player() {
+	
+}
 
 void Player::Update()
 {
