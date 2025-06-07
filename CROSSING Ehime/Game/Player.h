@@ -19,6 +19,11 @@ public:
 	//void SetPosition(const Vector3& pos);
 	//回転処理
 	void Rotation();
+	//ステート管理。
+	void ManageState();
+	//アニメーションの再生。
+	void PlayAnimation();
+
 	const Vector3& GetPosition() const
 	{
 		return m_position;
@@ -44,13 +49,13 @@ public:
 		enAnimationClip_Drift,
 		enAnimationClip_Num,
 	};
-	AnimationClip animationClips[enAnimationClip_Num];//アニメーションクリップ。
+	AnimationClip m_animationClips[enAnimationClip_Num];//アニメーションクリップ。
 	AnimationClip m_boardAnimClips[enAnimationClip_Num];//ボードのアニメーションクリップ。
 	
 	//Vector3 moveSpeed;		//移動速度。
 	Quaternion rotX, rotY; //クォータニオン。
 	Quaternion rotation; //クォータニオン。
-	//int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
+	int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
 	//int starCount = 0;	//集めた☆の数をカウントする。
 
 	int P_Count = 0;

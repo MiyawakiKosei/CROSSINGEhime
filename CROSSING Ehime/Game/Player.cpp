@@ -9,45 +9,47 @@ Player::Player()
 {
 
 	// 待機のアニメーション
-	animationClips[enAnimationClip_Idle].Load("Assets/anim/skater/idle.tka");
-	animationClips[enAnimationClip_Idle].SetLoopFlag(true);
+	m_animationClips[enAnimationClip_Idle].Load("Assets/anim/skater/idle.tka");
+	m_animationClips[enAnimationClip_Idle].SetLoopFlag(true);
 	m_boardAnimClips[enAnimationClip_Idle].Load("Assets/anim/board/idle.tka");
 	m_boardAnimClips[enAnimationClip_Idle].SetLoopFlag(true);
 
 	// スタートランのアニメーション
-	animationClips[enAnimationClip_Start].Load("Assets/anim/skater/start.tka");
-	animationClips[enAnimationClip_Start].SetLoopFlag(false);
+	m_animationClips[enAnimationClip_Start].Load("Assets/anim/skater/start.tka");
+	m_animationClips[enAnimationClip_Start].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Start].Load("Assets/anim/board/start.tka");
 	m_boardAnimClips[enAnimationClip_Start].SetLoopFlag(false);
 
 	// 地面を蹴る時のアニメーション
-	animationClips[enAnimationClip_Push].Load("Assets/anim/skater/push.tka");
-	animationClips[enAnimationClip_Push].SetLoopFlag(false);
+	m_animationClips[enAnimationClip_Push].Load("Assets/anim/skater/push.tka");
+	m_animationClips[enAnimationClip_Push].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Push].Load("Assets/anim/board/push.tka");
 	m_boardAnimClips[enAnimationClip_Push].SetLoopFlag(false);
 
 	// 走っている時のアニメーション
-	animationClips[enAnimationClip_Run].Load("Assets/anim/skater/run.tka");
-	animationClips[enAnimationClip_Run].SetLoopFlag(false);
+	m_animationClips[enAnimationClip_Run].Load("Assets/anim/skater/run.tka");
+	m_animationClips[enAnimationClip_Run].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Run].Load("Assets/anim/board/push.tka");
 	m_boardAnimClips[enAnimationClip_Run].SetLoopFlag(false);
 
 	// ドリフトする時のアニメーション
-	animationClips[enAnimationClip_Drift].Load("Assets/anim/skater/drift.tka");
-	animationClips[enAnimationClip_Drift].SetLoopFlag(false);
+	m_animationClips[enAnimationClip_Drift].Load("Assets/anim/skater/drift.tka");
+	m_animationClips[enAnimationClip_Drift].SetLoopFlag(false);
 	m_boardAnimClips[enAnimationClip_Drift].Load("Assets/anim/board/drift.tka");
 	m_boardAnimClips[enAnimationClip_Drift].SetLoopFlag(false);
 
 	// プレイヤーモデルの初期化
-	m_bgmodelRender.Init("Assets/ModelData/player/player.tkm", animationClips, enAnimationClip_Num, enModelUpAxisY);
+	m_bgmodelRender.Init("Assets/ModelData/player/player.tkm", m_animationClips, enAnimationClip_Num, enModelUpAxisZ);
 	m_bgmodelRender.SetPosition(m_position);
+	rotation.SetRotationDegY(180.0f); // 初期回転を90度に設定
 	m_bgmodelRender.SetRotation(rotation); // ここで計算した最終的な回転を適用
 	m_bgmodelRender.SetScale(m_scale);
 	m_bgmodelRender.Update();
 
 	//ボードモデルの初期化
-	m_boardModel.Init("Assets/ModelData/player/board.tkm", nullptr, enAnimationClip_Num, enModelUpAxisY);
+	m_boardModel.Init("Assets/ModelData/player/board.tkm",m_boardAnimClips, enAnimationClip_Num, enModelUpAxisZ);//YからZにしたら立つ
 	m_boardModel.SetPosition(m_position);
+	rotation.SetRotationDegY(180.0f); // 初期回転を180度に設定
 	m_boardModel.SetRotation(rotation); // 同じ回転を適用
 	m_boardModel.SetScale(m_scale);
 	m_boardModel.Update();
@@ -74,6 +76,12 @@ void Player::Update()
 	Move();
 	//回転処理
 	Rotation();
+
+	//ステート管理。
+	ManageState();
+
+	//アニメーションの再生。
+	PlayAnimation();
 
 	//position.y -= 5.5f;
 
@@ -161,7 +169,63 @@ void Player::Rotation()
 	}
 }
 
-void Player::Render(RenderContext& renderContext)
+//ステート管理。
+void Player::ManageState()
+{
+	if (g_pad[0]->IsTrigger(enButtonB))//Bボタンを押したら
+	{
+		//ステートを1(スタート)にする。
+		playerState = 1;
+		//ここでManageStateの関数の処理を終わらせる。
+		return;
+	}
+
+	//地面に付いていたら。
+	//xかzの移動速度があったら(スティックの入力があったら)。
+	if (fabsf(moveSpeed.x) >= 0.001f || fabsf(moveSpeed.z) >= 0.001f)
+	{
+		//ステートを2(歩き)にする。
+		playerState = 2;
+	}
+	else
+	{
+		//ステートを0(待機中)にする。
+		playerState = 0;
+	}
+}
+
+//アニメーションの再生。
+void Player::PlayAnimation()
+{
+	switch (playerState) {
+		//プレイヤーステートが0(待機中)の時
+	case 0:
+		//待機のアニメーションを再生する。
+		m_bgmodelRender.PlayAnimation(enAnimationClip_Idle);
+		m_boardModel.PlayAnimation(enAnimationClip_Idle);
+		break;
+		//プレイヤーステートが1(スタート)の時
+	case 1:
+		//スタートのアニメーションを再生する。
+		m_bgmodelRender.PlayAnimation(enAnimationClip_Start);
+		m_boardModel.PlayAnimation(enAnimationClip_Start);
+		break;
+		//プレイヤーステートが2(歩き)の時
+	case 2:
+		//歩きのアニメーションを再生する。
+		m_bgmodelRender.PlayAnimation(enAnimationClip_Run);
+		m_boardModel.PlayAnimation(enAnimationClip_Run);
+		break;
+		//プレイヤーステートが3(ドリフト)の時
+	case 3:
+		//ドリフトのアニメーションを再生する。
+		m_bgmodelRender.PlayAnimation(enAnimationClip_Drift);
+		m_boardModel.PlayAnimation(enAnimationClip_Drift);
+		break;
+	}
+}
+
+void Player::Render(RenderContext & renderContext)
 {
 		m_bgmodelRender.Draw(renderContext);
 		m_boardModel.Draw(renderContext);

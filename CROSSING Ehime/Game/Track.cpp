@@ -30,7 +30,6 @@ bool Track::Start()
 	m_player = FindGO<Player>("player");
 
 	m_physicsStaticObject.CreateFromModel(m_modelRender.GetModel(), m_modelRender.GetModel().GetWorldMatrix());
-
 	m_collisionObject = NewGO<CollisionObject>(0, "collisionObject");
 
 	m_collisionObject->SetIsEnableAutoDelete(false);
