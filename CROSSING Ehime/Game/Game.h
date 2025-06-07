@@ -12,7 +12,7 @@ class GameOver;
 class Title;
 class GameUI;
 class GameSelect;
-class Orenge;
+class Orange;
 class Track;
 class WindZone;
 
@@ -30,7 +30,7 @@ public:
 	Player* player;		
 	GameCamera* gameCamera;	
 	BackGround* backGround; 
-	//SoundSource* GameBGM;  
+	SoundSource* GameBGM;  
 	FontRender fontRender; 
 	ModelRender modelRender;
 	Timer* m_Timer;          
@@ -40,7 +40,11 @@ public:
 	GameUI* m_GameUI;        
 	Timer* m_timer;
 	GameSelect* m_gameSelect; 
-	Orenge* m_orenge; 
-	Track* m_track;//トラック
+	Orange* m_Orange; //最初のオレンジ
+	Orange* m_rightOrange;//右のオレンジ
+	Orange* m_leftOrange;//左のオレンジ
+	Orange* m_middleOrange;//中央のオレンジ
+	Track* m_rightTrack;//右トラック
+	Track* m_leftTrack;//左トラック
 	WindZone* m_windZone;   
 };

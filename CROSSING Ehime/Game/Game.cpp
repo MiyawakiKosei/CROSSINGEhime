@@ -11,9 +11,9 @@
 #include "GameSelect.h"
 #include "Debugfont.h"
 #include "WindZone.h"
-#include "Orenge.h"
+#include "Orange.h"
 #include "Track.h"
-//#include "sound/SoundEngine.h"
+#include "sound/SoundEngine.h"
 
 
 
@@ -36,27 +36,39 @@ Game::Game()
 	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 
 	//オレンジを作る
-	m_orenge = NewGO<Orenge>(0, "orenge");
-	m_orenge->position = { 0.0f,0.0f,-1000.0f };
+	m_Orange = NewGO<Orange>(0, "orange");
+	m_Orange->position = { 0.0f,0.0f,-1000.0f };
+
+	//オレンジ2を作る
+	m_rightOrange = NewGO<Orange>(0, "orange2");
+	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
+
+	//オレンジ3を作る
+	m_leftOrange = NewGO<Orange>(0, "orange3");
+	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
+
+	//オレンジ４を作る
+	m_middleOrange = NewGO<Orange>(0, "orange4");
+	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
 
 	//トラックを作る
-	m_track = NewGO<Track>(0, "track");
-	m_track->m_position = { 150.0f,30.0f,-1000.0f };
+	m_rightTrack = NewGO<Track>(0, "track");
+	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
 
 	//トラック2を作る
-	m_track= NewGO<Track>(0, "track2");
-	m_track->m_position = { -300.0f,30.0f,-1000.0f };
+	m_leftTrack= NewGO<Track>(0, "track2");
+	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
 	m_windZone->SetTimer(m_timer);
 
-	////ゲーム中のBGMを読み込む。
-	//g_soundEngine->ResistWaveFileBank(1, "Assets/sound/gamebgm.wav");
-	////ゲーム中のBGMを再生する
-	//GameBGM = NewGO<SoundSource>(0);
-	//GameBGM->Init(1);
-	//GameBGM->Play(true);
+	//ゲーム中のBGMを読み込む。
+	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/GameBGM_Play.wav");
+	//ゲーム中のBGMを再生する
+	GameBGM = NewGO<SoundSource>(0);
+	GameBGM->Init(1);
+	GameBGM->Play(true);
 
 }
 
@@ -67,7 +79,7 @@ Game::~Game()
 	//ゲームカメラを削除する。
 	DeleteGO(gameCamera);
 	//ゲーム中のBGMを削除する。
-	//DeleteGO(GameBGM);
+	DeleteGO(GameBGM);
 	//背景を削除する。
 	DeleteGO(backGround);
 	//UIの削除
@@ -77,9 +89,17 @@ Game::~Game()
 	//風の削除
 	DeleteGO(m_windZone);
 	//オレンジの消去
-	DeleteGO(m_orenge);
+	DeleteGO(m_Orange);
+	//オレンジ2の消去
+	DeleteGO(m_rightOrange);
+	//オレンジ3の消去
+	DeleteGO(m_leftOrange);
+	//オレンジ4の消去
+	DeleteGO(m_middleOrange);
 	//トラックの消去
-	DeleteGO(m_track);
+	DeleteGO(m_rightTrack);
+	//トラック2の消去
+	DeleteGO(m_leftTrack);
 }
 
 //更新処理。
