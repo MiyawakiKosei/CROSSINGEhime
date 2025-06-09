@@ -31,6 +31,7 @@ public:
 	GameCamera* gameCamera;	
 	BackGround* backGround; 
 	SoundSource* GameBGM;  
+	SoundSource* GameSE;
 	FontRender fontRender; 
 	ModelRender modelRender;
 	Timer* m_Timer;          
