@@ -1,6 +1,6 @@
 #pragma once
 class Player;
-class HPManager;
+
 class Track : public IGameObject 
 {
 public:

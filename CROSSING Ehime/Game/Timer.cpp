@@ -4,7 +4,7 @@
 #include "Game.h"
 
 Timer::Timer() : timeLeft(60 * 30) { // 1800フレーム（1分、30FPS想定）
-    m_fontRender.SetPosition({ -927.0f,400.0f,0.0f });
+    m_fontRender.SetPosition({ -100.0f,500.0f,0.0f });
     m_fontRender.SetScale(2.0f);
     m_fontRender.SetColor(g_vec4Black);
 }
