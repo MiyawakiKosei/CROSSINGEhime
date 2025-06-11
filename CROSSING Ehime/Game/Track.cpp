@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Track.h"
 #include "Player.h"
-#include "HPManager.h"
+
 
 namespace
 {

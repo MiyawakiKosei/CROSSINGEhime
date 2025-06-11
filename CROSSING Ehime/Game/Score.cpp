@@ -3,7 +3,7 @@
 #include "orange.h"
 
 Score::Score() {
-    fontRenderNumber.SetPosition({ 660.0f, 410.0f, 0.0f }); // 初期位置（左寄せ）
+    fontRenderNumber.SetPosition({ 660.0f, 0.0f, 0.0f }); // 初期位置（左寄せ）
     fontRenderNumber.SetScale(2.0f);
     fontRenderNumber.SetColor(g_vec4Black);
 }
@@ -21,11 +21,11 @@ void Score::Update() {
     float numberWidth = digitCount * digitWidth;
 
     // 数字の右端を固定（例：800）
-    float rightEdgeX = 700.0f;
+    float rightEdgeX = 800.0f;
 
     Vector3 numberPos = {
         rightEdgeX - numberWidth, // 左端 = 右端 - 幅
-        410.0f,
+        -410.0f,
         0.0f
     };
 

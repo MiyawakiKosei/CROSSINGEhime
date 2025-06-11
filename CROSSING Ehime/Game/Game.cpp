@@ -33,7 +33,6 @@ Game::Game()
 
 	//タイマーを作る
 	m_timer = NewGO<Timer>(0, "timer");
-	fontRender.SetPosition({ -600.0f,100.0f,0.0f });
 
 	//オレンジを作る
 	m_Orange = NewGO<Orange>(0, "orange");
