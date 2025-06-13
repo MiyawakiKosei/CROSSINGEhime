@@ -12,9 +12,14 @@ public:
 	void Render(RenderContext& rc);
 	//更新処理
 	void Update();
-	//スプライトレンダー
-	SpriteRender spriteRender;
+	void FontFade();
+
+private:
 	//タイトルのBGM
 	SoundSource* titleBGM;
+
+	FontRender		m_fontRender;				//フォントレンダー。
+	SpriteRender	m_spriteRender;				//スプライトレンダー。
+
 };
 
