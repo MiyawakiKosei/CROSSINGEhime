@@ -24,12 +24,13 @@ void Score::Update() {
     float rightEdgeX = 800.0f;
 
     Vector3 numberPos = {
-        rightEdgeX - numberWidth, // 左端 = 右端 - 幅
-        -410.0f,
-        0.0f
+     rightEdgeX - numberWidth, // 左端 = 右端 - 幅
+     500.0f,                   // タイマーと同じ高さに変更
+     0.0f
     };
 
     fontRenderNumber.SetPosition(numberPos);
+
 
     
 }

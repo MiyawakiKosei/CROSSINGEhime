@@ -3,7 +3,6 @@
 #include "Player.h"
 #include "GameCamera.h"
 #include "BackGround.h"
-#include "Timer.h"
 #include "GameClear.h"
 #include "GameOver.h"
 #include "Title.h"
@@ -30,9 +29,6 @@ Game::Game()
 
 	//UIを作る
 	m_GameUI = NewGO<GameUI>(0, "game_ui");
-
-	//タイマーを作る
-	m_timer = NewGO<Timer>(0, "timer");
 
 	//オレンジを作る
 	m_Orange = NewGO<Orange>(0, "orange");
@@ -83,8 +79,7 @@ Game::~Game()
 	DeleteGO(backGround);
 	//UIの削除
 	DeleteGO(m_GameUI);
-	//タイマーの削除
-	DeleteGO(m_timer);
+
 	//風の削除
 	DeleteGO(m_windZone);
 	//オレンジの消去
@@ -104,30 +99,28 @@ Game::~Game()
 //更新処理。
 void Game::Update()
 {
-	// プレイヤーが範囲に入っている場合に風を発生させる
-	m_windZone->Update();
-	
-	switch (m_timer->T_Count)//ループ判定
+	static bool started = false;
+	if (!started)
 	{
-	case 1://ゲームクリア
-		NewGO<GameClear>(0, "gameClear");
-		DeleteGO(this);
-		break;
-	case 2://ゲームオーバー
-		NewGO<GameOver>(0, "gameOver");
-		DeleteGO(this);
-		break;
-	default:
-		break;
+		m_GameUI->StartStartCountDown();
+		started = true;
 	}
-		
-	switch (player->P_Count)//ループ判定
+
+	// スタートカウントダウン中はプレイヤーとカウントダウン停止
+	if (m_GameUI->IsStartCountingDown())
 	{
-	case 1://ゲームクリア
+		// カウントダウン更新のみ
+		m_GameUI->Update();
+		return;  // プレイヤーのUpdateやゲーム進行はストップ
+	}
+
+	switch (player->P_Count) // ループ判定
+	{
+	case 1: // ゲームクリア
 		NewGO<GameClear>(0, "gameClear");
 		DeleteGO(this);
 		break;
-	case 2://ゲームオーバー
+	case 2: // ゲームオーバー
 		NewGO<GameOver>(0, "gameOver");
 		DeleteGO(this);
 		break;
@@ -135,6 +128,10 @@ void Game::Update()
 		break;
 	}
 }
+
+
+
+
 
 //描画処理
 void Game::Render(RenderContext& rc) 
