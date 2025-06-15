@@ -14,6 +14,7 @@
 #include "Orange.h"
 #include "Track.h"
 #include "sound/SoundEngine.h"
+#include "Cone.h";
 
 
 
@@ -34,29 +35,7 @@ Game::Game()
 	//タイマーを作る
 	m_timer = NewGO<Timer>(0, "timer");
 
-	//オレンジを作る
-	m_Orange = NewGO<Orange>(0, "orange");
-	m_Orange->position = { 0.0f,0.0f,-1000.0f };
-
-	//オレンジ2を作る
-	m_rightOrange = NewGO<Orange>(0, "orange2");
-	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
-
-	//オレンジ3を作る
-	m_leftOrange = NewGO<Orange>(0, "orange3");
-	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
-
-	//オレンジ４を作る
-	m_middleOrange = NewGO<Orange>(0, "orange4");
-	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
-
-	//トラックを作る
-	m_rightTrack = NewGO<Track>(0, "track");
-	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
-
-	//トラック2を作る
-	m_leftTrack= NewGO<Track>(0, "track2");
-	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
+	CreateObject();//オブジェクトを作る
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
@@ -99,6 +78,8 @@ Game::~Game()
 	DeleteGO(m_rightTrack);
 	//トラック2の消去
 	DeleteGO(m_leftTrack);
+	//コーンの消去
+	DeleteGO(m_cone);
 }
 
 //更新処理。
@@ -134,6 +115,37 @@ void Game::Update()
 	default:
 		break;
 	}
+}
+
+void Game::CreateObject()
+{
+	//オレンジを作る
+	m_Orange = NewGO<Orange>(0, "orange");
+	m_Orange->position = { 0.0f,0.0f,-1000.0f };
+
+	//オレンジ2を作る
+	m_rightOrange = NewGO<Orange>(0, "orange2");
+	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
+
+	//オレンジ3を作る
+	m_leftOrange = NewGO<Orange>(0, "orange3");
+	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
+
+	//オレンジ４を作る
+	m_middleOrange = NewGO<Orange>(0, "orange4");
+	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
+
+	//トラックを作る
+	m_rightTrack = NewGO<Track>(0, "track");
+	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
+
+	//トラック2を作る
+	m_leftTrack= NewGO<Track>(0, "track2");
+	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
+
+	//コーンを作る
+	m_cone = NewGO<Cone>(0, "cone");
+	m_cone->m_cnposition = { 0.0f,0.0f,-7000.0f };
 }
 
 //描画処理

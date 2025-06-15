@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Track.h"
 #include "Player.h"
+#
 
 
 namespace
@@ -14,7 +15,6 @@ namespace
 
 Track::Track() 
 {
-	
 }
 
 Track::~Track() {

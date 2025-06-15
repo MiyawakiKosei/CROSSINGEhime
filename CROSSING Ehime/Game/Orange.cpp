@@ -8,12 +8,12 @@
 Orange::Orange() {
 	////モデルを読み込む
 	or_modelRender.Init("Assets/modelData/orenge/Orenge01.tkm");
-	//BGMを読み込む
+	//SEを読み込む
 	g_soundEngine->ResistWaveFileBank(2, "Assets/sound/coin04.wav");
 	////プレイヤーのオブジェクトを引っ張ってくる
 	player = FindGO<Player>("player");
 
-	//m_ormodelRender.SetPosition(0.0f, 0.0f, -1000.0f);
+		//m_ormodelRender.SetPosition(0.0f, 0.0f, -1000.0f);
 }
 
 Orange::~Orange() {

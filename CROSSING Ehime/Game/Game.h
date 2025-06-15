@@ -15,6 +15,7 @@ class GameSelect;
 class Orange;
 class Track;
 class WindZone;
+class Cone;
 
 
 class Game : public IGameObject
@@ -24,7 +25,7 @@ public:
 	~Game();
 	
 	void Update();
-	
+	void CreateObject();
 	void Render(RenderContext& rc);
 
 	Player* player;		
@@ -47,5 +48,6 @@ public:
 	Orange* m_middleOrange;//中央のオレンジ
 	Track* m_rightTrack;//右トラック
 	Track* m_leftTrack;//左トラック
-	WindZone* m_windZone;   
+	WindZone* m_windZone; 
+	Cone* m_cone; //コーン
 };

@@ -42,7 +42,8 @@ private:
 		enMovingFloorState_MovingLeft
 	};
 	enMovingFloorState		m_MovingFloorState = enMovingFloorState_MovingRight;
-
+	Track* m_rightTrack;//右トラック
+	Track* m_leftTrack;//左トラック
 };
 
 
