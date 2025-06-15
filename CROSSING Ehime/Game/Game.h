@@ -28,6 +28,8 @@ public:
 	void CreateObject();
 	void Render(RenderContext& rc);
 
+	void StartCountDown();
+
 	Player* player;		
 	GameCamera* gameCamera;	
 	BackGround* backGround; 

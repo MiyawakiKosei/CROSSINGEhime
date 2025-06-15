@@ -3,7 +3,6 @@
 #include "Player.h"
 #include "GameCamera.h"
 #include "BackGround.h"
-#include "Timer.h"
 #include "GameClear.h"
 #include "GameOver.h"
 #include "Title.h"
@@ -20,30 +19,49 @@
 
 Game::Game()
 {
-	//ƒvƒŒƒCƒ„[‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½B
 	player = NewGO<Player>(0, "player");
 
-	//ƒQ[ƒ€ƒJƒƒ‰‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//ï¿½Qï¿½[ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½B
 	gameCamera = NewGO<GameCamera>(0, "gameCamera");
 
-	//”wŒi‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//ï¿½wï¿½iï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½B
 	backGround = NewGO<BackGround>(0);
 
-	//UI‚ğì‚é
+	//UIï¿½ï¿½ï¿½ï¿½
 	m_GameUI = NewGO<GameUI>(0, "game_ui");
 
-	//ƒ^ƒCƒ}[‚ğì‚é
-	m_timer = NewGO<Timer>(0, "timer");
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½
+	m_Orange = NewGO<Orange>(0, "orange");
+	m_Orange->position = { 0.0f,0.0f,-1000.0f };
 
-	CreateObject();//ƒIƒuƒWƒFƒNƒg‚ğì‚é
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½W2ï¿½ï¿½ï¿½ï¿½
+	m_rightOrange = NewGO<Orange>(0, "orange2");
+	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
+
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½W3ï¿½ï¿½ï¿½ï¿½
+	m_leftOrange = NewGO<Orange>(0, "orange3");
+	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
+
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Sï¿½ï¿½ï¿½ï¿½
+	m_middleOrange = NewGO<Orange>(0, "orange4");
+	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
+
+	//ï¿½gï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½
+	m_rightTrack = NewGO<Track>(0, "track");
+	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
+
+	//ï¿½gï¿½ï¿½ï¿½bï¿½N2ï¿½ï¿½ï¿½ï¿½
+	m_leftTrack= NewGO<Track>(0, "track2");
+	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
 	m_windZone->SetTimer(m_timer);
 
-	//ƒQ[ƒ€’†‚ÌBGM‚ğ“Ç‚İ‚ŞB
+	//ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½Ç‚İï¿½ï¿½ŞB
 	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/GameBGM_Play.wav");
-	//ƒQ[ƒ€’†‚ÌBGM‚ğÄ¶‚·‚é
+	//ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½
 	GameBGM = NewGO<SoundSource>(0);
 	GameBGM->Init(1);
 	GameBGM->Play(true);
@@ -52,63 +70,60 @@ Game::Game()
 
 Game::~Game()
 {
-	//ƒvƒŒƒCƒ„[‚ğíœ‚·‚éB
+	//ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½B
 	DeleteGO(player);
-	//ƒQ[ƒ€ƒJƒƒ‰‚ğíœ‚·‚éB
+	//ï¿½Qï¿½[ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½B
 	DeleteGO(gameCamera);
-	//ƒQ[ƒ€’†‚ÌBGM‚ğíœ‚·‚éB
+	//ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½B
 	DeleteGO(GameBGM);
-	//”wŒi‚ğíœ‚·‚éB
+	//ï¿½wï¿½iï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½B
 	DeleteGO(backGround);
-	//UI‚Ìíœ
+	//UIï¿½Ìíœ
 	DeleteGO(m_GameUI);
-	//ƒ^ƒCƒ}[‚Ìíœ
-	DeleteGO(m_timer);
-	//•—‚Ìíœ
+
+	//ï¿½ï¿½ï¿½Ìíœ
 	DeleteGO(m_windZone);
-	//ƒIƒŒƒ“ƒW‚ÌÁ‹
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_Orange);
-	//ƒIƒŒƒ“ƒW2‚ÌÁ‹
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½W2ï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_rightOrange);
-	//ƒIƒŒƒ“ƒW3‚ÌÁ‹
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½W3ï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_leftOrange);
-	//ƒIƒŒƒ“ƒW4‚ÌÁ‹
+	//ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½W4ï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_middleOrange);
-	//ƒgƒ‰ƒbƒN‚ÌÁ‹
+	//ï¿½gï¿½ï¿½ï¿½bï¿½Nï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_rightTrack);
-	//ƒgƒ‰ƒbƒN2‚ÌÁ‹
+	//ï¿½gï¿½ï¿½ï¿½bï¿½N2ï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_leftTrack);
-	//ƒR[ƒ“‚ÌÁ‹
+	//ï¿½Rï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	DeleteGO(m_cone);
 }
 
-//XVˆ—B
+//ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½B
 void Game::Update()
 {
-	// ƒvƒŒƒCƒ„[‚ª”ÍˆÍ‚É“ü‚Á‚Ä‚¢‚éê‡‚É•—‚ğ”­¶‚³‚¹‚é
-	m_windZone->Update();
-	
-	switch (m_timer->T_Count)//ƒ‹[ƒv”»’è
+	static bool started = false;
+	if (!started)
 	{
-	case 1://ƒQ[ƒ€ƒNƒŠƒA
-		NewGO<GameClear>(0, "gameClear");
-		DeleteGO(this);
-		break;
-	case 2://ƒQ[ƒ€ƒI[ƒo[
-		NewGO<GameOver>(0, "gameOver");
-		DeleteGO(this);
-		break;
-	default:
-		break;
+		m_GameUI->StartStartCountDown();
+		started = true;
 	}
-		
-	switch (player->P_Count)//ƒ‹[ƒv”»’è
+
+	// ï¿½Xï¿½^ï¿½[ï¿½gï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Íƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÆƒJï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½~
+	if (m_GameUI->IsStartCountingDown())
 	{
-	case 1://ƒQ[ƒ€ƒNƒŠƒA
+		// ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½Xï¿½Vï¿½Ì‚ï¿½
+		m_GameUI->Update();
+		return;  // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½Updateï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½iï¿½sï¿½ÍƒXï¿½gï¿½bï¿½v
+	}
+
+	switch (player->P_Count) // ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½ï¿½
+	{
+	case 1: // ï¿½Qï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½A
 		NewGO<GameClear>(0, "gameClear");
 		DeleteGO(this);
 		break;
-	case 2://ƒQ[ƒ€ƒI[ƒo[
+	case 2: // ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[
 		NewGO<GameOver>(0, "gameOver");
 		DeleteGO(this);
 		break;
@@ -117,38 +132,11 @@ void Game::Update()
 	}
 }
 
-void Game::CreateObject()
-{
-	//ƒIƒŒƒ“ƒW‚ğì‚é
-	m_Orange = NewGO<Orange>(0, "orange");
-	m_Orange->position = { 0.0f,0.0f,-1000.0f };
 
-	//ƒIƒŒƒ“ƒW2‚ğì‚é
-	m_rightOrange = NewGO<Orange>(0, "orange2");
-	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
 
-	//ƒIƒŒƒ“ƒW3‚ğì‚é
-	m_leftOrange = NewGO<Orange>(0, "orange3");
-	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
 
-	//ƒIƒŒƒ“ƒW‚S‚ğì‚é
-	m_middleOrange = NewGO<Orange>(0, "orange4");
-	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
 
-	//ƒgƒ‰ƒbƒN‚ğì‚é
-	m_rightTrack = NewGO<Track>(0, "track");
-	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
-
-	//ƒgƒ‰ƒbƒN2‚ğì‚é
-	m_leftTrack= NewGO<Track>(0, "track2");
-	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
-
-	//ƒR[ƒ“‚ğì‚é
-	m_cone = NewGO<Cone>(0, "cone");
-	m_cone->m_cnposition = { 0.0f,0.0f,-7000.0f };
-}
-
-//•`‰æˆ—
+//ï¿½`ï¿½æˆï¿½ï¿½
 void Game::Render(RenderContext& rc) 
 {
 

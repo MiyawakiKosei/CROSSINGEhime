@@ -1,9 +1,13 @@
 #include "stdafx.h"
 #include "WindZone.h"
 #include "Player.h"
-#include "Timer.h"
 
-WindZone::WindZone() {}
+
+WindZone::WindZone() //ai
+    : m_windActive(false)
+, m_windCooldown(20.0f)
+, m_windDuration(0.0f)
+{}
 
 WindZone::~WindZone() {}
 
@@ -16,32 +20,31 @@ void WindZone::SetTimer(Timer* timer) {
 }
 
 void WindZone::Update() {
-    if (!m_player || !m_timer) return;
+    if (!m_player) return;
 
-    const float playerX = m_player->m_position.x;
+    float deltaTime = g_gameTime->GetFrameDeltaTime();
 
-    // 風が吹いている状態
     if (m_windActive) {
-        // 風の持続時間中はプレイヤーに影響を与える
-        if (m_windDuration > 0) {
-            m_windDuration--;
-
-            // プレイヤーのX座標を風の方向に少し動かす
+        if (m_windDuration > 0.0f) {
+            m_windDuration -= deltaTime;
             m_player->windPower = m_windDirection * 100.0f;
-
         }
         else {
             m_windActive = false;
+            m_player->windPower = 0.0f;
+            m_windCooldown = WIND_COOLDOWN_TIME;  // 20秒待機
         }
-        return;
     }
-
-    // WindCountが1, 3, 5のときだけ風を発生させる
-    int count = m_timer->WindCount;
-    if ((count == 1 || count == 3 || count == 5) && !m_windActive) {
-        // プレイヤーの位置±30以内なら風を発生させる
-        m_windActive = true;
-        m_windDuration = 5 * 30; // 5秒間
-        m_windDirection = (rand() % 2 == 0) ? 1.0f : -1.0f;
+    else {
+        if (m_windCooldown > 0.0f) {
+            m_windCooldown -= deltaTime;
+        }
+        else {
+            // 待機時間が終わったので風を吹かせる（確率判定なし）
+            m_windActive = true;
+            m_windDuration = WIND_ACTIVE_TIME;    // 10秒間風が吹く
+            m_windDirection = (rand() % 2 == 0) ? 1.0f : -1.0f;  // 方向だけランダム
+        }
     }
 }
+
