@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Player.h"
-#include "Timer.h"
 #include "WindZone.h"
 #include "Game.h"
 #include "GameCamera.h"

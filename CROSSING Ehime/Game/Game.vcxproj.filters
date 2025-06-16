@@ -12,14 +12,12 @@
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="system\system.cpp" />
-    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="DebugFont.cpp" />
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="WindZone.cpp" />
     <ClCompile Include="Orange.cpp" />
     <ClCompile Include="Track.cpp" />
-    <ClCompile Include="HPManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -32,13 +30,11 @@
     <ClInclude Include="Score.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="DebugFont.h" />
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="WindZone.h" />
     <ClInclude Include="Orange.h" />
     <ClInclude Include="Track.h" />
-    <ClInclude Include="HPManager.h" />
   </ItemGroup>
 </Project>

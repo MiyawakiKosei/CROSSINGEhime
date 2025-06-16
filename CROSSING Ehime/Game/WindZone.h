@@ -13,7 +13,14 @@ public:
 private:
     Player* m_player = nullptr;
     Timer* m_timer = nullptr;
+
     bool m_windActive = false;
-    int m_windDuration = 0;  // 風が吹いている残り時間（フレーム）
-    float m_windDirection = 0.0f; // -1（左）か +1（右）
+    float m_windDuration = 0.0f;     // 風が吹いている残り時間（秒）
+    float m_windCooldown = 20.0f;     // 風の待機時間（秒）
+    float m_windDirection = 0.0f;    // -1（左）か +1（右）
+
+    static constexpr float WIND_ACTIVE_TIME = 10.0f;    // 風が吹く時間（秒）
+    static constexpr float WIND_COOLDOWN_TIME = 20.0f;  // 風の待機時間（秒）
+  
 };
+

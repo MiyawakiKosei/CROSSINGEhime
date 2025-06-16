@@ -139,7 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>K2_DEBUG;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)..\k2EngineLow\graphics\font\</AdditionalIncludeDirectories>
@@ -232,7 +232,6 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameSelect.cpp" />
     <ClCompile Include="GameUI.cpp" />
-    <ClCompile Include="HPManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Orange.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -243,7 +242,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
-    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="WindZone.cpp" />
@@ -257,13 +255,11 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameSelect.h" />
     <ClInclude Include="GameUI.h" />
-    <ClInclude Include="HPManager.h" />
     <ClInclude Include="Orange.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="WindZone.h" />
