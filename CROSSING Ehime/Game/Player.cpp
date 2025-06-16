@@ -184,13 +184,10 @@ void Player::ManageState()
 	//xかzの移動速度があったら(スティックの入力があったら)。
 	if (fabsf(moveSpeed.x) >= 0.001f || fabsf(moveSpeed.z) >= 0.001f)
 	{
-		//ステートを2(歩き)にする。
+		//ステートを2(走る)にする。
 		playerState = 2;
-	}
-	else
-	{
-		//ステートを0(待機中)にする。
-		playerState = 0;
+
+		return;
 	}
 }
 
