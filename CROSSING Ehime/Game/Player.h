@@ -59,7 +59,10 @@ public:
 
 	int P_Count = 0;
 private:
-	
+	float m_gameStartTime = 0.0f; // ゲーム開始からの時間を計るタイマー
+	bool m_isPlayerControllable = false; // プレイヤーが操作可能かどうかのフラグ
+	const float INITIAL_WAIT_TIME = 5.0f; // プレイヤーが動かない秒数 (5秒)
+
 	CharacterController m_characterController;  //キャラクターコントローラー。
 	Vector3				m_scale = Vector3::One;
 };
