@@ -11,7 +11,7 @@ public:
 	ModelRender or_modelRender;
 	//‚±‚±‚©‚çƒƒ“ƒo•Ï”
 	//À•W
-	Vector3 position;
+	Vector3 m_orposition;
 	//‰ñ“]
 	Quaternion rot;
 	int Or_Count = 0;

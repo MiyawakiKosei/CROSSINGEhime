@@ -28,7 +28,7 @@ void Orange::Update() {
 	or_modelRender.Update();
 	
 	//プレイヤーからオレンジに向かうベクトルを求める
-	Vector3 diff = player->m_position - position;
+	Vector3 diff = player->m_position - m_orposition;
 	//ベクトルの長さが70.0fより小さかったら
 	if (diff.Length() <= 120.0f) {
 		Score* score = FindGO<Score>("score");
@@ -50,26 +50,26 @@ void Orange::Move() {
 	//上下に移動させる
 	if (Or_Count == 0) {
 		//上
-		position.y += 1.0f;
+		m_orposition.y += 1.0f;
 	}
 	else if (Or_Count == 1) {
 		//下
-		position.y -= 1.0f;
+		m_orposition.y -= 1.0f;
 	}
 
 	//posisionyが初期位置+50を超えたら
-	if (position.y >= firstPosition.y+30.0f) {
+	if (m_orposition.y >= firstPosition.y+30.0f) {
 		//オレンジカウントを１にする
 		Or_Count = 1;
 	}
 	//positionyが初期位置-50を超えたら
-	else if (position.y <= firstPosition.y -30.0f) {
+	else if (m_orposition.y <= firstPosition.y -30.0f) {
 		//オレンジカウントを0にする
 		Or_Count = 0;
 	}
 	
 	//座標を教える
-	or_modelRender.SetPosition(position);
+	or_modelRender.SetPosition(m_orposition);
 
 
 }

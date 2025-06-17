@@ -5,7 +5,7 @@
 Cone::Cone() {
 	//モデルを読み込む
 	m_cnmodelRender.Init("Assets/modelData/cone/Cone02.tkm");
-	m_cnmodelRender.SetScale(Vector3(3.0f, 3.0f, 3.0f));
+	m_cnmodelRender.SetScale(Vector3(2.0f, 2.0f, 2.0f));
 	//プレイヤーの位置を取得
 	player = FindGO<Player>("player");
 

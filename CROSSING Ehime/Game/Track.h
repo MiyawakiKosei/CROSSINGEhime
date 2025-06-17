@@ -15,12 +15,12 @@ public:
 	/// <param name="position">座標。</param>
 	void SetPosition(const Vector3& position)
 	{
-		m_position = position;
+		m_trposition = position;
 	}
 	ModelRender m_modelRender;
 	//ここからメンバ変数
 	//座標
-	Vector3 m_position;
+	Vector3 m_trposition;
 	//回転
 	Quaternion rot;
 	int Tr_Count = 1;

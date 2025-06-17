@@ -19,49 +19,27 @@
 
 Game::Game()
 {
-	//�v���C���[�̃I�u�W�F�N�g����B
+	//Playerを生成
 	player = NewGO<Player>(0, "player");
 
-	//�Q�[���J�����̃I�u�W�F�N�g����B
+	//ゲームカメラの生成
 	gameCamera = NewGO<GameCamera>(0, "gameCamera");
 
-	//�w�i�̃I�u�W�F�N�g����B
+	//ステージの生成
 	backGround = NewGO<BackGround>(0);
 
-	//UI����
+	//UIの生成
 	m_GameUI = NewGO<GameUI>(0, "game_ui");
 
-	//�I�����W����
-	m_Orange = NewGO<Orange>(0, "orange");
-	m_Orange->position = { 0.0f,0.0f,-1000.0f };
-
-	//�I�����W2����
-	m_rightOrange = NewGO<Orange>(0, "orange2");
-	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
-
-	//�I�����W3����
-	m_leftOrange = NewGO<Orange>(0, "orange3");
-	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
-
-	//�I�����W�S����
-	m_middleOrange = NewGO<Orange>(0, "orange4");
-	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
-
-	//�g���b�N����
-	m_rightTrack = NewGO<Track>(0, "track");
-	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
-
-	//�g���b�N2����
-	m_leftTrack= NewGO<Track>(0, "track2");
-	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
+	CreateObject();//オレンジとトラックとコーンの生成
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
 	m_windZone->SetTimer(m_timer);
 
-	//�Q�[������BGM��ǂݍ��ށB
+	//BGMの生成
 	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/GameBGM_Play.wav");
-	//�Q�[������BGM��Đ�����
+	//
 	GameBGM = NewGO<SoundSource>(0);
 	GameBGM->Init(1);
 	GameBGM->Play(true);
@@ -70,36 +48,34 @@ Game::Game()
 
 Game::~Game()
 {
-	//�v���C���[��폜����B
+	//playerの消去
 	DeleteGO(player);
-	//�Q�[���J������폜����B
+	//カメラの消去
 	DeleteGO(gameCamera);
-	//�Q�[������BGM��폜����B
+	//BGMの消去
 	DeleteGO(GameBGM);
-	//�w�i��폜����B
+	//ステージの消去
 	DeleteGO(backGround);
-	//UI�̍폜
+	//UIの消去
 	DeleteGO(m_GameUI);
-
-	//���̍폜
+	//風の消去
 	DeleteGO(m_windZone);
-	//�I�����W�̏���
+	//オレンジの消去
 	DeleteGO(m_Orange);
-	//�I�����W2�̏���
+	//オレンジ2の消去
 	DeleteGO(m_rightOrange);
-	//�I�����W3�̏���
+	//オレンジ3の消去
 	DeleteGO(m_leftOrange);
-	//�I�����W4�̏���
+	//オレンジ4の消去
 	DeleteGO(m_middleOrange);
-	//�g���b�N�̏���
+	//トラックの消去
 	DeleteGO(m_rightTrack);
-	//�g���b�N2�̏���
+	//トラック2の消去
 	DeleteGO(m_leftTrack);
-	//�R�[���̏���
+	//コーンの消去
 	DeleteGO(m_cone);
 }
 
-//�X�V�����B
 void Game::Update()
 {
 	static bool started = false;
@@ -109,21 +85,21 @@ void Game::Update()
 		started = true;
 	}
 
-	// �X�^�[�g�J�E���g�_�E�����̓v���C���[�ƃJ�E���g�_�E����~
+	// カウントダウン
 	if (m_GameUI->IsStartCountingDown())
 	{
-		// �J�E���g�_�E���X�V�̂�
+		//UIの更新
 		m_GameUI->Update();
-		return;  // �v���C���[��Update��Q�[���i�s�̓X�g�b�v
+		return;  
 	}
 
-	switch (player->P_Count) // ���[�v����
+	switch (player->P_Count) 
 	{
-	case 1: // �Q�[���N���A
+	case 1: //１の時
 		NewGO<GameClear>(0, "gameClear");
 		DeleteGO(this);
 		break;
-	case 2: // �Q�[���I�[�o�[
+	case 2: //２の時
 		NewGO<GameOver>(0, "gameOver");
 		DeleteGO(this);
 		break;
@@ -133,10 +109,38 @@ void Game::Update()
 }
 
 
+void Game::CreateObject() {
+	//オレンジの生成
+	m_Orange = NewGO<Orange>(0, "orange");
+	m_Orange->m_orposition = { 0.0f,0.0f,-1000.0f };
+
+	//オレンジ2の生成
+	m_rightOrange = NewGO<Orange>(0, "orange2");
+	m_rightOrange->m_orposition = { 150.0f,0.0f,-6000.0f };
+
+	//オレンジ３の生成
+	m_leftOrange = NewGO<Orange>(0, "orange3");
+	m_leftOrange->m_orposition = { -300.0f,0.0f,-10000.0f };
+
+	//オレンジ4の生成
+	m_middleOrange = NewGO<Orange>(0, "orange4");
+	m_middleOrange->m_orposition = { 0.0f,0.0f,-13000.0f };
+
+	//トラックの生成
+	m_rightTrack = NewGO<Track>(0, "track");
+	m_rightTrack->m_trposition = { 150.0f,30.0f,-1000.0f };
+
+	//トラック２の生成
+	m_leftTrack = NewGO<Track>(0, "track2");
+	m_leftTrack->m_trposition = { -300.0f,30.0f,-1000.0f };
+
+	//コーンの生成
+	m_cone = NewGO<Cone>(0, "cone");
+	m_cone->m_cnposition = { 0.0f,-10.0f,-7000.0f };
+}
 
 
-
-//�`�揈��
+//モデルレンダー
 void Game::Render(RenderContext& rc) 
 {
 

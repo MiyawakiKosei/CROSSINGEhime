@@ -33,7 +33,7 @@ bool Track::Start()
 	m_collisionObject = NewGO<CollisionObject>(0, "collisionObject");
 
 	m_collisionObject->SetIsEnableAutoDelete(false);
-	firstPosition = m_position;
+	firstPosition = m_trposition;
 	return true;
 
 }
@@ -48,8 +48,8 @@ void Track::Update() {
 	Move();
 
 	m_modelRender.Update();
-	m_physicsStaticObject.SetPosition(m_position);
-	m_collisionObject->SetPosition(m_position + COLLISION_HEIGHT);
+	m_physicsStaticObject.SetPosition(m_trposition);
+	m_collisionObject->SetPosition(m_trposition + COLLISION_HEIGHT);
 
 }
 
@@ -58,26 +58,26 @@ void Track::Move() {
 	//前後に移動させる
 	if (Tr_Count == 1) {
 		//前に進む
-		m_position.z += 10.0f;
+		m_trposition.z += 10.0f;
 	}
 	else if (Tr_Count == 0) {
 		//後ろに進む
-		m_position.z -= 10.0f;
+		m_trposition.z -= 10.0f;
 	}
 
 	//もしz軸が-1000を超えたら
-	if (m_position.z <= -1000.0f) {
+	if (m_trposition.z <= -1000.0f) {
 		Tr_Count = 1;
 		rot.SetRotationDegY(360.0f);
 	}
 	//もしz軸が-500を超えたら
-	if (m_position.z >= -500.0f) {
+	if (m_trposition.z >= -500.0f) {
 		Tr_Count = 0;
 		rot.SetRotationDegY(180.0f);
 	}
 
 	//座標を教える
-	m_modelRender.SetPosition(m_position);
+	m_modelRender.SetPosition(m_trposition);
 
 	//回転を教える
 	m_modelRender.SetRotation(rot);

@@ -56,7 +56,6 @@ public:
 	Quaternion rotX, rotY; //クォータニオン。
 	Quaternion rotation; //クォータニオン。
 	int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
-	//int starCount = 0;	//集めた☆の数をカウントする。
 
 	int P_Count = 0;
 private:
