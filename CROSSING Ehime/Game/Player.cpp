@@ -3,6 +3,7 @@
 #include "WindZone.h"
 #include "Game.h"
 #include "GameCamera.h"
+#include "k2EngineLow.h"
 
 Player::Player()
 {
@@ -66,6 +67,14 @@ Player::~Player() {
 
 void Player::Update()
 {
+	// ゲーム開始からの時間を更新
+	m_gameStartTime += g_gameTime->GetFrameDeltaTime();
+
+	// 5秒経過したらプレイヤーを操作可能にする
+	if (!m_isPlayerControllable && m_gameStartTime >= INITIAL_WAIT_TIME) {
+		m_isPlayerControllable = true;
+		playerState = enAnimationClip_Idle;
+	}
 
 	//モデルを更新する
 	m_bgmodelRender.Update();
@@ -81,8 +90,6 @@ void Player::Update()
 
 	//アニメーションの再生。
 	PlayAnimation();
-
-	//position.y -= 5.5f;
 
 	//もしプレイヤーがY-500以下なら
 	if (m_position.y <= -500.0f)
@@ -106,9 +113,9 @@ void Player::Update()
 
 void  Player::Move() 
 {
-	//xzの移動速度を0.0fにする
+	//xzの移動速度を1000.0fにする
 	moveSpeed.x = 0.0f;
-	moveSpeed.z = 0.0f;
+	moveSpeed.z = -200.0f;
 
 	//左スティックの入力量を取得
 	Vector3 stickL;
@@ -123,8 +130,8 @@ void  Player::Move()
 	right.y = 0.0f;
 
 	//左スティックの入力量と120.0fを乗算
-	right *= stickL.x * 1440.0f;
-	forward *= stickL.y * 1000.0f;
+	right *= stickL.x * 720.0f;
+	//forward *= stickL.y * 1000.0f;
 
 	//移動速度にスティックの入力量を加算する
 	moveSpeed += right + forward;
@@ -138,7 +145,7 @@ void  Player::Move()
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
 			//ジャンプさせる
-			moveSpeed.y += 520.0f;
+			moveSpeed.y += 260.0f;
 		}
 	}
 	//地面に付いていなかったら
