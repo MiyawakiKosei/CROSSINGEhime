@@ -74,6 +74,16 @@ Game::~Game()
 	DeleteGO(m_leftTrack);
 	//コーンの消去
 	DeleteGO(m_cone);
+	//コーン1の消去
+	DeleteGO(m_firstcone);
+	//コーン2の消去
+	DeleteGO(m_secondcone);
+	//コーン3の消去
+	DeleteGO(m_thirdcone);
+	//コーン4の消去
+	DeleteGO(m_fourthcone);
+	//コーン5の消去
+	DeleteGO(m_fifthcone);
 }
 
 void Game::Update()
@@ -134,9 +144,29 @@ void Game::CreateObject() {
 	m_leftTrack = NewGO<Track>(0, "track2");
 	m_leftTrack->m_trposition = { -300.0f,30.0f,-1000.0f };
 
-	//コーンの生成
+	//コーン0の生成
 	m_cone = NewGO<Cone>(0, "cone");
 	m_cone->m_cnposition = { 0.0f,-10.0f,-7000.0f };
+
+	//コーン1の生成
+	m_firstcone = NewGO<Cone>(0, "cone1");
+	m_firstcone->m_cnposition = { 35.0f,-10.0f,-7000.0f };
+
+	//コーン2の生成
+	m_secondcone = NewGO<Cone>(0, "cone2");
+	m_secondcone->m_cnposition = { -35.0f,-10.0f,-7000.0f };
+
+	//コーン3の生成
+	m_thirdcone = NewGO<Cone>(0, "cone3");
+	m_thirdcone->m_cnposition = { 0.0f,-10.0f,-12000.0f };
+
+	//コーン4の生成
+	m_fourthcone = NewGO<Cone>(0, "cone4");
+	m_fourthcone->m_cnposition = { 35.0f,-10.0f,-10000.0f };
+
+	//コーン5の生成
+	m_fifthcone = NewGO<Cone>(0, "cone5");
+	m_fifthcone->m_cnposition = { -35.0f,-10.0f,-3000.0f };
 }
 
 

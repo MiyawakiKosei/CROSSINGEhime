@@ -51,5 +51,10 @@ public:
 	Track* m_rightTrack;//右トラック
 	Track* m_leftTrack;//左トラック
 	WindZone* m_windZone; 
-	Cone* m_cone; //コーン
+	Cone* m_cone; //コーン0
+	Cone* m_firstcone; //コーン1
+	Cone* m_secondcone; //コーン2
+	Cone* m_thirdcone; //コーン3
+	Cone* m_fourthcone; //コーン4
+	Cone* m_fifthcone; //コーン5
 };
