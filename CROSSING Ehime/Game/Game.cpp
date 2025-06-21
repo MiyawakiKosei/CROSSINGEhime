@@ -13,7 +13,8 @@
 #include "Orange.h"
 #include "Track.h"
 #include "sound/SoundEngine.h"
-#include "Cone.h";
+#include "Cone.h"
+#include "Fish.h"
 
 
 
@@ -167,6 +168,10 @@ void Game::CreateObject() {
 	//コーン5の生成
 	m_fifthcone = NewGO<Cone>(0, "cone5");
 	m_fifthcone->m_cnposition = { -35.0f,-10.0f,-3000.0f };
+
+	//魚の生成
+	m_fish = NewGO<Fish>(0, "fish");
+	m_fish->m_fiposition = { 300.0f,0.0f,-4000.0f };
 }
 
 

@@ -19,6 +19,7 @@
     <ClCompile Include="Orange.cpp" />
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="Cone.cpp" />
+    <ClCompile Include="Fish.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -38,5 +39,6 @@
     <ClInclude Include="Orange.h" />
     <ClInclude Include="Track.h" />
     <ClInclude Include="Cone.h" />
+    <ClInclude Include="Fish.h" />
   </ItemGroup>
 </Project>

@@ -16,6 +16,7 @@ class Orange;
 class Track;
 class WindZone;
 class Cone;
+class Fish;
 
 
 class Game : public IGameObject
@@ -57,4 +58,5 @@ public:
 	Cone* m_thirdcone; //コーン3
 	Cone* m_fourthcone; //コーン4
 	Cone* m_fifthcone; //コーン5
+	Fish* m_fish; //魚
 };
