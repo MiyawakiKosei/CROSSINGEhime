@@ -130,7 +130,7 @@ void  Player::Move()
 	right.y = 0.0f;
 
 	//左スティックの入力量と120.0fを乗算
-	right *= stickL.x * 720.0f;
+	right *= stickL.x * 520.0f;
 	//forward *= stickL.y * 1000.0f;
 
 	//移動速度にスティックの入力量を加算する
@@ -145,7 +145,7 @@ void  Player::Move()
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
 			//ジャンプさせる
-			moveSpeed.y += 260.0f;
+			moveSpeed.y += 460.0f;
 		}
 	}
 	//地面に付いていなかったら
@@ -156,7 +156,7 @@ void  Player::Move()
 	}
 	moveSpeed.x += windPower;
 	//キャラクターコントローラーを使って座標を移動させる
-	m_position = m_characterController.Execute(moveSpeed, 1.0f / 60.0f);
+	m_position = m_characterController.Execute(moveSpeed, 1.0f / 45.0f);
 
 	//絵描きさんに座標を教える
 	m_bgmodelRender.SetPosition(m_position);

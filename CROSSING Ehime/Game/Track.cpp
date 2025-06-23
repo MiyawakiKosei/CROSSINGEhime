@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Track.h"
 #include "Player.h"
+#
 
 namespace
 {
@@ -31,7 +32,9 @@ bool Track::Start()
     m_collision->CreateBox(m_position + collisionOffset, m_rotation, collisionSize);
     m_collision->SetIsEnableAutoDelete(false);
 
-    m_initialPosition = m_position;
+	m_collisionObject->SetIsEnableAutoDelete(false);
+	firstPosition = m_position;
+	return true;
 
     return true;
 }
@@ -46,7 +49,9 @@ void Track::Update()
 
     Move();
 
-    m_modelRender.Update();
+	m_modelRender.Update();
+	m_physicsStaticObject.SetPosition(m_position);
+	m_collisionObject->SetPosition(m_position + COLLISION_HEIGHT);
 
     if (m_collision)
     {
@@ -61,30 +66,35 @@ void Track::Update()
     }
 }
 
-void Track::Move()
-{
-    if (m_moveDirection == 1)
-    {
-        m_position.z += 10.0f;
-    }
-    else if (m_moveDirection == 0)
-    {
-        m_position.z -= 10.0f;
-    }
+void Track::Move() {
+	//前後に移動させる
+	if (Tr_Count == 1) {
+		//前に進む
+		m_position.z += 10.0f;
+	}
+	else if (Tr_Count == 0) {
+		//後ろに進む
+		m_position.z -= 10.0f;
+	}
 
-    if (m_position.z <= -1000.0f)
-    {
-        m_moveDirection = 1;
-        m_rotation.SetRotationDegY(360.0f);
-    }
-    else if (m_position.z >= -500.0f)
-    {
-        m_moveDirection = 0;
-        m_rotation.SetRotationDegY(180.0f);
-    }
+	//もしz軸が-1000を超えたら
+	if (m_position.z <= -1000.0f) {
+		Tr_Count = 1;
+		rot.SetRotationDegY(360.0f);
+	}
+	//もしz軸が-500を超えたら
+	if (m_position.z >= -500.0f) {
+		Tr_Count = 0;
+		rot.SetRotationDegY(180.0f);
+	}
 
-    m_modelRender.SetPosition(m_position);
-    m_modelRender.SetRotation(m_rotation);
+	//座標を教える
+	m_modelRender.SetPosition(m_position);
+
+	//回転を教える
+	m_modelRender.SetRotation(rot);
+
+	
 }
 
 void Track::Render(RenderContext& rc)

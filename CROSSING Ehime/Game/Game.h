@@ -15,6 +15,8 @@ class GameSelect;
 class Orange;
 class Track;
 class WindZone;
+class Cone;
+class Fish;
 
 
 class Game : public IGameObject
@@ -24,7 +26,7 @@ public:
 	~Game();
 	
 	void Update();
-	
+	void CreateObject();
 	void Render(RenderContext& rc);
 
 	void StartCountDown();
@@ -49,5 +51,12 @@ public:
 	Orange* m_middleOrange;//中央のオレンジ
 	Track* m_rightTrack;//右トラック
 	Track* m_leftTrack;//左トラック
-	WindZone* m_windZone;   
+	WindZone* m_windZone; 
+	Cone* m_cone; //コーン0
+	Cone* m_firstcone; //コーン1
+	Cone* m_secondcone; //コーン2
+	Cone* m_thirdcone; //コーン3
+	Cone* m_fourthcone; //コーン4
+	Cone* m_fifthcone; //コーン5
+	Fish* m_fish; //魚
 };
