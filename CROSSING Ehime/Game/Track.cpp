@@ -28,10 +28,10 @@ bool Track::Start()
     m_player = FindGO<Player>("player");
 
     m_collision = NewGO<CollisionObject>(0, "collisionObject");
-    m_collision->CreateBox(m_position + collisionOffset, m_rotation, collisionSize);
+    m_collision->CreateBox(m_trposition + collisionOffset, m_rotation, collisionSize);
     m_collision->SetIsEnableAutoDelete(false);
 
-    m_initialPosition = m_position;
+    m_initialPosition = m_trposition;
 
     return true;
 }
@@ -50,44 +50,41 @@ void Track::Update()
 
     if (m_collision)
     {
-        m_collision->SetPosition(m_position + collisionOffset);
+        m_collision->SetPosition(m_trposition + collisionOffset);
         m_collision->SetRotation(m_rotation);
     }
 
     // P_Count の処理をここで実行。プレイヤーの状態に影響させる
-    if (m_position.y <= -500.0f)
+    if (m_trposition.z <= -900.0f)
     {
         m_player->P_Count = 2;
     }
-    else if (m_position.z <= -17500.0f)
-    {
-        m_player->P_Count = 1;
-    }
+ 
 }
 
 void Track::Move()
 {
     if (m_moveDirection == 1)
     {
-        m_position.z += 10.0f;
+        m_trposition.z += 10.0f;
     }
     else if (m_moveDirection == 0)
     {
-        m_position.z -= 10.0f;
+        m_trposition.z -= 10.0f;
     }
 
-    if (m_position.z <= -1000.0f)
+    if (m_trposition.z <= -1000.0f)
     {
         m_moveDirection = 1;
         m_rotation.SetRotationDegY(360.0f);
     }
-    else if (m_position.z >= -500.0f)
+    else if (m_trposition.z >= -500.0f)
     {
         m_moveDirection = 0;
         m_rotation.SetRotationDegY(180.0f);
     }
 
-    m_modelRender.SetPosition(m_position);
+    m_modelRender.SetPosition(m_trposition);
     m_modelRender.SetRotation(m_rotation);
 }
 

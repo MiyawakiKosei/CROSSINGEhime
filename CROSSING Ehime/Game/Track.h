@@ -1,49 +1,40 @@
 #pragma once
+#include "k2EngineLow.h"
+
 class Player;
 
-class Track : public IGameObject 
+class Track : public IGameObject
 {
 public:
-	Track();
-	~Track();
-	bool Start() override;
-	void Update() override;
-	void Render(RenderContext& rc) override;
-	/// <summary>
-	/// 座標を設定。
-	/// </summary>
-	/// <param name="position">座標。</param>
-	void SetPosition(const Vector3& position)
-	{
-		m_trposition = position;
-	}
-	ModelRender m_modelRender;
-	//ここからメンバ変数
-	//座標
-	Vector3 m_trposition;
-	//回転
-	Quaternion rot;
-	int Tr_Count = 1;
+    Track();
+    ~Track();
 
-	Vector3 firstPosition;
+    bool Start() override;
+    void Update() override;
+    void Render(RenderContext& rc) override;
 
-	float m_touchDamageTimer = 0.0f;
-
-
+    void SetPosition(const Vector3& position);
+    Vector3 m_trposition;
 private:
-	bool m_hasDamaged = false;
-	void Move();
-	Player* m_player = nullptr;
-	PhysicsStaticObject		m_physicsStaticObject;				//静的物理オブジェクト。
-	CollisionObject* m_collisionObject = nullptr;		//コリジョンオブジェクト。
-	enum enMovingFloorState
-	{
-		enMovingFloorState_MovingRight,
-		enMovingFloorState_MovingLeft
-	};
-	enMovingFloorState		m_MovingFloorState = enMovingFloorState_MovingRight;
-	Track* m_rightTrack;//右トラック
-	Track* m_leftTrack;//左トラック
+    void Move();
+
+    ModelRender m_modelRender;
+
+
+    Quaternion m_rotation;
+    int m_moveDirection = 1;  // 1:前進, 0:後退
+
+    Vector3 m_initialPosition;
+
+    Player* m_player = nullptr;
+    CollisionObject* m_collision = nullptr;
+
+    enum class MovingState
+    {
+        MovingForward,
+        MovingBackward
+    };
+    MovingState m_movingState = MovingState::MovingForward;
 };
 
 
