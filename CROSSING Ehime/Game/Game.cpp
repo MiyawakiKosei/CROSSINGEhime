@@ -85,6 +85,8 @@ Game::~Game()
 	DeleteGO(m_fourthcone);
 	//コーン5の消去
 	DeleteGO(m_fifthcone);
+	//魚の消去
+	DeleteGO(m_fish);
 }
 
 void Game::Update()
