@@ -53,11 +53,13 @@ void Track::Update()
         m_collision->SetPosition(m_trposition + collisionOffset);
         m_collision->SetRotation(m_rotation);
     }
+    Vector3 diff = m_trposition - m_player->m_position;
+    //ベクトルの長さが70.0fより小さかったら
+    if (diff.Length() <= 110.0f) {
 
-    // P_Count の処理をここで実行。プレイヤーの状態に影響させる
-    if (m_trposition.z <= -900.0f)
-    {
         m_player->P_Count = 2;
+   
+       
     }
  
 }
