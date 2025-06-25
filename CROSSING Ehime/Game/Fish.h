@@ -22,5 +22,6 @@ public:
 
 	int Fi_Count = 0;
 
+	int m_rotState = 0;//‰ñ“]ó‘Ô‚ğŠÇ—‚·‚é•Ï”
 };
 

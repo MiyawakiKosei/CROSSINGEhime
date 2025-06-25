@@ -18,13 +18,13 @@ void Fish::Update() {
 	Rotation();
 	State();
 
-	m_fimodelRender.Update();
-
 	//座標を教える
 	m_fimodelRender.SetPosition(m_fiposition);
 
 	//回転を教える
-	m_fimodelRender.SetRotation(rot);
+	//m_fimodelRender.SetRotation(rot);
+	
+	m_fimodelRender.Update();
 
 	//プレイヤーから魚に向かうベクトルを求める
 	Vector3 diff = player->m_position - m_fiposition;
@@ -73,37 +73,56 @@ void Fish::Move() {
 	}
 	else if (Fi_Count == 2) {
 		m_fiposition.y += 1.0f;
-		if (m_fiposition.x < 0.0f) {
+		/*if (m_fiposition.x < 0.0f) {
+			rot.SetRotationDegY(0.0f);
 			Fi_Count = 1;
 		}
 		else if (m_fiposition.x >= 0.0f) {
+			rot.SetRotationDegY(180.0f);
 			Fi_Count = 0;
-		}
+		}*/
 	}
 	
 }
 
 void Fish::Rotation() {
-	if (Fi_Count == 0) {
-		rot.SetRotationDegY(180.0f);
-		if (m_fiposition.x < 0.0f) {
-			rot.SetRotationDegZ(20.0f);
-		}
-		else {
-			rot.SetRotationDegZ(-20.0f);
-		}
+	/*if (Fi_Count == 0) {
+		
 	}
 	else if (Fi_Count == 1) {
-		rot.SetRotationDegY(180.0f);
-		if (m_fiposition.x < 0.0f) {
-			rot.SetRotationDegZ(20.0f);
-		}
-		else {
-			rot.SetRotationDegZ(-20.0f);
-		}
+		
 	}
 	else if (Fi_Count == 2) {
 		
+	}*/
+
+	switch (Fi_Count) {
+	case 0:
+		// 右向き
+		rot.SetRotationDegY(0.0f);
+		if (m_fiposition.x >= 0.0f) {
+			rot.AddRotationZ(-220.0f);
+			m_fimodelRender.SetRotation(rot);
+		}
+		else if (m_fiposition.x < 0.0f) {
+			rot.AddRotationDegZ(25.0f);
+			m_fimodelRender.SetRotation(rot);
+		}
+		m_fimodelRender.SetRotation(rot);
+		break;
+	case 1:
+		// 左向き
+		rot.SetRotationDegY(180.0f);
+		if (m_fiposition.x <= 0.0f) {
+			rot.AddRotationDegZ(-25.0f);
+			m_fimodelRender.SetRotation(rot);
+		}
+		else if (m_fiposition.x > 0.0f) {
+			rot.AddRotationDegZ(25.0f);
+			m_fimodelRender.SetRotation(rot);
+		}
+		m_fimodelRender.SetRotation(rot);
+		break;
 	}
 }
 
@@ -127,6 +146,17 @@ void Fish::State() {
 
 	if (m_fiposition.y <= -100.0f) {
 		Fi_Count = 2;
+	}
+
+	if (Fi_Count==2){
+		if (m_fiposition.x < 0.0f) {
+			//rot.SetRotationDegY(0.0f);
+			Fi_Count = 1;
+		}
+		else if (m_fiposition.x >= 0.0f) {
+			//rot.SetRotationDegY(180.0f);
+			Fi_Count = 0;
+		}
 	}
 }
 

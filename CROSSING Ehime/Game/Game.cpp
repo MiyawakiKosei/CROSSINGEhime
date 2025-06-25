@@ -174,6 +174,7 @@ void Game::CreateObject() {
 	//魚の生成
 	m_fish = NewGO<Fish>(0, "fish");
 	m_fish->m_fiposition = { 300.0f,0.0f,-4000.0f };
+
 }
 
 
