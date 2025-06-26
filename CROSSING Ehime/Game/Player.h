@@ -41,7 +41,20 @@ public:
 	{
 		return m_characterController;
 	}
+
+	enum PlayerState {
+		enPlayerState_InitialWait,	//初期待機状態。
+		enPlayerState_Idle,		//アイドル状態。
+		enPlayerState_Start,	//スタート状態。
+		enPlayerState_Push,		//プッシュ状態。
+		enPlayerState_Run,		//ラン状態。
+		enPlayerState_Drift,	//ドリフト状態。
+		enPlayerState_Num,
+	};
+	PlayerState m_currentState;//現在のプレイヤーステート
+
 	enum EnAnimationClip {		//アニメーション。
+		
 		enAnimationClip_Idle,
 		enAnimationClip_Start,
 		enAnimationClip_Push,
@@ -58,10 +71,10 @@ public:
 	int playerState = 0;	//プレイヤーのステート(状態)を表す変数。
 
 	int P_Count = 0;
+
+
 private:
-	float m_gameStartTime = 0.0f; // ゲーム開始からの時間を計るタイマー
-	bool m_isPlayerControllable = false; // プレイヤーが操作可能かどうかのフラグ
-	const float INITIAL_WAIT_TIME = 5.0f; // プレイヤーが動かない秒数 (5秒)
+	float m_waitTimer; // プレイヤーが操作可能になるまでの待機時間を計るタイマー
 
 	CharacterController m_characterController;  //キャラクターコントローラー。
 	Vector3				m_scale = Vector3::One;
