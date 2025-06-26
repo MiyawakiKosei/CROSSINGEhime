@@ -225,7 +225,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Cone.cpp" />
     <ClCompile Include="DebugFont.cpp" />
+    <ClCompile Include="Fish.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameClear.cpp" />
@@ -248,7 +250,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Cone.h" />
     <ClInclude Include="DebugFont.h" />
+    <ClInclude Include="Fish.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameClear.h" />

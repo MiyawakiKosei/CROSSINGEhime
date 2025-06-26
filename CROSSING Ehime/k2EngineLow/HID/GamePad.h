@@ -125,6 +125,25 @@ namespace nsK2EngineLow {
 			    || IsPress(enButton02)
 			    || IsPress(enButton03);*/
 		}
+		bool IsTriggerAnyKey() const//追加
+		{
+			return IsTrigger(enButtonUp)
+				|| IsTrigger(enButtonDown)
+				|| IsTrigger(enButtonLeft)
+				|| IsTrigger(enButtonRight)
+				|| IsTrigger(enButtonA)
+				|| IsTrigger(enButtonB)
+				|| IsTrigger(enButtonX)
+				|| IsTrigger(enButtonY)
+				|| IsTrigger(enButtonSelect)
+				|| IsTrigger(enButtonStart)
+				|| IsTrigger(enButtonRB1)
+				|| IsTrigger(enButtonRB2)
+				|| IsTrigger(enButtonRB3)
+				|| IsTrigger(enButtonLB1)
+				|| IsTrigger(enButtonLB2)
+				|| IsTrigger(enButtonLB3);
+		}
 		/// <summary>
 		/// 左スティックのx軸の入力量を取得
 		/// </summary>

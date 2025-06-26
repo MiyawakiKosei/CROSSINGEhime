@@ -17,7 +17,7 @@ GameCamera::~GameCamera()
 bool GameCamera::Start()
 {
 	//注視点から視点までのベクトルを設定。
-	m_toCameraPos.Set(0.0f, 50.0f, 180.0f);
+	m_toCameraPos.Set(0.0f, 100.0f, 180.0f);
 	//プレイヤーのインスタンスを探す。
 	m_player = FindGO<Player>("player");
 
@@ -53,11 +53,11 @@ void GameCamera::Update()
 	qRot.SetRotationDeg(Vector3::AxisY, 1.3f * x);
 	qRot.Apply(m_toCameraPos);
 	//X軸周りの回転。
-	Vector3 axisX;
+	/*Vector3 axisX;
 	axisX.Cross(Vector3::AxisY, m_toCameraPos);
 	axisX.Normalize();
 	qRot.SetRotationDeg(axisX, 1.3f * y);
-	qRot.Apply(m_toCameraPos);
+	qRot.Apply(m_toCameraPos);*/
 	//カメラの回転の上限をチェックする。
 	//注視点から視点までのベクトルを正規化する。
 	//正規化すると、ベクトルの大きさが１になる。

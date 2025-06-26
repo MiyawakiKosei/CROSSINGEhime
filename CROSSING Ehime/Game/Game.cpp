@@ -13,54 +13,34 @@
 #include "Orange.h"
 #include "Track.h"
 #include "sound/SoundEngine.h"
+#include "Cone.h"
+#include "Fish.h"
 
 
 
 Game::Game()
 {
-	//ƒvƒŒƒCƒ„[‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//Playerã‚’ç”Ÿæˆ
 	player = NewGO<Player>(0, "player");
 
-	//ƒQ[ƒ€ƒJƒƒ‰‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//ã‚²ãƒ¼ãƒ ã‚«ãƒ¡ãƒ©ã®ç”Ÿæˆ
 	gameCamera = NewGO<GameCamera>(0, "gameCamera");
 
-	//”wŒi‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ã®ç”Ÿæˆ
 	backGround = NewGO<BackGround>(0);
 
-	//UI‚ğì‚é
+	//UIã®ç”Ÿæˆ
 	m_GameUI = NewGO<GameUI>(0, "game_ui");
 
-	//ƒIƒŒƒ“ƒW‚ğì‚é
-	m_Orange = NewGO<Orange>(0, "orange");
-	m_Orange->position = { 0.0f,0.0f,-1000.0f };
-
-	//ƒIƒŒƒ“ƒW2‚ğì‚é
-	m_rightOrange = NewGO<Orange>(0, "orange2");
-	m_rightOrange->position = { 150.0f,0.0f,-6000.0f };
-
-	//ƒIƒŒƒ“ƒW3‚ğì‚é
-	m_leftOrange = NewGO<Orange>(0, "orange3");
-	m_leftOrange->position = { -300.0f,0.0f,-10000.0f };
-
-	//ƒIƒŒƒ“ƒW‚S‚ğì‚é
-	m_middleOrange = NewGO<Orange>(0, "orange4");
-	m_middleOrange->position = { 0.0f,0.0f,-13000.0f };
-
-	//ƒgƒ‰ƒbƒN‚ğì‚é
-	m_rightTrack = NewGO<Track>(0, "track");
-	m_rightTrack->m_position = { 150.0f,30.0f,-1000.0f };
-
-	//ƒgƒ‰ƒbƒN2‚ğì‚é
-	m_leftTrack= NewGO<Track>(0, "track2");
-	m_leftTrack->m_position = { -300.0f,30.0f,-1000.0f };
+	CreateObject();//ã‚ªãƒ¬ãƒ³ã‚¸ã¨ãƒˆãƒ©ãƒƒã‚¯ã¨ã‚³ãƒ¼ãƒ³ã®ç”Ÿæˆ
 
 	m_windZone = NewGO<WindZone>(0, "windZone");
 	m_windZone->SetPlayer(player);
 	m_windZone->SetTimer(m_timer);
 
-	//ƒQ[ƒ€’†‚ÌBGM‚ğ“Ç‚İ‚ŞB
+	//BGMã®ç”Ÿæˆ
 	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/GameBGM_Play.wav");
-	//ƒQ[ƒ€’†‚ÌBGM‚ğÄ¶‚·‚é
+	//
 	GameBGM = NewGO<SoundSource>(0);
 	GameBGM->Init(1);
 	GameBGM->Play(true);
@@ -69,34 +49,46 @@ Game::Game()
 
 Game::~Game()
 {
-	//ƒvƒŒƒCƒ„[‚ğíœ‚·‚éB
+	//playerã®æ¶ˆå»
 	DeleteGO(player);
-	//ƒQ[ƒ€ƒJƒƒ‰‚ğíœ‚·‚éB
+	//ã‚«ãƒ¡ãƒ©ã®æ¶ˆå»
 	DeleteGO(gameCamera);
-	//ƒQ[ƒ€’†‚ÌBGM‚ğíœ‚·‚éB
+	//BGMã®æ¶ˆå»
 	DeleteGO(GameBGM);
-	//”wŒi‚ğíœ‚·‚éB
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ã®æ¶ˆå»
 	DeleteGO(backGround);
-	//UI‚Ìíœ
+	//UIã®æ¶ˆå»
 	DeleteGO(m_GameUI);
-
-	//•—‚Ìíœ
+	//é¢¨ã®æ¶ˆå»
 	DeleteGO(m_windZone);
-	//ƒIƒŒƒ“ƒW‚ÌÁ‹
+	//ã‚ªãƒ¬ãƒ³ã‚¸ã®æ¶ˆå»
 	DeleteGO(m_Orange);
-	//ƒIƒŒƒ“ƒW2‚ÌÁ‹
+	//ã‚ªãƒ¬ãƒ³ã‚¸2ã®æ¶ˆå»
 	DeleteGO(m_rightOrange);
-	//ƒIƒŒƒ“ƒW3‚ÌÁ‹
+	//ã‚ªãƒ¬ãƒ³ã‚¸3ã®æ¶ˆå»
 	DeleteGO(m_leftOrange);
-	//ƒIƒŒƒ“ƒW4‚ÌÁ‹
+	//ã‚ªãƒ¬ãƒ³ã‚¸4ã®æ¶ˆå»
 	DeleteGO(m_middleOrange);
-	//ƒgƒ‰ƒbƒN‚ÌÁ‹
+	//ãƒˆãƒ©ãƒƒã‚¯ã®æ¶ˆå»
 	DeleteGO(m_rightTrack);
-	//ƒgƒ‰ƒbƒN2‚ÌÁ‹
+	//ãƒˆãƒ©ãƒƒã‚¯2ã®æ¶ˆå»
 	DeleteGO(m_leftTrack);
+	//ã‚³ãƒ¼ãƒ³ã®æ¶ˆå»
+	DeleteGO(m_cone);
+	//ã‚³ãƒ¼ãƒ³1ã®æ¶ˆå»
+	DeleteGO(m_firstcone);
+	//ã‚³ãƒ¼ãƒ³2ã®æ¶ˆå»
+	DeleteGO(m_secondcone);
+	//ã‚³ãƒ¼ãƒ³3ã®æ¶ˆå»
+	DeleteGO(m_thirdcone);
+	//ã‚³ãƒ¼ãƒ³4ã®æ¶ˆå»
+	DeleteGO(m_fourthcone);
+	//ã‚³ãƒ¼ãƒ³5ã®æ¶ˆå»
+	DeleteGO(m_fifthcone);
+	//é­šã®æ¶ˆå»
+	DeleteGO(m_fish);
 }
 
-//XVˆ—B
 void Game::Update()
 {
 	static bool started = false;
@@ -106,21 +98,21 @@ void Game::Update()
 		started = true;
 	}
 
-	// ƒXƒ^[ƒgƒJƒEƒ“ƒgƒ_ƒEƒ“’†‚ÍƒvƒŒƒCƒ„[‚ÆƒJƒEƒ“ƒgƒ_ƒEƒ“’â~
+	// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
 	if (m_GameUI->IsStartCountingDown())
 	{
-		// ƒJƒEƒ“ƒgƒ_ƒEƒ“XV‚Ì‚İ
+		//UIã®æ›´æ–°
 		m_GameUI->Update();
-		return;  // ƒvƒŒƒCƒ„[‚ÌUpdate‚âƒQ[ƒ€is‚ÍƒXƒgƒbƒv
+		return;  
 	}
 
-	switch (player->P_Count) // ƒ‹[ƒv”»’è
+	switch (player->P_Count) 
 	{
-	case 1: // ƒQ[ƒ€ƒNƒŠƒA
+	case 1: //ï¼‘ã®æ™‚
 		NewGO<GameClear>(0, "gameClear");
 		DeleteGO(this);
 		break;
-	case 2: // ƒQ[ƒ€ƒI[ƒo[
+	case 2: //ï¼’ã®æ™‚
 		NewGO<GameOver>(0, "gameOver");
 		DeleteGO(this);
 		break;
@@ -130,10 +122,62 @@ void Game::Update()
 }
 
 
+void Game::CreateObject() {
+	//ã‚ªãƒ¬ãƒ³ã‚¸ã®ç”Ÿæˆ
+	m_Orange = NewGO<Orange>(0, "orange");
+	m_Orange->m_orposition = { 0.0f,0.0f,-1000.0f };
+
+	//ã‚ªãƒ¬ãƒ³ã‚¸2ã®ç”Ÿæˆ
+	m_rightOrange = NewGO<Orange>(0, "orange2");
+	m_rightOrange->m_orposition = { 150.0f,0.0f,-6000.0f };
+
+	//ã‚ªãƒ¬ãƒ³ã‚¸ï¼“ã®ç”Ÿæˆ
+	m_leftOrange = NewGO<Orange>(0, "orange3");
+	m_leftOrange->m_orposition = { -300.0f,0.0f,-10000.0f };
+
+	//ã‚ªãƒ¬ãƒ³ã‚¸4ã®ç”Ÿæˆ
+	m_middleOrange = NewGO<Orange>(0, "orange4");
+	m_middleOrange->m_orposition = { 0.0f,0.0f,-13000.0f };
+
+	//ãƒˆãƒ©ãƒƒã‚¯ã®ç”Ÿæˆ
+	m_rightTrack = NewGO<Track>(0, "track");
+	m_rightTrack->m_trposition = { 150.0f,30.0f,-1000.0f };
+
+	//ãƒˆãƒ©ãƒƒã‚¯ï¼’ã®ç”Ÿæˆ
+	m_leftTrack = NewGO<Track>(0, "track2");
+	m_leftTrack->m_trposition = { -300.0f,30.0f,-1000.0f };
+
+	//ã‚³ãƒ¼ãƒ³0ã®ç”Ÿæˆ
+	m_cone = NewGO<Cone>(0, "cone");
+	m_cone->m_cnposition = { 0.0f,-10.0f,-7000.0f };
+
+	//ã‚³ãƒ¼ãƒ³1ã®ç”Ÿæˆ
+	m_firstcone = NewGO<Cone>(0, "cone1");
+	m_firstcone->m_cnposition = { 35.0f,-10.0f,-7000.0f };
+
+	//ã‚³ãƒ¼ãƒ³2ã®ç”Ÿæˆ
+	m_secondcone = NewGO<Cone>(0, "cone2");
+	m_secondcone->m_cnposition = { -35.0f,-10.0f,-7000.0f };
+
+	//ã‚³ãƒ¼ãƒ³3ã®ç”Ÿæˆ
+	m_thirdcone = NewGO<Cone>(0, "cone3");
+	m_thirdcone->m_cnposition = { 0.0f,-10.0f,-12000.0f };
+
+	//ã‚³ãƒ¼ãƒ³4ã®ç”Ÿæˆ
+	m_fourthcone = NewGO<Cone>(0, "cone4");
+	m_fourthcone->m_cnposition = { 35.0f,-10.0f,-10000.0f };
+
+	//ã‚³ãƒ¼ãƒ³5ã®ç”Ÿæˆ
+	m_fifthcone = NewGO<Cone>(0, "cone5");
+	m_fifthcone->m_cnposition = { -35.0f,-10.0f,-3000.0f };
+
+	//é­šã®ç”Ÿæˆ
+	m_fish = NewGO<Fish>(0, "fish");
+	m_fish->m_fiposition = { 300.0f,0.0f,-4000.0f };
+}
 
 
-
-//•`‰æˆ—
+//ãƒ¢ãƒ‡ãƒ«ãƒ¬ãƒ³ãƒ€ãƒ¼
 void Game::Render(RenderContext& rc) 
 {
 
