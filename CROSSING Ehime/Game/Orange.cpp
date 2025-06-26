@@ -50,11 +50,11 @@ void Orange::Move() {
 	//ã‰º‚ÉˆÚ“®‚³‚¹‚é
 	if (Or_Count == 0) {
 		//ã
-		m_orposition.y += 1.0f;
+		m_orposition.y += 0.5f;
 	}
 	else if (Or_Count == 1) {
 		//‰º
-		m_orposition.y -= 1.0f;
+		m_orposition.y -= 0.5f;
 	}
 
 	//posisiony‚ª‰ŠúˆÊ’u+50‚ğ’´‚¦‚½‚ç

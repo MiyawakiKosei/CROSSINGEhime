@@ -59,4 +59,9 @@ public:
 	Cone* m_fourthcone; //コーン4
 	Cone* m_fifthcone; //コーン5
 	Fish* m_fish; //魚
+	Fish* m_firstfish; //魚１
+	Fish* m_secondfish; //魚２
+	Fish* m_thirdfish; //魚３
+	Fish* m_fourthfish; //魚４
+	Fish* m_fifthfish; //魚５
 };

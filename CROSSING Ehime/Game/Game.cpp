@@ -87,6 +87,16 @@ Game::~Game()
 	DeleteGO(m_fifthcone);
 	//魚の消去
 	DeleteGO(m_fish);
+	//魚１の消去
+	DeleteGO(m_firstfish);
+	//魚2の消去
+	DeleteGO(m_secondfish);
+	//魚3の消去
+	DeleteGO(m_thirdfish);
+	//魚4の消去
+	DeleteGO(m_fourthfish);
+	//魚5の消去
+	DeleteGO(m_fifthfish);
 }
 
 void Game::Update()
@@ -174,6 +184,26 @@ void Game::CreateObject() {
 	//魚の生成
 	m_fish = NewGO<Fish>(0, "fish");
 	m_fish->m_fiposition = { 300.0f,0.0f,-4000.0f };
+
+	//魚1の生成
+	m_firstfish = NewGO<Fish>(0, "fish1");
+	m_firstfish->m_fiposition = { -300.0f,0.0f,-4100.0f };
+
+	//魚2の生成
+	m_secondfish = NewGO<Fish>(0, "fish2");
+	m_secondfish->m_fiposition = { 0.0f,70.0f,-4200.0f };
+
+	//魚3の生成
+	m_thirdfish = NewGO<Fish>(0, "fish3");
+	m_thirdfish->m_fiposition = { 0.0f,50.0f,-1000.0f };
+
+	//魚4の生成
+	m_fourthfish = NewGO<Fish>(0, "fish4");
+	m_fourthfish->m_fiposition = { 0.0f,50.0f,-12000.0f };
+
+	//魚5の生成
+	m_fifthfish = NewGO<Fish>(0, "fish5");
+	m_fifthfish->m_fiposition = { 0.0f,50.0f,-8000.0f };
 
 }
 
