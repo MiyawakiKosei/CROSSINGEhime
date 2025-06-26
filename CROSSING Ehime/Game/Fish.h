@@ -17,7 +17,7 @@ public:
 	Vector3 m_fiposition;
 	//‰ñ“]
 	Quaternion rot;
-	Player* player;
+	Player* m_player;
 	Vector3 firstPosition;//‰ŠúˆÊ’u
 
 	int Fi_Count = 0;

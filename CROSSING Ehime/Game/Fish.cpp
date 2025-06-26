@@ -6,7 +6,7 @@ Fish::Fish() {
 	//モデルを読み込む
 	m_fimodelRender.Init("Assets/modelData/fish/fish01.tkm");
 	//プレイヤーの位置を取得
-	player = FindGO<Player>("player");
+	m_player = FindGO<Player>("player");
 }
 
 Fish::~Fish() {
@@ -27,11 +27,12 @@ void Fish::Update() {
 	m_fimodelRender.Update();
 
 	//プレイヤーから魚に向かうベクトルを求める
-	Vector3 diff = player->m_position - m_fiposition;
+	Vector3 diff = m_player->m_position - m_fiposition;
 	//ベクトルの長さが40.0fより小さかったら
 	if (diff.Length() <= 70.0f) {
+		m_player->P_Count = 2;
 		//自身を消去する
-		DeleteGO(this);
+		//DeleteGO(this);
 	}
 
 
