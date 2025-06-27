@@ -49,8 +49,10 @@ public:
 	Orange* m_rightOrange;//右のオレンジ
 	Orange* m_leftOrange;//左のオレンジ
 	Orange* m_middleOrange;//中央のオレンジ
-	Track* m_rightTrack;//右トラック
-	Track* m_leftTrack;//左トラック
+	Track* m_Track; //トラック
+	Track* m_rightTrack;//トラック1
+	Track* m_leftTrack;//トラック2
+	Track* m_middleTrack; //トラック3
 	WindZone* m_windZone; 
 	Cone* m_cone; //コーン0
 	Cone* m_firstcone; //コーン1
