@@ -69,18 +69,32 @@ void Track::Move()
     if (m_moveDirection == 1)
     {
         m_trposition.z += 10.0f;
+        m_trposition.y += 0.005;
     }
     else if (m_moveDirection == 0)
     {
         m_trposition.z -= 10.0f;
+		m_trposition.y -= 0.005;
     }
 
-    if (m_trposition.z <= -1000.0f)
+    /*if (m_trposition.z <= -1000.0f)
     {
         m_moveDirection = 1;
         m_rotation.SetRotationDegY(360.0f);
     }
     else if (m_trposition.z >= -500.0f)
+    {
+        m_moveDirection = 0;
+        m_rotation.SetRotationDegY(180.0f);
+    }*/
+
+	//Y座標が30未満なら前進、31以上なら後退
+    if (m_trposition.y < 30)
+    {
+        m_moveDirection = 1;
+        m_rotation.SetRotationDegY(360.0f);
+    }
+    else if (m_trposition.y >= 31.0f)
     {
         m_moveDirection = 0;
         m_rotation.SetRotationDegY(180.0f);

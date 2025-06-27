@@ -39,18 +39,6 @@ void Fish::Update() {
 }
 
 void Fish::Move() {
-	/*if (Fi_Count == 0) {
-		m_fiposition.x -= 5.0f;
-		m_fiposition.y += 1.5f;
-	}
-	else if (Fi_Count == 1) {
-		m_fiposition.x -= 5.0f;
-		m_fiposition.y -= 1.5f;
-	}
-	else if (Fi_Count == 2) {
-		m_fiposition.x += 200.0f;
-		m_fiposition.y += 0.5f;
-	}*/
 
 	if (Fi_Count == 0) {
 		if (m_fiposition.x >= 0.0f) {
@@ -74,28 +62,12 @@ void Fish::Move() {
 	}
 	else if (Fi_Count == 2) {
 		m_fiposition.y += 1.0f;
-		/*if (m_fiposition.x < 0.0f) {
-			rot.SetRotationDegY(0.0f);
-			Fi_Count = 1;
-		}
-		else if (m_fiposition.x >= 0.0f) {
-			rot.SetRotationDegY(180.0f);
-			Fi_Count = 0;
-		}*/
+		
 	}
 	
 }
 
 void Fish::Rotation() {
-	/*if (Fi_Count == 0) {
-		
-	}
-	else if (Fi_Count == 1) {
-		
-	}
-	else if (Fi_Count == 2) {
-		
-	}*/
 
 	switch (Fi_Count) {
 	case 0:
@@ -128,22 +100,6 @@ void Fish::Rotation() {
 }
 
 void Fish::State() {
-	/*if (m_fiposition.x > 0.0f&&m_fiposition.y>=-9.0f) {
-		Fi_Count = 0;
-	}
-	else if (m_fiposition.x <= 0.0f && m_fiposition.y > -6.0f) {
-		Fi_Count = 1;
-	}
-	else if (m_fiposition.y <= -10.0f) {
-		Fi_Count = 2;
-	}*/
-
-	/*if (m_fiposition.x > 0.0f && m_fiposition.y >= -15.0f) {
-		Fi_Count = 0;
-	}
-	else if (m_fiposition.x <= 0.0f && m_fiposition.y > -15.0f) {
-		Fi_Count = 1;
-	}*/
 
 	if (m_fiposition.y <= -100.0f) {
 		Fi_Count = 2;

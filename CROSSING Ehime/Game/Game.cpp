@@ -151,11 +151,11 @@ void Game::CreateObject() {
 
 	//トラックの生成
 	m_rightTrack = NewGO<Track>(0, "track");
-	m_rightTrack->m_trposition = { 150.0f,30.0f,-1000.0f };
+	m_rightTrack->m_trposition = { 150.0f,30.0f,-2000.0f };
 
 	//トラック２の生成
 	m_leftTrack = NewGO<Track>(0, "track2");
-	m_leftTrack->m_trposition = { -300.0f,30.0f,-1000.0f };
+	m_leftTrack->m_trposition = { -300.0f,30.0f,-2000.0f };
 
 	//コーン0の生成
 	m_cone = NewGO<Cone>(0, "cone");
