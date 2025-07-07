@@ -5,7 +5,7 @@
  
 Title::Title() {
 	//‰æ‘œ‚ð“Ç‚Ýž‚Þ
-	m_spriteRender.Init("Assets/modelData/title/title03.DDS",1920.0f,1080.0f);
+	m_spriteRender.Init("Assets/sprite/ROLLING_EHIME.DDS",1920.0f,1080.0f);
 
 	//ƒ^ƒCƒgƒ‹‚ÌBGM‚ð“Ç‚Ýž‚Þ
 	//g_soundEngine->ResistWaveFileBank(0, "");

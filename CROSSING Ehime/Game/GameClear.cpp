@@ -5,7 +5,7 @@
 
 GameClear::GameClear() {
 	//ƒQ[ƒ€ƒNƒŠƒA‰æ‘œ‚ğ“Ç‚İ‚Ş
-	spriteRender.Init("Assets/modelData/clear/Clear01.DDS",1920.0f,1080.0f);
+	spriteRender.Init("Assets/sprite/GAME_CLEAR.DDS",1920.0f,1080.0f);
 }
 
 GameClear::~GameClear(){

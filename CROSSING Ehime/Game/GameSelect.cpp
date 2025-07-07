@@ -5,7 +5,7 @@
 
 GameSelect::GameSelect() {
 	//‰æ‘œ‚ğ“Ç‚İ‚Ş
-	spriteRender.Init("Assets/modelData/title/Select01.DDS",1920.0f,1080.0f);
+	spriteRender.Init("Assets/sprite/Select01.DDS",1920.0f,1080.0f);
 }
 
 GameSelect::~GameSelect() {

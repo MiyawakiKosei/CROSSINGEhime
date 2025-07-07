@@ -4,7 +4,7 @@
 
 GameOver::GameOver() {
 	//ゲームオーバーの画像を読み込む
-	spriteRender.Init("Assets/modelData/clear/GameOver01.DDS",1920.0f,1080.0f);
+	spriteRender.Init("Assets/sprite/GameOver01.DDS",1920.0f,1080.0f);
 }
 
 GameOver::~GameOver() {
