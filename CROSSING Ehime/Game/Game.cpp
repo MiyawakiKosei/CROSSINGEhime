@@ -43,7 +43,7 @@ Game::Game()
 	//
 	GameBGM = NewGO<SoundSource>(0);
 	GameBGM->Init(1);
-	GameBGM->Play(true);
+	
 
 }
 
@@ -105,28 +105,34 @@ Game::~Game()
 
 void Game::Update()
 {
-	static bool started = false;
-	if (!started)
+	if (!m_hasStartedCountDown)
 	{
 		m_GameUI->StartStartCountDown();
-		started = true;
+		m_hasStartedCountDown = true;
 	}
 
-	// カウントダウン
+	// カウントダウン中
 	if (m_GameUI->IsStartCountingDown())
 	{
-		//UIの更新
 		m_GameUI->Update();
-		return;  
+		return;
 	}
 
-	switch (player->P_Count) 
+	// BGM再生（カウントダウン終了後に1度だけ）
+	if (!m_bgmStarted)
 	{
-	case 1: //１の時
+		GameBGM->Play(true);  // ← ここで初めて再生
+		m_bgmStarted = true;
+	}
+
+	// 判定
+	switch (player->P_Count)
+	{
+	case 1:
 		NewGO<GameClear>(0, "gameClear");
 		DeleteGO(this);
 		break;
-	case 2: //２の時
+	case 2:
 		NewGO<GameOver>(0, "gameOver");
 		DeleteGO(this);
 		break;
@@ -134,6 +140,7 @@ void Game::Update()
 		break;
 	}
 }
+
 
 
 void Game::CreateObject() {

@@ -5,7 +5,14 @@
 
 GameClear::GameClear() {
 	//ゲームクリア画像を読み込む
-	spriteRender.Init("Assets/sprite/GAME_CLEAR.DDS",1920.0f,1080.0f);
+	m_spriteRender.Init("Assets/sprite/GAME_CLEAR.DDS",1920.0f,1080.0f);
+
+
+	Vector4 m_fontColor = { 1.0f, 1.0f, 1.0f, 1.0f };//白
+	m_fontRender.SetText(L"A タイトルに戻る");
+	m_fontRender.SetPosition({ -100.0f, -300.0f, 0.0f });
+	m_fontRender.SetScale(1.2f);
+	m_fontRender.SetColor(m_fontColor);
 }
 
 GameClear::~GameClear(){
@@ -27,5 +34,6 @@ void GameClear::Update() {
 //描画処理
 void GameClear::Render(RenderContext&rc)
 {
-	spriteRender.Draw(rc);
+	m_spriteRender.Draw(rc);
+	m_fontRender.Draw(rc);
 }

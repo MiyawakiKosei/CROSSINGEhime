@@ -11,8 +11,10 @@ public:
 	void Update();
 	//•`‰æˆ—
 	void Render(RenderContext& rc);
-
+private:
 	//ƒƒ“ƒo•Ï”
-	SpriteRender spriteRender;
+	FontRender m_fontRender;//•¶š
+	SpriteRender m_spriteRender;//ŠG
+
 };
 
