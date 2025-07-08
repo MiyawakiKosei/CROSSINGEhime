@@ -2,6 +2,8 @@
 #include "GameOver.h"
 #include "Title.h"
 #include "Game.h"
+#include "Loading.h"
+
 
 GameOver::GameOver() {
 	// 背景画像（ゲームオーバー）
@@ -21,14 +23,6 @@ GameOver::GameOver() {
 	m_fontRender.SetPosition({ 100.0f, -300.0f, 0.0f });
 	m_fontRender.SetScale(1.2f);
 	m_fontRender.SetColor(m_fontColor);
-	
-
-
-	//// 右側：B ゲームを終了する
-	//m_exitFont.SetText(L"タイトルに戻る");
-	//m_exitFont.SetPosition({ 0.0f, -300.0f, 0.0f });
-	//m_exitFont.SetScale(1.2f);
-	//m_exitFont.SetColor(fontColor);
 }
 
 GameOver::~GameOver() {}
@@ -37,8 +31,9 @@ bool GameOver::Start() {
 	return true;
 }
 
+
 void GameOver::Update() {
-	 //点滅タイマー
+	// 点滅タイマー
 	m_blinkTimer += g_gameTime->GetFrameDeltaTime();
 	if (m_blinkTimer >= 0.75f) {
 		m_blinkTimer = 0.0f;
@@ -57,7 +52,6 @@ void GameOver::Update() {
 		}
 	}
 	else {
-		// 入力解放待ち（押しっぱなし防止）
 		if (
 			!g_pad[0]->IsPress(enButtonLeft) &&
 			!g_pad[0]->IsPress(enButtonRight)
@@ -66,24 +60,17 @@ void GameOver::Update() {
 		}
 	}
 
-	/*if (g_pad[0]->IsTrigger(enButtonA)) {
-		
-			DeleteGO(this);
-			NewGO<Title>(0, "title");
-		
-	}*/
-
-	// 決定処理（Enter or Aボタン）
+	// 決定処理（Aボタン）
 	if (g_pad[0]->IsTrigger(enButtonA)) {
+		auto loading = NewGO<Loading>(0, "loading");
+
 		if (m_select == ReStart) {
-			DeleteGO(this);
-			NewGO<Game>(0, "game");
+			loading->SetNextScene(Loading::SceneType::Game);
 		}
-		else if (m_select == Exit) {
-			DeleteGO(this);
-			NewGO<Title>(0, "title");
-			
+		else {
+			loading->SetNextScene(Loading::SceneType::Title);
 		}
+		DeleteGO(this);
 	}
 }
 

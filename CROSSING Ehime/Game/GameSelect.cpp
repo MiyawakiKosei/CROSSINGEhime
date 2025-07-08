@@ -2,6 +2,7 @@
 #include "GameSelect.h"
 #include "Game.h"
 #include "Title.h"
+#include "Loading.h"
 
 GameSelect::GameSelect() {
 	//‰æ‘œ‚ð“Ç‚Ýž‚Þ
@@ -12,11 +13,13 @@ GameSelect::~GameSelect() {
 
 }
 
-void GameSelect :: Update() {
-	//Jƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚ç
+void GameSelect::Update() {
+
 	if (g_pad[0]->IsTrigger(enButtonA))
 	{
-		NewGO<Game>(0);
+		auto loading = NewGO<Loading>(0, "loading");
+		loading->SetNextScene(Loading::SceneType::Game);
+
 		DeleteGO(this);
 	}
 }

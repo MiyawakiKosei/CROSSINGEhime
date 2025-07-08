@@ -20,6 +20,7 @@
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="Cone.cpp" />
     <ClCompile Include="Fish.cpp" />
+    <ClCompile Include="Loading.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -40,5 +41,6 @@
     <ClInclude Include="Track.h" />
     <ClInclude Include="Cone.h" />
     <ClInclude Include="Fish.h" />
+    <ClInclude Include="Loading.h" />
   </ItemGroup>
 </Project>

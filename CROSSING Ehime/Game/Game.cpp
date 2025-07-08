@@ -40,7 +40,6 @@ Game::Game()
 
 	//BGMの生成
 	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/GameBGM_Play.wav");
-	//
 	GameBGM = NewGO<SoundSource>(0);
 	GameBGM->Init(1);
 	
