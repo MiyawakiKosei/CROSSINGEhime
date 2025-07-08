@@ -3,9 +3,9 @@
 #include "Game.h"
 #include "GameSelect.h"
  
-Title::Title() {
+bool Title::Start() {
 	//‰æ‘œ‚ð“Ç‚Ýž‚Þ
-	m_spriteRender.Init("Assets/modelData/title/title03.DDS",1920.0f,1080.0f);
+	m_spriteRender.Init("Assets/sprite/ROLLING_EHIME.DDS",1920.0f,1080.0f);
 
 	//ƒ^ƒCƒgƒ‹‚ÌBGM‚ð“Ç‚Ýž‚Þ
 	//g_soundEngine->ResistWaveFileBank(0, "");
@@ -21,22 +21,18 @@ Title::Title() {
 	m_fontRender.SetPosition({ -280.0f,-300.0f,0.0f });
 	m_fontRender.SetScale(1.5f);
 	m_fontRender.SetColor(m_fontColor);
+
+	return true;
 }
 
-Title::~Title() {
+Title::Title() {}
 
-}
+Title::~Title() {}
 
-void Title::Update() 
-{
-
-	if (g_pad[0]->IsTriggerAnyKey()) 
-	{
-
+void Title::Update() {
+	if (g_pad[0]->IsTriggerAnyKey()) {
 		NewGO<GameSelect>(0);
 		DeleteGO(this);
-
-		
 	}
 }
 

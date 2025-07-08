@@ -29,7 +29,9 @@ public:
 	void CreateObject();
 	void Render(RenderContext& rc);
 
-	void StartCountDown();
+
+	bool m_hasStartedCountDown = false;  // カウントダウン開始フラグ
+	bool m_bgmStarted = false;           // BGM再生フラグ
 
 	Player* player;		
 	GameCamera* gameCamera;	
@@ -66,4 +68,5 @@ public:
 	Fish* m_thirdfish; //魚３
 	Fish* m_fourthfish; //魚４
 	Fish* m_fifthfish; //魚５
+
 };
