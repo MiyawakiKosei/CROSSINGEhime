@@ -15,6 +15,7 @@
 #include "sound/SoundEngine.h"
 #include "Cone.h"
 #include "Fish.h"
+#include "time.h"
 
 
 
@@ -137,6 +138,9 @@ void Game::Update()
 
 
 void Game::CreateObject() {
+	srand(time(nullptr)); // 乱数の初期化
+	int m_TrP = 0;
+
 	//オレンジの生成
 	m_Orange = NewGO<Orange>(0, "orange");
 	m_Orange->m_orposition = { 0.0f,0.0f,-1000.0f };
@@ -153,21 +157,40 @@ void Game::CreateObject() {
 	m_middleOrange = NewGO<Orange>(0, "orange4");
 	m_middleOrange->m_orposition = { 0.0f,0.0f,-13000.0f };
 
+	//トラックの配列
+	Vector3 m_tr[10];//Vectior3の配列だからVector3型で宣言
+	m_tr[0] = Vector3(0.0f,30.0f,-3800.0f);
+	m_tr[1] = Vector3(-175.0f, 30.0f, -6700.0f);
+	m_tr[2] = Vector3(175.0f, 30.0f, -6700.0f);
+	m_tr[3] = Vector3(150.0f, 30.0f, -2000.0f);
+	m_tr[4] = Vector3(-300.0f, 30.0f, -2000.0f);
+	m_tr[5] = Vector3(150.0f, 30.0f, -9400.0f);
+	m_tr[6] = Vector3(-150.0f, 30.0f, -9400.0f);
+	m_tr[7] = Vector3(0.0f, 30.0f, -16000.0f);
+	m_tr[8] = Vector3(75.0f,30.0f, -12500.0f);
+	m_tr[9] = Vector3(-75.0f,30.0f,-12500.0f);
+
+	//ここでトラックを生成する
 	//トラックの生成
 	m_Track = NewGO<Track>(0, "track");
-	m_Track->m_trposition = { 0.0f,30.0f,-6700.0f };
+	//トラックの位置はランダムに設定
+	m_TrP = rand() % 3; // 0~2の乱数を生成
+	m_Track->m_trposition = m_tr[m_TrP];
 
 	//トラック1の生成
 	m_rightTrack = NewGO<Track>(0, "track1");
-	m_rightTrack->m_trposition = { 150.0f,30.0f,-2000.0f };
+	m_TrP=rand()% 2 + 3; // 0~2の乱数に3を足して3~4の範囲にする
+	m_rightTrack->m_trposition = m_tr[m_TrP];
 
 	//トラック２の生成
 	m_leftTrack = NewGO<Track>(0, "track2");
-	m_leftTrack->m_trposition = { -300.0f,30.0f,-2000.0f };
+	m_TrP = rand() % 2 + 5; // 0~2の乱数に5を足して5~6の範囲にする
+	m_leftTrack->m_trposition = m_tr[m_TrP];
 
 	//トラック3の生成
 	m_middleTrack = NewGO<Track>(0, "track3");
-	m_middleTrack->m_trposition = { 0.0f,30.0f,-16000.0f };
+	m_TrP = rand() % 3 + 7; // 0~2の乱数に7を足して7~8の範囲にする
+	m_middleTrack->m_trposition = m_tr[m_TrP];
 
 	//コーン0の生成
 	m_cone = NewGO<Cone>(0, "cone");
