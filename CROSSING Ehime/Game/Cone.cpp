@@ -7,7 +7,7 @@ Cone::Cone() {
 	m_cnmodelRender.Init("Assets/modelData/cone/Cone02.tkm");
 	m_cnmodelRender.SetScale(Vector3(2.0f, 2.0f, 2.0f));
 	//プレイヤーの位置を取得
-	player = FindGO<Player>("player");
+	m_player = FindGO<Player>("player");
 
 }
 
@@ -23,10 +23,10 @@ void Cone::Update() {
 	m_cnmodelRender.Update();
 
 	//プレイヤーからコーンに向かうベクトルを求める
-	Vector3 diff = player->m_position - m_cnposition;
+	Vector3 diff = m_player->m_position - m_cnposition;
 	//ベクトルの長さが70.0fより小さかったら
 	if (diff.Length() <= 70.0f) {
-		DeleteGO(this); //コーンを削除
+		m_player->P_Count = 2;
 	}
 }
 
