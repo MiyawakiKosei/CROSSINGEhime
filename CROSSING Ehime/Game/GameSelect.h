@@ -1,5 +1,4 @@
 #pragma once
-
 class Player;
 //ゲームセレクト
 class GameSelect:public IGameObject
