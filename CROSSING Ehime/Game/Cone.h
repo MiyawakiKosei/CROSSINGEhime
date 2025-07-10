@@ -12,7 +12,7 @@ public:
 
 	//À•W
 	Vector3 m_cnposition;
-	Player* player;
+	Player* m_player;
 	Vector3 firstPosition; //‰ŠúˆÊ’u
 
 };

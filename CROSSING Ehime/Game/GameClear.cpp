@@ -2,6 +2,7 @@
 #include "GameClear.h"
 #include "Title.h"
 #include "Game.h"
+#include "Loading.h"
 
 GameClear::GameClear() {
 	//ゲームクリア画像を読み込む
@@ -24,8 +25,10 @@ void GameClear::Update() {
 	//Aボタンが押されたら
 	if (g_pad[0]->IsTrigger(enButtonA))
 	{
-		//タイトル画面を作る
-		NewGO<Title>(0, "title");
+		auto loading = NewGO<Loading>(0, "loading");
+		
+		loading->SetNextScene(Loading::SceneType::Title);
+
 		//自身を消去する
 		DeleteGO(this);
 	}
