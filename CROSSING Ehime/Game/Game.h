@@ -47,14 +47,22 @@ public:
 	GameUI* m_GameUI;        
 	Timer* m_timer;
 	GameSelect* m_gameSelect; 
-	Orange* m_Orange; //最初のオレンジ
-	Orange* m_rightOrange;//右のオレンジ
-	Orange* m_leftOrange;//左のオレンジ
-	Orange* m_middleOrange;//中央のオレンジ
+	Orange* m_Orange; //オレンジ
+	Orange* m_firstOrange;//オレンジ1
+	Orange* m_secondOrange;//オレンジ2
+	Orange* m_thirdOrange;//オレンジ3
+	Orange* m_fourthOrange;//オレンジ4
+	Orange* m_fifthOrange;//オレンジ5
+	Orange* m_sixthOrange;//オレンジ6
+	Orange* m_seventhOrange;//オレンジ7
+	Orange* m_eighthOrange; //オレンジ8
+	Orange* m_ninthOrange; //オレンジ9
 	Track* m_Track; //トラック
 	Track* m_rightTrack;//トラック1
 	Track* m_leftTrack;//トラック2
 	Track* m_middleTrack; //トラック3
+	Track* m_finalTrack; //トラック4
+	Track* m_firstTrack;//トラック5
 	WindZone* m_windZone; 
 	Cone* m_cone; //コーン0
 	Cone* m_firstcone; //コーン1
@@ -62,6 +70,14 @@ public:
 	Cone* m_thirdcone; //コーン3
 	Cone* m_fourthcone; //コーン4
 	Cone* m_fifthcone; //コーン5
+	Cone* m_sixthcone; //コーン6
+	Cone* m_seventhcone; //コーン7
+	Cone* m_eighthcone; //コーン8
+	Cone* m_ninthcone; //コーン9
+	Cone* m_tenthcone; //コーン10
+	Cone* m_eleventhcone; //コーン11
+	Cone* m_twelfthcone; //コーン12
+	Cone* m_thirteenthcone; //コーン13
 	Fish* m_fish; //魚
 	Fish* m_firstfish; //魚１
 	Fish* m_secondfish; //魚２

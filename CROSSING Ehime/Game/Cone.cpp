@@ -24,8 +24,8 @@ void Cone::Update() {
 
 	//プレイヤーからコーンに向かうベクトルを求める
 	Vector3 diff = player->m_position - m_cnposition;
-	//ベクトルの長さが70.0fより小さかったら
-	if (diff.Length() <= 70.0f) {
+	//ベクトルの長さが50.0fより小さかったら
+	if (diff.Length() <= 50.0f) {
 		DeleteGO(this); //コーンを削除
 	}
 }
