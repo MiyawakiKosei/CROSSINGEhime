@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "Cone.h"
 #include "Player.h"
+#include "Score.h"
 
 Cone::Cone() {
-	//ƒ‚ƒfƒ‹‚ğ“Ç‚İ‚Ş
+	//ã‚³ãƒ¼ãƒ³ã®ãƒ¢ãƒ‡ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 	m_cnmodelRender.Init("Assets/modelData/cone/Cone02.tkm");
 	m_cnmodelRender.SetScale(Vector3(2.0f, 2.0f, 2.0f));
-	//ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚ğæ“¾
-	m_player = FindGO<Player>("player");
+	
 
 }
 
@@ -15,22 +15,30 @@ Cone::~Cone() {
 
 }
 
+bool Cone::Start() {
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¦‹ã¤ã‘ã‚‹
+	m_player = FindGO<Player>("player");
+	m_Score = FindGO<Score>("score");
+
+	return true;
+}
+
 void Cone::Update() {
-	//À•W‚ğ‹³‚¦‚é
+	//ã‚³ãƒ¼ãƒ³ã®ç§»å‹•å‡¦ç†
 	m_cnmodelRender.SetPosition(m_cnposition);
 
-	//ŠG•`‚«‚³‚ñ‚ÌXVˆ—
+	//çµµæãã•ã‚“ã®æ›´æ–°å‡¦ç†
 	m_cnmodelRender.Update();
 
-	//ƒvƒŒƒCƒ„[‚©‚çƒR[ƒ“‚ÉŒü‚©‚¤ƒxƒNƒgƒ‹‚ğ‹‚ß‚é
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ã‚‰ã‚³ãƒ¼ãƒ³ã«å‘ã‹ã†ãƒ™ã‚¯ãƒˆãƒ«ã‚’æ±‚ã‚ã‚‹
 	Vector3 diff = m_player->m_position - m_cnposition;
-	//ƒxƒNƒgƒ‹‚Ì’·‚³‚ª70.0f‚æ‚è¬‚³‚©‚Á‚½‚ç
-	if (diff.Length() <= 70.0f) {
-		m_player->P_Count = 2;
+	//ãƒ™ã‚¯ãƒˆãƒ«ã®é•·ã•ãŒ50.0fä»¥ä¸‹ã ã£ãŸã‚‰
+	if (diff.Length() <= 40.0f) {
+		m_Score->score -= 5;
 	}
 }
 
 void Cone::Render(RenderContext& renderContext) {
-		//ŠG•`‚«‚³‚ñ‚Ì•`‰æˆ—
+	// ã‚³ãƒ¼ãƒ³ã®ãƒ¢ãƒ‡ãƒ«ã‚’æç”»
 	m_cnmodelRender.Draw(renderContext);
 }
