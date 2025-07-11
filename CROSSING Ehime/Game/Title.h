@@ -21,6 +21,6 @@ private:
 
 	FontRender		m_fontRender;				//フォントレンダー。
 	SpriteRender	m_spriteRender;				//スプライトレンダー。
-
+	SoundSource* m_ClickSE;				//クリックSE
 };
 

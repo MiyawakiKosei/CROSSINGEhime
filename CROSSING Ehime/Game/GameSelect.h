@@ -1,4 +1,5 @@
 #pragma once
+#include "sound/SoundSource.h"
 class Player;
 //ゲームセレクト
 class GameSelect:public IGameObject
@@ -12,6 +13,8 @@ public:
 	void Update();
 	//スプライトレンダー
 	SpriteRender spriteRender;
+
+	SoundSource* m_GameSelectSE; //ゲームセレクトのSE
 
 	//int gs_Count = 0;
 

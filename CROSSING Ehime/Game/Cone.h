@@ -1,4 +1,5 @@
 #pragma once
+#include "sound/SoundSource.h"
 
 class Player;
 class Score;
@@ -17,6 +18,7 @@ public:
 	Player* m_player;
 	Vector3 firstPosition; //‰ŠúˆÊ’u
 	Score* m_Score;
+	SoundSource* m_ConeSE; //ƒR[ƒ“‚ÌSE
 
 };
 

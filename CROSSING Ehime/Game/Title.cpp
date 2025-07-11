@@ -2,10 +2,14 @@
 #include "Title.h"
 #include "Game.h"
 #include "GameSelect.h"
+#include "sound/SoundEngine.h"
  
 bool Title::Start() {
 	//画像を読み込む
 	m_spriteRender.Init("Assets/sprite/ROLLING_EHIME.DDS",1920.0f,1080.0f);
+
+	//SEを読み込む
+	g_soundEngine->ResistWaveFileBank(3,"Assets/sound/Click01.wav");
 
 	//タイトルのBGMを読み込む
 	//g_soundEngine->ResistWaveFileBank(0, "");
@@ -31,6 +35,10 @@ Title::~Title() {}
 
 void Title::Update() {
 	if (g_pad[0]->IsTriggerAnyKey()) {
+		//クリックSEを再生
+		m_ClickSE = NewGO<SoundSource>(0);
+		m_ClickSE->Init(3);
+		m_ClickSE->Play(false);
 		NewGO<GameSelect>(0);
 		DeleteGO(this);
 	}
