@@ -122,25 +122,25 @@ Game::~Game()
 	//風の消去
 	DeleteGO(m_windZone);
 	//オレンジの消去
-	DeleteGO(m_Orange);
+	//DeleteGO(m_Orange);//
 	//オレンジ1の消去
-	DeleteGO(m_firstOrange);
-	//オレンジ2の消去
-	DeleteGO(m_secondOrange);
-	//オレンジ3の消去
-	DeleteGO(m_thirdOrange);
-	//オレンジ4の消去
-	DeleteGO(m_fourthOrange);
-	//オレンジ5の消去
-	DeleteGO(m_fifthOrange);
-	//オレンジ6の消去
-	DeleteGO(m_sixthOrange);
-	//オレンジ7の消去
-	DeleteGO(m_seventhOrange);
-	//オレンジ8の消去
-	DeleteGO(m_eighthOrange);
-	//オレンジ9の消去
-	DeleteGO(m_ninthOrange);
+	//DeleteGO(m_firstOrange);
+	////オレンジ2の消去
+	//DeleteGO(m_secondOrange);
+	////オレンジ3の消去
+	//DeleteGO(m_thirdOrange);
+	////オレンジ4の消去
+	//DeleteGO(m_fourthOrange);
+	////オレンジ5の消去
+	//DeleteGO(m_fifthOrange);
+	////オレンジ6の消去
+	//DeleteGO(m_sixthOrange);
+	////オレンジ7の消去
+	//DeleteGO(m_seventhOrange);
+	////オレンジ8の消去
+	//DeleteGO(m_eighthOrange);
+	////オレンジ9の消去
+	//DeleteGO(m_ninthOrange);
 	//トラックの消去
 	DeleteGO(m_Track);
 	//トラック1の消去
@@ -267,49 +267,48 @@ void Game::CreateObject() {
    // トラック3の生成  
    m_middleTrack = NewGO<Track>(0, "track3");  
    m_middleTrack->m_trposition = { 0.0f, 30.0f, -16000.0f };  
-void Game::CreateObject() {
-	srand(time(nullptr)); // 乱数の初期化
+	//srand(time(nullptr)); // 乱数の初期化
 	int m_TrP = 0;
 
-	//オレンジの生成
-	m_Orange = NewGO<Orange>(0, "orange");
-	m_Orange->m_orposition = { 0.0f,0.0f,-1000.0f };
+	////オレンジの生成
+	//m_Orange = NewGO<Orange>(0, "orange");
+	//m_Orange->m_orposition = { 0.0f,0.0f,-1000.0f };
 
-	//オレンジ1の生成
-	m_firstOrange = NewGO<Orange>(0, "orange2");
-	m_firstOrange->m_orposition = { 0.0f,0.0f,-6000.0f };
+	////オレンジ1の生成
+	//m_firstOrange = NewGO<Orange>(0, "orange2");
+	//m_firstOrange->m_orposition = { 0.0f,0.0f,-6000.0f };
 
-	//オレンジ2の生成
-	m_secondOrange = NewGO<Orange>(0, "orange3");
-	m_secondOrange->m_orposition = { -300.0f,0.0f,-10000.0f };
+	////オレンジ2の生成
+	//m_secondOrange = NewGO<Orange>(0, "orange3");
+	//m_secondOrange->m_orposition = { -300.0f,0.0f,-10000.0f };
 
-	//オレンジ3の生成
-	m_thirdOrange = NewGO<Orange>(0, "orange4");
-	m_thirdOrange->m_orposition = { 0.0f,0.0f,-4500.0f };
+	////オレンジ3の生成
+	//m_thirdOrange = NewGO<Orange>(0, "orange4");
+	//m_thirdOrange->m_orposition = { 0.0f,0.0f,-4500.0f };
 
-	//オレンジ4の生成
-	m_fourthOrange = NewGO<Orange>(0, "orange5");
-	m_fourthOrange->m_orposition = { 0.0f,0.0f,-8600.0f };
+	////オレンジ4の生成
+	//m_fourthOrange = NewGO<Orange>(0, "orange5");
+	//m_fourthOrange->m_orposition = { 0.0f,0.0f,-8600.0f };
 
-	//オレンジ5の生成
-	m_fifthOrange = NewGO<Orange>(0, "orange6");
-	m_fifthOrange->m_orposition = { 175.0f,0.0f,-14200.0f };
+	////オレンジ5の生成
+	//m_fifthOrange = NewGO<Orange>(0, "orange6");
+	//m_fifthOrange->m_orposition = { 175.0f,0.0f,-14200.0f };
 
-	//オレンジ6の生成
-	m_sixthOrange = NewGO<Orange>(0, "orange7");
-	m_sixthOrange->m_orposition = { -175.0f,0.0f,-14500.0f };
+	////オレンジ6の生成
+	//m_sixthOrange = NewGO<Orange>(0, "orange7");
+	//m_sixthOrange->m_orposition = { -175.0f,0.0f,-14500.0f };
 
-	//オレンジ7の生成
-	m_seventhOrange = NewGO<Orange>(0, "orange8");
-	m_seventhOrange->m_orposition = {175.0f,0.0f,-14800.0f };
+	////オレンジ7の生成
+	//m_seventhOrange = NewGO<Orange>(0, "orange8");
+	//m_seventhOrange->m_orposition = {175.0f,0.0f,-14800.0f };
 
-	//オレンジ8の生成
-	m_eighthOrange = NewGO<Orange>(0, "orange9");
-	m_eighthOrange->m_orposition = { 0.0f,0.0f,-12200.0f };
+	////オレンジ8の生成
+	//m_eighthOrange = NewGO<Orange>(0, "orange9");
+	//m_eighthOrange->m_orposition = { 0.0f,0.0f,-12200.0f };
 
-	//オレンジ9の生成
-	m_ninthOrange = NewGO<Orange>(0, "orange10");
-	m_ninthOrange->m_orposition = { 0.0f,0.0f,-17000.0f };
+	////オレンジ9の生成
+	//m_ninthOrange = NewGO<Orange>(0, "orange10");
+	//m_ninthOrange->m_orposition = { 0.0f,0.0f,-17000.0f };
 
 	//トラックの配列
 	Vector3 m_tr[10];//Vectior3の配列だからVector3型で宣言

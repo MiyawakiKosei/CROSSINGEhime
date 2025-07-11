@@ -50,16 +50,16 @@ public:
 	Orange* m_Orange[34]; //最初のオレンジ
 	Orange* m_OrangeLeft[34]; //左のオレンジ
 	Orange* m_OrangeRight[34]; //右のオレンジ
-	Orange* m_Orange; //オレンジ
-	Orange* m_firstOrange;//オレンジ1
-	Orange* m_secondOrange;//オレンジ2
-	Orange* m_thirdOrange;//オレンジ3
-	Orange* m_fourthOrange;//オレンジ4
-	Orange* m_fifthOrange;//オレンジ5
-	Orange* m_sixthOrange;//オレンジ6
-	Orange* m_seventhOrange;//オレンジ7
-	Orange* m_eighthOrange; //オレンジ8
-	Orange* m_ninthOrange; //オレンジ9
+	//Orange* m_Orange; //オレンジ
+	//Orange* m_firstOrange;//オレンジ1
+	//Orange* m_secondOrange;//オレンジ2
+	//Orange* m_thirdOrange;//オレンジ3
+	//Orange* m_fourthOrange;//オレンジ4
+	//Orange* m_fifthOrange;//オレンジ5
+	//Orange* m_sixthOrange;//オレンジ6
+	//Orange* m_seventhOrange;//オレンジ7
+	//Orange* m_eighthOrange; //オレンジ8
+	//Orange* m_ninthOrange; //オレンジ9
 	Track* m_Track; //トラック
 	Track* m_rightTrack;//トラック1
 	Track* m_leftTrack;//トラック2
