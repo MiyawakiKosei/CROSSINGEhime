@@ -2,6 +2,7 @@
 #include "GameUI.h"
 #include "Score.h"
 #include "Player.h"
+#include "sound/SoundEngine.h"
 
 GameUI::GameUI() {}
 
@@ -23,6 +24,8 @@ bool GameUI::Start()
     m_startCountdownFont.SetScale(8.0f);
     m_startCountdownFont.SetColor(Vector4(1, 0, 0, 1));
 
+	// カウントダウンのSEを読み込む
+	g_soundEngine->ResistWaveFileBank(6, "Assets/sound/CountSE.wav");
     m_isCountingDown = false;
 
     return true;
@@ -49,6 +52,16 @@ void GameUI::Update()
     else {
         CountDownTime();
     }
+
+    //初回のみ
+    if (m_SEPoint == 0) {
+        //SEの再生
+        m_countSE = NewGO<SoundSource>(0, "CountSE");
+        m_countSE->Init(6);
+        m_countSE->Play(false);
+		m_SEPoint = 1; // SEの再生ポイントを更新
+    }
+
 }
 
 void GameUI::CountDownTime()

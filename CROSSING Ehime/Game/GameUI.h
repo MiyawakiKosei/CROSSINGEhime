@@ -1,4 +1,5 @@
 #pragma once
+#include "sound/SoundSource.h"
 
 class Score;
 class Player;
@@ -46,5 +47,7 @@ private:
     int m_countState = 0;      // 0:落下, 1:フェード, 2:次の数字へ
     float m_countTimer = 0.0f; // いまは未使用だけど念のため
 
+	SoundSource* m_countSE; // カウントダウンのSE
+	int m_SEPoint = 0; // カウントダウンのSEの再生ポイント
 };
 
