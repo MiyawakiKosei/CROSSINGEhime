@@ -164,7 +164,7 @@ void  Player::Move()
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
 			//ジャンプさせる
-			moveSpeed.y += 400.0f;
+			moveSpeed.y += 500.0f;
 		}
 	}
 	//地面に付いていなかったら

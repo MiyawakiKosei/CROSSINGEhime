@@ -47,10 +47,9 @@ public:
 	GameUI* m_GameUI;        
 	Timer* m_timer;
 	GameSelect* m_gameSelect; 
-	Orange* m_Orange; //最初のオレンジ
-	Orange* m_rightOrange;//右のオレンジ
-	Orange* m_leftOrange;//左のオレンジ
-	Orange* m_middleOrange;//中央のオレンジ
+	Orange* m_Orange[34]; //最初のオレンジ
+	Orange* m_OrangeLeft[34]; //左のオレンジ
+	Orange* m_OrangeRight[34]; //右のオレンジ
 	Track* m_Track; //トラック
 	Track* m_rightTrack;//トラック1
 	Track* m_leftTrack;//トラック2
