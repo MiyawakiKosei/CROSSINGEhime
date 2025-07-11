@@ -35,6 +35,7 @@ void Cone::Update() {
 	//ベクトルの長さが50.0f以下だったら
 	if (diff.Length() <= 40.0f) {
 		m_Score->score -= 5;
+		DeleteGO(this);//コーンを削除
 	}
 }
 

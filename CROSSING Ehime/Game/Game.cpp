@@ -251,22 +251,7 @@ void Game::CreateObject() {
        m_OrangeRight[i] = NewGO<Orange>(0, "orangeRight");  
        m_OrangeRight[i]->m_orposition = { -250.0f, 100.0f, -1000.0f - (i * 500.0f) };  
    }  
-
-   // トラックの生成  
-   m_Track = NewGO<Track>(0, "track");  
-   m_Track->m_trposition = { 0.0f, 30.0f, -6700.0f };  
-
-   // トラック1の生成  
-   m_rightTrack = NewGO<Track>(0, "track1");  
-   m_rightTrack->m_trposition = { 150.0f, 30.0f, -2000.0f };  
-
-   // トラック2の生成  
-   m_leftTrack = NewGO<Track>(0, "track2");  
-   m_leftTrack->m_trposition = { -300.0f, 30.0f, -2000.0f };  
-
-   // トラック3の生成  
-   m_middleTrack = NewGO<Track>(0, "track3");  
-   m_middleTrack->m_trposition = { 0.0f, 30.0f, -16000.0f };  
+  
 	//srand(time(nullptr)); // 乱数の初期化
 	int m_TrP = 0;
 
@@ -374,10 +359,6 @@ void Game::CreateObject() {
    m_fourthcone = NewGO<Cone>(0, "cone4");  
    m_fourthcone->m_cnposition = { 35.0f, -10.0f, -10000.0f };  
 
-
-   // コーン5の生成  
-   m_fifthcone = NewGO<Cone>(0, "cone5");  
-   m_fifthcone->m_cnposition = { -35.0f, -10.0f, -3000.0f };  
 	//コーン5の生成
 	m_fifthcone = NewGO<Cone>(0, "cone5");
 	m_fifthcone->m_cnposition = { -180.0f,-10.0f,-3000.0f };
