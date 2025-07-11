@@ -121,26 +121,6 @@ Game::~Game()
 	DeleteGO(m_GameUI);
 	//風の消去
 	DeleteGO(m_windZone);
-	//オレンジの消去
-	//DeleteGO(m_Orange);//
-	//オレンジ1の消去
-	//DeleteGO(m_firstOrange);
-	////オレンジ2の消去
-	//DeleteGO(m_secondOrange);
-	////オレンジ3の消去
-	//DeleteGO(m_thirdOrange);
-	////オレンジ4の消去
-	//DeleteGO(m_fourthOrange);
-	////オレンジ5の消去
-	//DeleteGO(m_fifthOrange);
-	////オレンジ6の消去
-	//DeleteGO(m_sixthOrange);
-	////オレンジ7の消去
-	//DeleteGO(m_seventhOrange);
-	////オレンジ8の消去
-	//DeleteGO(m_eighthOrange);
-	////オレンジ9の消去
-	//DeleteGO(m_ninthOrange);
 	//トラックの消去
 	DeleteGO(m_Track);
 	//トラック1の消去
@@ -242,58 +222,130 @@ void Game::CreateObject() {
        m_Orange[i]->m_orposition = { 0.0f, 100.0f, -1000.0f - (i * 500.0f) };  
    }  
 
+   m_Orange[0]->m_orposition = { 0.0f, 500.0f, 0.0f }; 
+   m_Orange[1]->m_orposition = { 0.0f, 100.0f, -1500.0f }; 
+   m_Orange[2]->m_orposition = { 0.0f, 500.0f, 0.0f }; 
+   m_Orange[3]->m_orposition = { 0.0f, 100.0f, -2500.0f }; 
+   m_Orange[4]->m_orposition = { 0.0f, 500.0f, 0.0f }; 
+   m_Orange[5]->m_orposition = { 0.0f, 100.0f, -3500.0f }; 
+   m_Orange[6]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[7]->m_orposition = { 0.0f, 100.0f, -4500.0f };
+   m_Orange[8]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[9]->m_orposition = { 0.0f, 100.0f, -5500.0f };
+   m_Orange[10]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[11]->m_orposition = { 0.0f, 100.0f, -6500.0f };
+   m_Orange[12]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[13]->m_orposition = { 0.0f, 100.0f, -7500.0f };
+   m_Orange[14]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[15]->m_orposition = { 0.0f, 100.0f, -8500.0f };
+   m_Orange[16]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[17]->m_orposition = { 0.0f, 100.0f, -9500.0f };
+   m_Orange[18]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[19]->m_orposition = { 0.0f, 100.0f, -10500.0f };
+   m_Orange[20]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[21]->m_orposition = { 0.0f, 100.0f, -11500.0f };
+   m_Orange[22]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[23]->m_orposition = { 0.0f, 100.0f, -12500.0f };
+   m_Orange[24]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[25]->m_orposition = { 0.0f, 100.0f, -13500.0f };
+   m_Orange[26]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[27]->m_orposition = { 0.0f, 100.0f, -14500.0f };
+   m_Orange[28]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[29]->m_orposition = { 0.0f, 100.0f, -15500.0f };
+   m_Orange[30]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[31]->m_orposition = { 0.0f, 100.0f, -16500.0f };
+   m_Orange[32]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_Orange[33]->m_orposition = { 0.0f, 100.0f, -17500.0f }; // 最後のオレンジの位置を調整
+
+
+
    for (int i = 0; i < 34; i++) {  
        m_OrangeLeft[i] = NewGO<Orange>(0, "orangeLeft");  
-       m_OrangeLeft[i]->m_orposition = { 250.0f, 100.0f, -1000.0f - (i * 500.0f) };  
+       m_OrangeLeft[i]->m_orposition = { 250.0f, 100.0f, -1000.0f - (i * 500.0f) }; 
    }  
+
+   m_OrangeLeft[0]->m_orposition = { 0.0f, 500.0f, 0.0f }; // 1番目のオレンジの位置を調整
+   m_OrangeLeft[1]->m_orposition = { 0.0f, 500.0f, 0.0f }; // 2番目のオレンジの位置を調整
+   m_OrangeLeft[2]->m_orposition = { 250.0f, 100.0f, -2000.0f }; // 3番目のオレンジの位置を調整
+   m_OrangeLeft[3]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[4]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[5]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[6]->m_orposition = { 250.0f, 100.0f, -4000.0f };
+   m_OrangeLeft[7]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[8]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[9]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[10]->m_orposition = { 250.0f,100.0f,-6000.0f };
+   m_OrangeLeft[11]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[12]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[13]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[14]->m_orposition = { 250.0f,100.0f,-8000.0f };
+   m_OrangeLeft[15]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[16]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[17]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[18]->m_orposition = { 250.0f,100.0f,-10000.0f };
+   m_OrangeLeft[19]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[20]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[21]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[22]->m_orposition = { 250.0f,100.0f,-12000.0f };
+   m_OrangeLeft[23]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[24]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[25]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[26]->m_orposition = { 250.0f,100.0f,-14000.0f };
+   m_OrangeLeft[27]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[28]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[29]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[30]->m_orposition = { 250.0f,100.0f,-16000.0f };
+   m_OrangeLeft[31]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[32]->m_orposition = { 0.0f, 500.0f, 0.0f };
+   m_OrangeLeft[33]->m_orposition = { 0.0f, 500.0f, 0.0f }; // 最後のオレンジの位置を調整
+
 
    for (int i = 0; i < 34; i++) {  
        m_OrangeRight[i] = NewGO<Orange>(0, "orangeRight");  
        m_OrangeRight[i]->m_orposition = { -250.0f, 100.0f, -1000.0f - (i * 500.0f) };  
-   }  
-  
+   } 
+
+   m_OrangeRight[0]->m_orposition = { -250.0f, 100.0f,-1000.0f }; // 1番目のオレンジの位置を調整
+   m_OrangeRight[1]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[2]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[3]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[4]->m_orposition = { -250.0f,100.0f,-3000.0f };
+   m_OrangeRight[5]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[6]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[7]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[8]->m_orposition = { -250.0f,100.0f,-5000.0f };
+   m_OrangeRight[9]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[10]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[11]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[12]->m_orposition = { -250.0f,100.0f,-7000.0f };
+   m_OrangeRight[13]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[14]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[15]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[16]->m_orposition = { -250.0f,100.0f,-9000.0f };
+   m_OrangeRight[17]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[18]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[19]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[20]->m_orposition = { -250.0f,100.0f,-11000.0f };
+   m_OrangeRight[21]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[22]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[23]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[24]->m_orposition = { -250.0f,100.0f,-13000.0f };
+   m_OrangeRight[25]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[26]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[27]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[28]->m_orposition = { -250.0f,100.0f,-15000.0f };
+   m_OrangeRight[29]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[30]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[31]->m_orposition = { 0.0f,500.0f,0.0f };
+   m_OrangeRight[32]->m_orposition = { -250.0f,100.0f,-17000.0f };
+   m_OrangeRight[33]->m_orposition = { 0.0f,500.0f,0.0f }; // 最後のオレンジの位置を調整
+
 	//srand(time(nullptr)); // 乱数の初期化
 	int m_TrP = 0;
 
 	////オレンジの生成
 	//m_Orange = NewGO<Orange>(0, "orange");
 	//m_Orange->m_orposition = { 0.0f,0.0f,-1000.0f };
-
-	////オレンジ1の生成
-	//m_firstOrange = NewGO<Orange>(0, "orange2");
-	//m_firstOrange->m_orposition = { 0.0f,0.0f,-6000.0f };
-
-	////オレンジ2の生成
-	//m_secondOrange = NewGO<Orange>(0, "orange3");
-	//m_secondOrange->m_orposition = { -300.0f,0.0f,-10000.0f };
-
-	////オレンジ3の生成
-	//m_thirdOrange = NewGO<Orange>(0, "orange4");
-	//m_thirdOrange->m_orposition = { 0.0f,0.0f,-4500.0f };
-
-	////オレンジ4の生成
-	//m_fourthOrange = NewGO<Orange>(0, "orange5");
-	//m_fourthOrange->m_orposition = { 0.0f,0.0f,-8600.0f };
-
-	////オレンジ5の生成
-	//m_fifthOrange = NewGO<Orange>(0, "orange6");
-	//m_fifthOrange->m_orposition = { 175.0f,0.0f,-14200.0f };
-
-	////オレンジ6の生成
-	//m_sixthOrange = NewGO<Orange>(0, "orange7");
-	//m_sixthOrange->m_orposition = { -175.0f,0.0f,-14500.0f };
-
-	////オレンジ7の生成
-	//m_seventhOrange = NewGO<Orange>(0, "orange8");
-	//m_seventhOrange->m_orposition = {175.0f,0.0f,-14800.0f };
-
-	////オレンジ8の生成
-	//m_eighthOrange = NewGO<Orange>(0, "orange9");
-	//m_eighthOrange->m_orposition = { 0.0f,0.0f,-12200.0f };
-
-	////オレンジ9の生成
-	//m_ninthOrange = NewGO<Orange>(0, "orange10");
-	//m_ninthOrange->m_orposition = { 0.0f,0.0f,-17000.0f };
 
 	//トラックの配列
 	Vector3 m_tr[10];//Vectior3の配列だからVector3型で宣言
