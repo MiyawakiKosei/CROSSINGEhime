@@ -1,18 +1,26 @@
 #include "stdafx.h"
 #include "Cone.h"
 #include "Player.h"
+#include "Score.h"
 
 Cone::Cone() {
 	//コーンのモデルを読み込む
 	m_cnmodelRender.Init("Assets/modelData/cone/Cone02.tkm");
 	m_cnmodelRender.SetScale(Vector3(2.0f, 2.0f, 2.0f));
-	//プレイヤーを見つける
-	m_player = FindGO<Player>("player");
+	
 
 }
 
 Cone::~Cone() {
 
+}
+
+bool Cone::Start() {
+	//プレイヤーを見つける
+	m_player = FindGO<Player>("player");
+	m_Score = FindGO<Score>("score");
+
+	return true;
 }
 
 void Cone::Update() {
@@ -25,8 +33,8 @@ void Cone::Update() {
 	//プレイヤーからコーンに向かうベクトルを求める
 	Vector3 diff = m_player->m_position - m_cnposition;
 	//ベクトルの長さが50.0f以下だったら
-	if (diff.Length() <= 50.0f) {
-		m_player->P_Count = 2;
+	if (diff.Length() <= 40.0f) {
+		m_Score->score -= 5;
 	}
 }
 
